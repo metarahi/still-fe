@@ -55,13 +55,12 @@ async function wordpressFetch<T>(
   url: string,
   options: FetchOptions = {}
 ): Promise<T> {
-  const userAgent = "Next.js WordPress Client";
-
+  const userAgent = 'STILL website';
   const response = await fetch(url, {
     ...defaultFetchOptions,
     ...options,
     headers: {
-      "User-Agent": userAgent,
+      'User-Agent': userAgent,
     },
   });
 
