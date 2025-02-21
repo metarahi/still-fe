@@ -56,6 +56,14 @@ function htmlFrom(htmlString: any) {
                 return <CarouselItem>{domToReact(domNode.children, options)}</CarouselItem>
             }
 
+            else if (domNode.name === 'details') {
+                return <div className="details-wrapper">{domToReact(domNode.children, options)}</div>
+            }
+
+            else if (domNode.name === 'summary') {
+                return <div className="details-summary">{domToReact(domNode.children, options)}</div>
+            }
+
             return domNode;
         }
     };
@@ -65,5 +73,6 @@ function htmlFrom(htmlString: any) {
             USE_PROFILES: { html: true },
             ADD_TAGS: ["carousel", "carouselcontent", "carouselitem"]
         });
+
     return parse(cleanHtmlString, options);
 }

@@ -1,15 +1,10 @@
+/* Styles */
 html {
     font-family: var(--font-sans), sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif), serif;
-}
-
-.font-small-caps {
-    font-family: var(--font-serif), serif;
-    font-variant: small-caps;
-    text-transform: uppercase;
 }
 
 .small-caps-menu-button-lists {
@@ -21,6 +16,31 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+.h2-headings-and-intros {
+    font-family: var(--font-serif), serif;
+    font-size: 30px;
+    line-height: 38px;
+}
+
+.p1-body-copy {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+p {
+    @extend .p1-body-copy;
+}
+
+.small-caps-heading {
+    font-family: var(--font-serif), serif;
+    font-size: 30px;
+    font-variant: small-caps;
+    line-height: 33px;
+    text-transform: uppercase;
+}
+
+/* Layout */
 .is-layout-flex {
     display: grid;
 }
@@ -29,24 +49,158 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
 }
 
-.wp-container-core-columns-is-layout-2 {
-    grid-template-columns: repeat(2, 50vw);
-    > div:first-child {
-        grid-column: 1 / span 1;
+.wp-container-core-columns-is-layout-3 {
+    gap: 24px;
+    grid-template-columns: repeat(16, 1fr);
+    margin: 125px 90px 0;
+    > div:nth-child(1) {
+        grid-column: 1 / span 4;
     }
-    > div:last-child {
-        grid-column: 2 / span 1;
+    > div:nth-child(2) {
+        grid-column: 5 / span 3;
+    }
+    > div:nth-child(3) {
+        grid-column: 9 / span 8;
     }
 }
 
-.carousel-wrapper {
-    height: 100vh;
-    .basis-full {
+.ml-90px {
+    margin-left: 90px;
+}
+
+/* Homepage */
+.homepage-hero {
+    &.wp-container-core-columns-is-layout-2 {
+        gap: 24px;
+        grid-template-columns: repeat(8, 1fr);
+        > div:first-child {
+            grid-column: 1 / span 4;
+        }
+        > div:last-child {
+            grid-column: 5 / span 4;
+        }
     }
-    img {
+
+    .carousel-wrapper {
         height: 100vh;
-        max-width: none;
-        object-fit: cover;
-        width: 50vw;
+        min-height: 100%;
+
+        .basis-full {
+            /*transition: opacity 1s ease-in-out;*/
+        }
+
+        .overflow-hidden,
+        .flex,
+        .basis-full {
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .flex {
+            align-items: stretch;
+        }
+
+        img {
+            height: 100vh;
+            max-width: none;
+            min-height: 100%;
+            object-fit: cover;
+            width: 50vw;
+        }
+    }
+
+    > div:first-child {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, min-content);
+        margin-top: calc(40vh - 108px);
+
+        h2 {
+            grid-column: 1 / span 5;
+        }
+
+        .wp-block-columns {
+            display: grid;
+            gap: 24px;
+            grid-column: 2 / span 6;
+            grid-row: 2;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 45px;
+        }
+    }
+}
+
+.details-wrapper {
+    display: flex;
+    @extend .h2-headings-and-intros;
+
+    .details-summary {
+        color: var(--still-grey);
+        display: inline;
+    }
+
+    p {
+        display: none;
+        &:before {
+            content: '\2014';
+        }
+        /* why do I need to add this? */
+        font-family: var(--font-serif), serif;
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    &:hover {
+        .details-summary {
+            color: var(--still-black);
+        }
+        p {
+            display: inline;
+        }
+    }
+}
+
+.home-still-100-1 {
+    > div:nth-child(2) {
+        margin-top: 2px;
+        p {
+            margin-bottom: 16px;
+        }
+    }
+
+    > div:nth-child(3) {
+        margin-top: -3px;
+    }
+}
+
+.project-gallery-preview {
+    margin: 0 90px;
+
+    .project-previews {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(3, min-content);
+    }
+
+    #slot1 {
+        grid-column: 2 / span 4;
+        grid-row: 2 / span 2;
+    }
+
+    #slot2 {
+        grid-column: 7 / span 2;
+        grid-row: 2;
+    }
+
+    #slot3 {
+        grid-column: 11 / span 5;
+        grid-row: 3;
+    }
+
+    #slot4 {
+        grid-column: 13 / span 3;
+        grid-row: 1;
     }
 }

@@ -81,7 +81,7 @@ const Nav = ({ className, children, id }: NavProps) => {
         <div className="flex items-center gap-2">
           <div className="mx-2 hidden md:flex">
             {Object.entries(mainMenu).map(([key, href]) => (
-              <Button key={href} asChild variant="link" size="sm">
+              <Button key={href} asChild variant="link" size="menu">
                 <Link href={href} className="small-caps-menu-button-lists">
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </Link>
