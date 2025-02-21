@@ -56,7 +56,11 @@ async function wordpressFetch<T>(
   options: FetchOptions = {}
 ): Promise<T> {
   const userAgent = 'STILL website';
-  const response = await fetch(url, {
+  // TODO remove for prod, prevents caching
+  const timestampedUrl = `${url}${
+      url.includes("?") ? "&" : "?"
+  }_ts=${Date.now()}`;
+  const response = await fetch(timestampedUrl, {
     ...defaultFetchOptions,
     ...options,
     headers: {

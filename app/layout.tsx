@@ -1,37 +1,34 @@
-import "./globals.css";
+import './globals.css';
 
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-import { ThemeProvider } from "@/components/theme/theme-provider";
+import type { Metadata } from 'next';
+import { Inter as FontSans } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
 
 import Balancer from "react-wrap-balancer";
-import Logo from "@/public/logo.svg";
+import Logo from '@/public/logo.svg';
 import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-const font = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
-  description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
+  title: siteConfig.site_name,
+  description: siteConfig.site_description,
   metadataBase: new URL(siteConfig.site_domain),
   alternates: {
-    canonical: "/",
+    canonical: '/',
   },
 };
+
+function getYear() {
+  return new Date().getFullYear();
+}
 
 export default function RootLayout({
   children,
@@ -41,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn("min-h-screen font-sans antialiased", font.variable)}>
+      <body className={cn('min-h-screen font-sans antialiased')}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -61,41 +58,36 @@ export default function RootLayout({
 const Nav = ({ className, children, id }: NavProps) => {
   return (
     <nav
-      className={cn("sticky z-50 top-0 bg-background", "border-b", className)}
+      className={cn('z-50 top-0 bg-transparent absolute w-full', className)}
       id={id}
     >
       <div
         id="nav-container"
-        className="max-w-5xl mx-auto py-4 px-6 sm:px-8 flex justify-between items-center"
+        className="max-w-full mx-auto py-4 px-6 sm:px-8 flex justify-center items-center"
       >
         <Link
-          className="hover:opacity-75 transition-all flex gap-4 items-center"
+          className="hover:opacity-75 transition-all flex gap-4 items-center position-absolute left-8"
           href="/"
         >
           <Image
             src={Logo}
             alt="Logo"
             loading="eager"
-            className="dark:invert"
-            width={42}
-            height={26.44}
+            width={72}
+            height={15}
           ></Image>
-          <h2 className="text-sm">{siteConfig.site_name}</h2>
         </Link>
         {children}
         <div className="flex items-center gap-2">
           <div className="mx-2 hidden md:flex">
             {Object.entries(mainMenu).map(([key, href]) => (
-              <Button key={href} asChild variant="ghost" size="sm">
-                <Link href={href}>
+              <Button key={href} asChild variant="link" size="sm">
+                <Link href={href} className="small-caps-menu-button-lists">
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </Link>
               </Button>
             ))}
           </div>
-          <Button asChild className="hidden sm:flex">
-            <Link href="https://github.com/9d8dev/next-wp">Get Started</Link>
-          </Button>
           <MobileNav />
         </div>
       </div>
@@ -109,16 +101,6 @@ const Footer = () => {
       <Section>
         <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
           <div className="flex flex-col gap-6 not-prose">
-            <Link href="/">
-              <h3 className="sr-only">{siteConfig.site_name}</h3>
-              <Image
-                src={Logo}
-                alt="Logo"
-                className="dark:invert"
-                width={42}
-                height={26.44}
-              ></Image>
-            </Link>
             <p>
               <Balancer>{siteConfig.site_description}</Balancer>
             </p>
@@ -149,10 +131,8 @@ const Footer = () => {
           </div>
         </Container>
         <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
-          <ThemeToggle />
           <p className="text-muted-foreground">
-            &copy; <a href="https://9d8.dev">9d8</a>. All rights reserved.
-            2025-present.
+            Copyright &copy; {siteConfig.site_name}&reg; {getYear()}
           </p>
         </Container>
       </Section>

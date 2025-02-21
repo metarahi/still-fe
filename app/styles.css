@@ -1,0 +1,52 @@
+html {
+    font-family: var(--font-sans), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif), serif;
+}
+
+.font-small-caps {
+    font-family: var(--font-serif), serif;
+    font-variant: small-caps;
+    text-transform: uppercase;
+}
+
+.small-caps-menu-button-lists {
+    font-family: var(--font-serif), serif;
+    font-size: 17px;
+    font-variant: small-caps;
+    line-height: 19px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+.is-layout-flex {
+    display: grid;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.wp-container-core-columns-is-layout-2 {
+    grid-template-columns: repeat(2, 50vw);
+    > div:first-child {
+        grid-column: 1 / span 1;
+    }
+    > div:last-child {
+        grid-column: 2 / span 1;
+    }
+}
+
+.carousel-wrapper {
+    height: 100vh;
+    .basis-full {
+    }
+    img {
+        height: 100vh;
+        max-width: none;
+        object-fit: cover;
+        width: 50vw;
+    }
+}
