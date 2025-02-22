@@ -54,6 +54,12 @@ p {
     line-height: 18px;
 }
 
+.button {
+    @extend .small-caps-menu-button-lists;
+    font-variant: normal;
+    text-transform: lowercase;
+}
+
 /* Layout */
 .is-layout-flex {
     display: grid;
@@ -195,7 +201,7 @@ p {
         display: grid;
         column-gap: 24px;
         grid-template-columns: repeat(16, 1fr);
-        grid-template-rows: 203px 216px 275px 1fr 1fr;
+        grid-template-rows: 203px 216px 275px 193px;
 
         .caption {
             @extend .caption-large;
@@ -225,6 +231,16 @@ p {
     #slot4 {
         grid-column: 13 / span 3;
         grid-row: 1 / span 2;
+    }
+
+    .button {
+        align-items: center;
+        align-self: end;
+        display: flex;
+        grid-column: 2 / span 3;
+        grid-row: 4;
+        height: 70px;
+        justify-content: center;
     }
 
     .inner {

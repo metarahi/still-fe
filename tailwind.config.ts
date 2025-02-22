@@ -98,8 +98,11 @@ const config = {
 	},
 	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 	safelist: [
+		'border',
+		'border-black',
+		'p-3',
 		'p-10',
-		'pl-12'
+		'pl-12',
 	]
 } satisfies Config;
 

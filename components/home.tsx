@@ -1,62 +1,57 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import parse, {domToReact} from "html-react-parser";
-import Page = Property.Page;
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 // @ts-ignore
 import {Property} from "csstype";
 import DOMPurify from "isomorphic-dompurify";
+import Page = Property.Page;
 
 export default function HomePage(page: Page) {
     const homePageDom = htmlFrom(page.data.content.rendered);
 
-    function init_crossFade(element) {
-        var setBackground = {
-            // Convert nodelist of images to array
+    function init_crossFade(element: Element) {
+        const setBackground = {
             crossFadeImages: [].slice.call(
                 element.querySelectorAll('.slide')
             ),
 
-            // Create random number 0 -> length of array
-            randomize: function(arrayLength) {
-                randomNumber = Math.floor(arrayLength * Math.random()); // range dynamically based on number of indexes in imagesArray
-                return randomNumber;
+            randomize: function(arrayLength: number) {
+                return Math.floor(arrayLength * Math.random());
             },
-            // Load random image on page load
-            setImageOnLoad: function(path) {
+            setImageOnLoad: function(path: number) {
+                // @ts-ignore
                 setBackground.crossFadeImages[path].classList.add(
                     'active'
                 );
-                var active = element.querySelector('.active');
-                return active;
+                return element.querySelector('.active');
             },
 
-            // Set next image in DOM to crossFade__image--active (if at last image in DOM set first image)
-            setNextImage: function(activeImage) {
+            setNextImage: function(activeImage: Element | null) {
                 setTimeout(function() {
-                    activeImage.classList.remove('active');
-                    var nextImage;
-                    if (activeImage.nextElementSibling !== null) {
-                        nextImage = activeImage.nextElementSibling;
-                    } else {
-                        nextImage = element.querySelector('.slide');
+                    if (activeImage !== null) {
+                        activeImage.classList.remove('active');
+                        let nextImage: Element | null = element.querySelector('.slide');
+                        if (activeImage.nextElementSibling !== null) {
+                            nextImage = activeImage.nextElementSibling;
+                        }
+                        if (nextImage !== null) {
+                            nextImage.classList.add('active');
+                            setTimeout(function() {
+                                setBackground.setNextImage(nextImage);
+                            }, 2000);
+                        }
                     }
-                    nextImage.classList.add('active');
-                    setTimeout(function() {
-                        setBackground.setNextImage(nextImage);
-                    }, 2000);
                 }, 2000);
             }
         };
 
-        // @ts-ignore
-        var randomNumber = setBackground.randomize(
+        let randomNumber = setBackground.randomize(
             setBackground.crossFadeImages.length
         );
-        var activeImage = setBackground.setImageOnLoad(randomNumber);
+        const activeImage: Element | null = setBackground.setImageOnLoad(randomNumber);
         setBackground.setNextImage(activeImage);
     }
 
