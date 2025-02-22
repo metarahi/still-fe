@@ -100,6 +100,7 @@ const config = {
 	safelist: [
 		'border',
 		'border-black',
+		'grid-cols-16',
 		'p-3',
 		'p-10',
 		'pl-12',
