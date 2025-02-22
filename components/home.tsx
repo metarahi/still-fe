@@ -13,6 +13,63 @@ import DOMPurify from "isomorphic-dompurify";
 export default function HomePage(page: Page) {
     const homePageDom = htmlFrom(page.data.content.rendered);
 
+    function init_crossFade(element) {
+        var setBackground = {
+            // Convert nodelist of images to array
+            crossFadeImages: [].slice.call(
+                element.querySelectorAll('.slide')
+            ),
+
+            // Create random number 0 -> length of array
+            randomize: function(arrayLength) {
+                randomNumber = Math.floor(arrayLength * Math.random()); // range dynamically based on number of indexes in imagesArray
+                return randomNumber;
+            },
+            // Load random image on page load
+            setImageOnLoad: function(path) {
+                setBackground.crossFadeImages[path].classList.add(
+                    'active'
+                );
+                var active = element.querySelector('.active');
+                return active;
+            },
+
+            // Set next image in DOM to crossFade__image--active (if at last image in DOM set first image)
+            setNextImage: function(activeImage) {
+                setTimeout(function() {
+                    activeImage.classList.remove('active');
+                    var nextImage;
+                    if (activeImage.nextElementSibling !== null) {
+                        nextImage = activeImage.nextElementSibling;
+                    } else {
+                        nextImage = element.querySelector('.slide');
+                    }
+                    nextImage.classList.add('active');
+                    setTimeout(function() {
+                        setBackground.setNextImage(nextImage);
+                    }, 2000);
+                }, 2000);
+            }
+        };
+
+        // @ts-ignore
+        var randomNumber = setBackground.randomize(
+            setBackground.crossFadeImages.length
+        );
+        var activeImage = setBackground.setImageOnLoad(randomNumber);
+        setBackground.setNextImage(activeImage);
+    }
+
+    try {
+        document.querySelectorAll('.project-previews .inner').forEach(
+            function(currentValue) {
+                init_crossFade(currentValue);
+            }
+        )
+    } catch (ev) {
+        // do nothing.
+    }
+
     return (
         <div>
             {homePageDom}
