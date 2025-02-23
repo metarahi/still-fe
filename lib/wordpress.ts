@@ -453,6 +453,18 @@ export async function getAllProjects(): Promise<Post[]> {
   });
 }
 
+export async function getProjectBySlug(slug: string): Promise<Post> {
+  const url = getUrl("/wp-json/wp/v2/project", { slug });
+  const response = await wordpressFetch<Post[]>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", `project-${slug}`],
+    },
+  });
+
+  return response[0];
+}
+
 export async function getAllTeamMembers(): Promise<Post[]> {
   const query: Record<string, any> = {
     _embed: true,
