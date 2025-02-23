@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
-import { mainMenu, contentMenu } from "@/menu.config";
+import { mainMenu, footerMenu } from "@/menu.config";
 import { siteConfig } from "@/site.config";
 
 export function MobileNav() {
@@ -62,7 +62,7 @@ export function MobileNav() {
             ))}
             <h3 className="text-small pt-6">Blog Menu</h3>
             <Separator />
-            {Object.entries(contentMenu).map(([key, href]) => (
+            {Object.entries(footerMenu).map(([key, href]) => (
               <MobileLink key={key} href={href} onOpenChange={setOpen}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}
               </MobileLink>

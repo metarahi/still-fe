@@ -1,11 +1,10 @@
 import './globals.css';
 
 import type { Metadata } from 'next';
-import { Inter as FontSans } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
-import { mainMenu, contentMenu } from "@/menu.config";
+import { mainMenu, footerMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
@@ -101,7 +100,7 @@ const Footer = () => {
       <Section>
         <Container className="grid grid-cols-16 gap-6">
           <div className="flex flex-col footer-menu">
-            {Object.entries(mainMenu).map(([key, href]) => (
+            {Object.entries(footerMenu).map(([key, href]) => (
                 <Link
                     className="hover:underline underline-offset-4"
                     key={href}
@@ -110,12 +109,6 @@ const Footer = () => {
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </Link>
             ))}
-            <Link
-                className="hover:underline underline-offset-4"
-                href="/contact"
-            >
-              Privacy Policy
-            </Link>
           </div>
           <div className="flex footer-copyright">
             <p>

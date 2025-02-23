@@ -438,5 +438,20 @@ export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
   }
 }
 
+export async function getAllProjects(): Promise<Post[]> {
+  const query: Record<string, any> = {
+    _embed: true,
+    per_page: 100,
+  };
+
+  const url = getUrl("/wp-json/wp/v2/project", query);
+  return wordpressFetch<Post[]>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", "projects"],
+    },
+  });
+}
+
 // Export error class for error handling
 export { WordPressAPIError };
