@@ -2,7 +2,7 @@
 
 import React from "react";
 import ViewToggle from "@/components/projects/view-toggle";
-import Project from "@/components/project";
+import Project from "@/components/projects/project";
 
 function transformSubsidiaryData(flatObject: { [x: string]: any; }) {
     // Create an empty object to store the grouped result
@@ -53,7 +53,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
     return (
         <div>
             <div
-                className="mx-90px page-still-100"
+                className="mx-90px page-header"
             >
                 <h1>{_page.title.rendered}</h1>
                 <div className="page-html" dangerouslySetInnerHTML={_pageHtml}/>

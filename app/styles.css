@@ -104,10 +104,6 @@ p {
     grid-template-columns: repeat(16, 1fr);
 }
 
-/*.grid-span-4 {*/
-/*    grid-column: span 4;*/
-/*}*/
-
 .grid-start-2 {
     grid-column: 2 / span 4;
 }
@@ -430,7 +426,7 @@ footer {
 }
 
 /* Still 100 page */
-.page-still-100 {
+.page-header {
     display: grid;
     gap: 24px;
     grid-template-columns: repeat(16, 1fr);
@@ -512,5 +508,45 @@ footer {
         div {
             grid-column: 6 / span 4;
         }
+    }
+}
+
+/* Team Members */
+.featured-team-members {
+    margin: 260px 90px 0;
+
+    .featured-team-member-1 {
+        grid-column: 2 / span 8;
+        grid-row: 1 / span 2;
+    }
+
+    .featured-team-member-2 {
+        grid-column: 11 / span 5;
+        grid-row: 2 / span 2;
+    }
+
+    .featured-team-member-3 {
+        grid-column: 2 / span 7;
+        grid-row: 3 / span 2;
+    }
+
+    h2 {
+        margin: 12px 0;
+    }
+
+    .paragraph {
+        margin-top: 12px;
+        max-width: calc(25vw - 60px);
+    }
+}
+
+.team-members {
+    h2 {
+        margin: 12px 0;
+    }
+
+    .paragraph {
+        margin-top: 12px;
+        max-width: calc(25vw - 60px);
     }
 }

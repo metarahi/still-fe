@@ -453,5 +453,20 @@ export async function getAllProjects(): Promise<Post[]> {
   });
 }
 
+export async function getAllTeamMembers(): Promise<Post[]> {
+  const query: Record<string, any> = {
+    _embed: true,
+    per_page: 100,
+  };
+
+  const url = getUrl("/wp-json/wp/v2/team-member", query);
+  return wordpressFetch<Post[]>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", "team-members"],
+    },
+  });
+}
+
 // Export error class for error handling
 export { WordPressAPIError };

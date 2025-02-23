@@ -1,9 +1,7 @@
 import {Container, Section} from "@/components/craft";
 import {getAllProjects, getPageById} from "@/lib/wordpress";
 import type {Metadata} from "next";
-import Project from "@/components/project";
 import React from "react";
-import ViewToggle from "@/components/projects/view-toggle";
 import ProjectsWrapper from "@/components/projects/projects-wrapper";
 
 
