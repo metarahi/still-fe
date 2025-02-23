@@ -9,6 +9,7 @@ import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 import React from "react";
 import ProjectGallery from "@/components/projects/project-gallery";
+import LatestNews from "@/components/latest-news";
 
 export async function generateStaticParams() {
     const projects = await getAllProjects();
@@ -85,18 +86,20 @@ export default async function Page({
 
                 <div className="page-html project-page-html grid grid-cols-16 gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
-                {featuredMedia &&
-                <img
-                    className="w-full"
-                    src={featuredMedia.source_url}
-                    alt={post.title.rendered}
-                />
-                }
+                    {featuredMedia &&
+                        <img
+                            className="w-full"
+                            src={featuredMedia.source_url}
+                            alt={post.title.rendered}
+                        />
+                    }
 
                     <ProjectGallery content={post} />
 
-                <a href="/still-100" className="button border p-3 border-black">Back to STILL 100</a>
+                    <a href="/still-100" className="button border p-3 border-black">Back to STILL 100</a>
                 </div>
+
+                <LatestNews />
 
             </Container>
         </Section>

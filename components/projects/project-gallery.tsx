@@ -39,7 +39,7 @@ const ProjectGallery: React.FC<Props> = ({content}) => {
     return (
         <div className="project-gallery">
             {gallery}
-            <div className="py-2 text-center text-sm text-muted-foreground">
+            <div className="py-2 px-5 text-right">
                 {current}/{count}
             </div>
         </div>
@@ -65,8 +65,10 @@ function htmlFrom(htmlString: any, setApi: any) {
                     opts={{ align: "start", loop: true }}
                     className="carousel-wrapper"
                 >{domToReact(domNode.children, options)}
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <div className="carousel-indicators">
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </div>
                 </Carousel>
             }
 

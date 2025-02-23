@@ -6,7 +6,6 @@ interface Props {
     activeView: any,
     setActiveView: any
 }
-// const Project: React.FC<Props> = ({page, gridClass, key}) => {
 const ViewToggle: React.FC<Props> = ({activeView, setActiveView}) => {
 
     function handleClick(view: string) {
