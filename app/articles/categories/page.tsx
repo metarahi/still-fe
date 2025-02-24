@@ -23,7 +23,7 @@ export default async function Page() {
           <ul className="grid">
             {categories.map((category: any) => (
               <li key={category.id}>
-                <Link href={`/posts/?category=${category.id}`}>
+                <Link href={`/articles/?category=${category.id}`}>
                   {category.name}
                 </Link>
               </li>

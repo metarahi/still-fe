@@ -10,5 +10,5 @@ export const footerMenu = {
   'our team': '/our-team',
   'articles': '/articles',
   'contact': '/contact',
-  'privacy policy': '/privacy-policy',
+  'privacy policy': '/pages/privacy-policy',
 };

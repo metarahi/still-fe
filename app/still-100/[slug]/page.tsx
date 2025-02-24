@@ -44,7 +44,7 @@ export async function generateMetadata({
             title: post.title.rendered,
             description: description,
             type: "article",
-            url: `${siteConfig.site_domain}/posts/${post.slug}`,
+            url: `${siteConfig.site_domain}/project/${post.slug}`,
             images: [
                 {
                     url: ogUrl.toString(),

@@ -108,7 +108,7 @@ export default async function Page({
             </h5>
 
             <Link
-              href={`/posts/?category=${category.id}`}
+              href={`/articles/?category=${category.id}`}
               className={cn(
                 badgeVariants({ variant: "outline" }),
                 "!no-underline"

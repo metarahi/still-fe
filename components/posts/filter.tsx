@@ -26,7 +26,6 @@ interface Category {
 }
 
 interface FilterPostsProps {
-  authors: Author[];
   tags: Tag[];
   categories: Category[];
   selectedAuthor?: string;
@@ -35,7 +34,6 @@ interface FilterPostsProps {
 }
 
 export function FilterPosts({
-  authors,
   tags,
   categories,
   selectedAuthor,
@@ -90,23 +88,6 @@ export function FilterPosts({
           {categories.map((category) => (
             <SelectItem key={category.id} value={category.id.toString()}>
               {category.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      <Select
-        value={selectedAuthor || "all"}
-        onValueChange={(value) => handleFilterChange("author", value)}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="All Authors" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Authors</SelectItem>
-          {authors.map((author) => (
-            <SelectItem key={author.id} value={author.id.toString()}>
-              {author.name}
             </SelectItem>
           ))}
         </SelectContent>

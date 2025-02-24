@@ -25,8 +25,8 @@ import { SearchInput } from "@/components/posts/search-input";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Posts",
-  description: "Browse all our blog posts",
+  title: "News & Articles",
+  description: "Browse all our news & articles",
 };
 
 export const dynamic = "auto";
@@ -36,7 +36,6 @@ export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{
-    author?: string;
     tag?: string;
     category?: string;
     page?: string;
@@ -44,12 +43,11 @@ export default async function Page({
   }>;
 }) {
   const params = await searchParams;
-  const { author, tag, category, page: pageParam, search } = params;
+  const { tag, category, page: pageParam, search } = params;
 
   // Fetch data based on search parameters
-  const [posts, authors, tags, categories] = await Promise.all([
-    getAllPosts({ author, tag, category, search }),
-    search ? searchAuthors(search) : getAllAuthors(),
+  const [posts, tags, categories] = await Promise.all([
+    getAllPosts({ tag, category, search }),
     search ? searchTags(search) : getAllTags(),
     search ? searchCategories(search) : getAllCategories(),
   ]);
@@ -68,10 +66,9 @@ export default async function Page({
     const params = new URLSearchParams();
     if (newPage > 1) params.set("page", newPage.toString());
     if (category) params.set("category", category);
-    if (author) params.set("author", author);
     if (tag) params.set("tag", tag);
     if (search) params.set("search", search);
-    return `/posts${params.toString() ? `?${params.toString()}` : ""}`;
+    return `/articles${params.toString() ? `?${params.toString()}` : ""}`;
   };
 
   return (
@@ -90,10 +87,8 @@ export default async function Page({
             <SearchInput defaultValue={search} />
 
             <FilterPosts
-              authors={authors}
               tags={tags}
               categories={categories}
-              selectedAuthor={author}
               selectedTag={tag}
               selectedCategory={category}
             />

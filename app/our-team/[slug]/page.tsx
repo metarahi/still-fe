@@ -8,8 +8,6 @@ import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 import React from "react";
-import ProjectGallery from "@/components/projects/project-gallery";
-import LatestNews from "@/components/latest-news";
 
 export async function generateStaticParams() {
     const projects = await getAllTeamMembers();
@@ -44,7 +42,7 @@ export async function generateMetadata({
             title: post.title.rendered,
             description: description,
             type: "article",
-            url: `${siteConfig.site_domain}/posts/${post.slug}`,
+            url: `${siteConfig.site_domain}/our-team/${post.slug}`,
             images: [
                 {
                     url: ogUrl.toString(),
