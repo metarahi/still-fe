@@ -3,6 +3,10 @@
 import React from "react";
 import {getFeaturedMediaById} from "@/lib/wordpress";
 
+interface TeamWrapperProps {
+    featuredTeamMembers?: any[]
+}
+
 const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
     const _page = page.page;
     const _pageHtml = page.pageHtml;
@@ -16,25 +20,35 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
             <div
                 className="mx-90px page-header"
             >
-                <h1>{_page.title.rendered}</h1>
+                <h1 className="small-caps-heading">{_page.title.rendered}</h1>
                 <div className="page-html" dangerouslySetInnerHTML={_pageHtml}/>
             </div>
 
             <div className="featured-team-members grid grid-cols-16 gap-6">
                 {_featuredTeamMembers && _featuredTeamMembers.map(
                     function (teamMember: unknown, index: number) {
-                        // const secondaryImage = await getFeaturedMediaById(teamMember.acf.secondary_image);
-                        // console.log(secondaryImage);
                         return (
                             <div key={index} className={"featured-team-member-" + (index + 1)}>
-                                <div>
+                                <div className="team-member-image">
+                                    <a href={'/our-team/' + teamMember.slug}>
                                     <img
                                         src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-                                        alt={teamMember.title.rendered}/>
+                                        alt={teamMember.title.rendered}
+                                        className="primary" />
+                                    <img
+                                        src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
+                                        alt={teamMember.title.rendered}
+                                        className="secondary" />
+                                    </a>
+
                                 </div>
-                                <h2 className="h2-headings-and-intros">{teamMember.title.rendered}</h2>
-                                <div className="small-caps-menu-button-lists">{teamMember.acf.job_title} <span className="arrow">→</span></div>
-                                <div className="paragraph" dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}} />
+                                <h2 className="h2-headings-and-intros"><a href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</a>
+                                </h2>
+                                <div className="small-caps-menu-button-lists"><a href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
+                                    <span
+                                        className="arrow">→</span></a></div>
+                                <div className="paragraph"
+                                     dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}}/>
                             </div>
                         )
                     }
@@ -46,18 +60,28 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                     function (teamMember: unknown, index: number) {
                         const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];
                         const gridClass = columnPositions[index % 3];
-                        // const secondaryImage = await getFeaturedMediaById(teamMember.acf.secondary_image);
-                        // console.log(secondaryImage);
+
                         return (
                             <div key={index} className={gridClass}>
-                                <div>
-                                    <img
-                                        src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-                                        alt={teamMember.title.rendered}/>
+                                <div className="team-member-image">
+                                    <a href={'/our-team/' + teamMember.slug}>
+                                        <img
+                                            src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
+                                            alt={teamMember.title.rendered}
+                                            className="primary"/>
+                                        <img
+                                            src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
+                                            alt={teamMember.title.rendered}
+                                            className="secondary"/>
+                                    </a>
                                 </div>
-                                <h2 className="h2-headings-and-intros">{teamMember.title.rendered}</h2>
-                                <div className="small-caps-menu-button-lists">{teamMember.acf.job_title} <span className="arrow">→</span></div>
-                                <div className="paragraph" dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}} />
+                                <h2 className="h2-headings-and-intros"><a href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</a>
+                                </h2>
+                                <div className="small-caps-menu-button-lists"><a href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
+                                    <span
+                                        className="arrow">→</span></a></div>
+                                <div className="paragraph"
+                                     dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}}/>
                             </div>
                         )
                     }

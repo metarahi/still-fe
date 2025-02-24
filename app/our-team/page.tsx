@@ -1,5 +1,5 @@
 import {Container, Section} from "@/components/craft";
-import {getAllTeamMembers, getPageById} from "@/lib/wordpress";
+import {getAllTeamMembers, getFeaturedMediaById, getPageById} from "@/lib/wordpress";
 import type {Metadata} from "next";
 import React from "react";
 import TeamWrapper from "@/components/team/team-wrapper";
@@ -25,7 +25,12 @@ export default async function Page() {
     const page = await getPageById(208);
     const pageHtml = {'__html': page.content.rendered};
     let teamMembers = await getAllTeamMembers();
-    let featuredTeamMembers = [];
+
+    for (const member of teamMembers) {
+        member._embedded.secondary_image = await getFeaturedMediaById(member.acf.secondary_image);
+    }
+
+    let featuredTeamMembers: never[] = [];
     featured(teamMembers, featuredTeamMembers);
 
     return (

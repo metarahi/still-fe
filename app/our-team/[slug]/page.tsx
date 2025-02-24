@@ -1,7 +1,7 @@
 import {
     getFeaturedMediaById,
-    getProjectBySlug,
-    getAllProjects,
+    getTeamMemberBySlug,
+    getAllTeamMembers,
 } from "@/lib/wordpress";
 
 import { Section, Container } from "@/components/craft";
@@ -12,7 +12,7 @@ import ProjectGallery from "@/components/projects/project-gallery";
 import LatestNews from "@/components/latest-news";
 
 export async function generateStaticParams() {
-    const projects = await getAllProjects();
+    const projects = await getAllTeamMembers();
 
     return projects.map((project) => ({
         slug: project.slug,
@@ -25,7 +25,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const post = await getProjectBySlug(slug);
+    const post = await getTeamMemberBySlug(slug);
 
     if (!post) {
         return {};
@@ -69,10 +69,10 @@ export default async function Page({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const post = await getProjectBySlug(slug);
-    const featuredMedia = post.featured_media
-        ? await getFeaturedMediaById(post.featured_media)
-        : null;
+    const post = await getTeamMemberBySlug(slug);
+    const featuredMedia = post.acf.secondary_image
+        ? await getFeaturedMediaById(post.acf.secondary_image)
+        : await getFeaturedMediaById(post.featured_media);
 
     return (
         <Section>
@@ -80,26 +80,24 @@ export default async function Page({
                 <div
                     className="mx-90px page-header"
                 >
-                    <h1 className="small-caps-heading">{post.title.rendered}<sup className="numbers-company-page">{post.block_data[0].attrs.data.number}</sup>
+                    <h1 className="h2-headings-and-intros">
+                        {post.title.rendered}
+                        <span className="job-title small-caps-menu-button-lists">{post.acf.job_title}</span>
                     </h1>
                 </div>
 
-                <div className="page-html project-page-html grid grid-cols-16 gap-6 mx-90px">
+                <div className="page-html team-page-html grid grid-cols-16 gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                    <a href="/our-team" className="button border p-3 border-black">Back to team</a>
+
                     {featuredMedia &&
                         <img
-                            className="w-full"
+                            className="w-half"
                             src={featuredMedia.source_url}
                             alt={post.title.rendered}
                         />
                     }
-
-                    <ProjectGallery content={post} />
-
-                    <a href="/still-100" className="button border p-3 border-black">Back to STILL 100</a>
                 </div>
-
-                <LatestNews />
 
             </Container>
         </Section>

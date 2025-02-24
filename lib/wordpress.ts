@@ -480,5 +480,17 @@ export async function getAllTeamMembers(): Promise<Post[]> {
   });
 }
 
+export async function getTeamMemberBySlug(slug: string): Promise<Post> {
+  const url = getUrl("/wp-json/wp/v2/team-member", { slug });
+  const response = await wordpressFetch<Post[]>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", `team-member-${slug}`],
+    },
+  });
+
+  return response[0];
+}
+
 // Export error class for error handling
 export { WordPressAPIError };

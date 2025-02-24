@@ -412,10 +412,6 @@ footer {
         margin: 25px 0;
     }
 
-    h3 a {
-        @extend .h3-headings-and-pullquotes;
-    }
-
     .read-more {
         margin-top: 25px;
 
@@ -433,6 +429,10 @@ footer {
     }
 }
 
+.latest-articles h3 a {
+    @extend .h3-headings-and-pullquotes;
+}
+
 /* Still 100 page */
 .page-header {
     display: grid;
@@ -441,9 +441,7 @@ footer {
     margin-top: 188px;
 
     h1 {
-        font-size: 30px;
         grid-column: 1 / span 6;
-        @extend .small-caps-heading;
     }
 
     .page-html {
@@ -489,10 +487,10 @@ footer {
     h2 {
         margin-top: 12px;
     }
+}
 
-    h2 a {
-        @extend .caption-large;
-    }
+.projects-grid h2 a {
+    @extend .caption-large;
 }
 
 .projects-index {
@@ -682,24 +680,107 @@ footer {
     }
 
     h2 {
-        margin: 12px 0;
+        margin: 29px 0 14px 0;
     }
 
     .paragraph {
-        margin-top: 12px;
+        margin-top: 27px;
         max-width: calc(25vw - 60px);
+    }
+
+    .arrow {
+        margin-left: 8px;
     }
 }
 
 .team-members {
     h2 {
-        margin: 12px 0;
+        margin: 29px 0 14px 0;
     }
 
     .paragraph {
-        margin-top: 12px;
+        margin-top: 27px;
         max-width: calc(25vw - 60px);
     }
+
+    .arrow {
+        margin-left: 8px;
+    }
+}
+
+.team-member-image {
+
+    .secondary {
+        display: none;
+    }
+
+    .primary {
+        display: block;
+    }
+
+    &:hover {
+        .secondary {
+            display: block;
+        }
+
+        .primary {
+            display: none;
+        }
+    }
+}
+
+h1 .job-title {
+    margin-left: 24px;
+}
+
+.team-page-html {
+    margin-top: 140px;
+
+    .rendered-content {
+        display: grid;
+        grid-column: 1 / span 16;
+        grid-row: 1 / span 2;
+        grid-template-columns: subgrid;
+        grid-template-rows: subgrid;
+    }
+
+    .wp-container-core-columns-is-layout-1 {
+        grid-column: 1 / span 16;
+        grid-row: 1;
+        grid-template-columns: subgrid;
+
+        > div:first-child {
+            grid-column: 2 / span 3;
+        }
+
+        > div:last-child {
+            grid-column: 5 / span 3;
+        }
+    }
+
+    .team-intro {
+        display: none;
+    }
+
+    .button {
+        align-items: center;
+        align-self: end;
+        display: flex;
+        grid-column: 2 / span 3;
+        grid-row: 2;
+        justify-content: center;
+    }
+}
+
+img.w-half {
+    grid-column: 9 / span 8;
+    grid-row: 1 / span 2;
+    height: 100vh;
+    margin: -366px -90px 0 0;
+    max-width: none;
+    width: 50vh;
+    min-width: 50vw;
+    object-fit: cover;
 }
 
 /* Latest news block */

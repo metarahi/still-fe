@@ -51,7 +51,7 @@ export default async function LatestNews() {
 
     return <div className="latest-news-block mx-90px">
         <h2 className="small-caps-menu-button-lists">News & Articles</h2>
-        <div className="inner grid grid-cols-16 gap-6">
+        <div className="inner grid grid-cols-16 gap-6 mb-24">
             {latestArticles && latestArticles.map((article, index) => {
                 return <article
                     key={index}
@@ -67,6 +67,6 @@ export default async function LatestNews() {
                 </article>
             })}
         </div>
-        <a href="/posts" className="button border p-3 border-black mt-24">See all articles</a>
+        <a href="/posts" className="button border p-3 border-black">See all articles</a>
     </div>
 }

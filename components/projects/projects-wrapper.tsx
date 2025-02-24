@@ -55,7 +55,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
             <div
                 className="mx-90px page-header"
             >
-                <h1>{_page.title.rendered}</h1>
+                <h1 className="small-caps-heading">{_page.title.rendered}</h1>
                 <div className="page-html" dangerouslySetInnerHTML={_pageHtml}/>
                 <ViewToggle activeView={activeView} setActiveView={setActiveView} />
             </div>
