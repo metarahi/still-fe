@@ -1,8 +1,6 @@
 // @ts-ignore
 import {Property} from "csstype";
-import DOMPurify from "isomorphic-dompurify";
 import Page = Property.Page;
-import Image from "next/image";
 
 interface Props {
     page: Page
@@ -14,10 +12,10 @@ const Project: React.FC<Props> = ({page, gridClass}) => {
 
     return (
         <div className={gridClass} key="">
-            <a href={page.link}>
+            <a href={'/still-100/' + page.slug}>
                 <img src={thumbnail.source_url} alt={page.title.rendered} width={thumbnail.width} height={thumbnail.height} />
             </a>
-            <h2><a href={page.link}>{page.title.rendered} <span className="arrow">→</span></a></h2>
+            <h2><a href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></a></h2>
         </div>
     );
 }

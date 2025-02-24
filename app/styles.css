@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
     font-variant: small-caps;
     line-height: 19px;
     letter-spacing: 1.7px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .h2-headings-and-intros {
@@ -37,7 +37,7 @@ p {
     font-size: 30px;
     font-variant: small-caps;
     line-height: 33px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .caption-large {
@@ -56,7 +56,6 @@ p {
 
 .button {
     @extend .small-caps-menu-button-lists;
-    font-variant: normal;
     height: 70px;
     text-transform: lowercase;
 }
@@ -72,6 +71,7 @@ p {
     font-family: var(--font-numeric), serif;
     font-size: 15px;
     line-height: 33px;
+    margin-left: 4px;
 }
 
 /* Layout */
@@ -321,6 +321,7 @@ footer {
 
         > div.active {
             opacity: 1;
+            z-index: 1;
         }
     }
 }
@@ -528,9 +529,9 @@ footer {
     .rendered-content {
         display: grid;
         grid-column: 1 / span 16;
-        grid-row: 1;
+        grid-row: 1 / span 2;
         grid-template-columns: subgrid;
-        grid-template-rows: repeat(3, min-content);
+        grid-template-rows: subgrid;
     }
 
     .wp-container-core-columns-is-layout-1 {
@@ -549,10 +550,8 @@ footer {
 
     .wp-container-core-columns-is-layout-2 {
         grid-column: 1 / span 16;
-        grid-row: 2;
+        grid-row: 3;
         grid-template-columns: subgrid;
-        grid-template-rows: repeat(3, min-content);
-        margin-top: 168px;
 
         > div:first-child {
             display: none;
@@ -560,13 +559,14 @@ footer {
 
         > div:last-child {
             grid-column: 12 / span 5;
-            grid-row: 2;
+            grid-row: 1;
         }
     }
 
-    img {
+    img.w-full {
         grid-column: 12 / span 5;
         grid-row: 1;
+        margin-bottom: 168px;
     }
 
     .project-intro {
@@ -574,6 +574,10 @@ footer {
     }
 
     .project-subsidiaries {
+        .wrapper {
+            margin-top: 17px;
+        }
+
         .wrapper div {
             align-items: center;
             border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -599,23 +603,23 @@ footer {
         margin-top: 48px;
     }
 
-    .project-endorsements:before {
+    .project-endorsements:not(:empty):before {
         content: 'Endorsements:';
     }
 
-    .project-collaboration:before {
+    .project-collaboration:not(:empty):before {
         content: 'Collaboration Interests:';
     }
 
-    .project-endorsements,
-    .project-collaboration {
+    .project-endorsements:not(:empty),
+    .project-collaboration:not(:empty) {
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
         margin-bottom: 25px;
         padding-bottom: 25px;
     }
 
-    .project-endorsements:before,
-    .project-collaboration:before {
+    .project-endorsements:not(:empty):before,
+    .project-collaboration:not(:empty):before {
         display: block;
         width: calc(12.5vw - 20px);
         height: 100%;
@@ -635,7 +639,7 @@ footer {
 
     .project-gallery {
         grid-column: 1 / span 10;
-        grid-row: 2;
+        grid-row: 2 / span 2;
 
         .text-right {
             margin-top: -40px;
@@ -647,7 +651,7 @@ footer {
         align-self: end;
         display: flex;
         grid-column: 12 / span 3;
-        grid-row: 2;
+        grid-row: 3;
         justify-content: center;
         margin-bottom: 40px;
     }

@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import {NavLink} from "@/components/nav/nav-link";
 
 export const metadata: Metadata = {
   title: siteConfig.site_name,
@@ -81,9 +82,7 @@ const Nav = ({ className, children, id }: NavProps) => {
           <div className="mx-2 hidden md:flex">
             {Object.entries(mainMenu).map(([key, href]) => (
               <Button key={href} asChild variant="link" size="menu">
-                <Link href={href} className="small-caps-menu-button-lists">
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </Link>
+                <NavLink href={href} text={key.charAt(0).toUpperCase() + key.slice(1)}></NavLink>
               </Button>
             ))}
           </div>
