@@ -4,6 +4,7 @@
 
 import querystring from "query-string";
 import { revalidateTag } from "next/cache";
+import axios from "axios";
 
 import type {
   Post,
@@ -29,6 +30,10 @@ interface FetchOptions {
   };
 }
 
+const AxiosInstance = axios.create({
+  baseURL: process.env.WORDPRESS_URL
+});
+
 function getUrl(path: string, query?: Record<string, any>) {
   const params = query ? querystring.stringify(query) : null;
   return `${baseUrl}${path}${params ? `?${params}` : ""}`;
@@ -41,6 +46,16 @@ const defaultFetchOptions: FetchOptions = {
     revalidate: 3600, // Revalidate every hour by default
   },
 };
+
+AxiosInstance.interceptors.request.use(
+    (defaultFetchOptions) => {
+      return defaultFetchOptions;
+    },
+    (error) => {
+      // Handle request errors here
+      return Promise.reject(error);
+    }
+);
 
 // Error handling utility
 class WordPressAPIError extends Error {
@@ -60,23 +75,26 @@ async function wordpressFetch<T>(
   const timestampedUrl = `${url}${
       url.includes("?") ? "&" : "?"
   }_ts=${Date.now()}`;
-  const response = await fetch(timestampedUrl, {
+
+  const response = await AxiosInstance.get(timestampedUrl, {
     ...defaultFetchOptions,
     ...options,
     headers: {
       'User-Agent': userAgent,
     },
-  });
+  }).then(response => {
+    return response.data;
+  })
 
-  if (!response.ok) {
+  if (!response) {
     throw new WordPressAPIError(
-      `WordPress API request failed: ${response.statusText}`,
-      response.status,
-      url
+        `WordPress API request failed: ${response.statusText}`,
+        response.status,
+        url
     );
   }
 
-  return response.json();
+  return response;
 }
 
 // WordPress Functions
