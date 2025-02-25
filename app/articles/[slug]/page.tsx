@@ -15,6 +15,7 @@ import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 import type { Metadata } from "next";
+import LatestNews from "@/components/latest-news";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -25,8 +26,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params,
-}: {
+                                         params,
+                                       }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
@@ -69,68 +70,93 @@ export async function generateMetadata({
 }
 
 export default async function Page({
-  params,
-}: {
+                                     params,
+                                   }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   const featuredMedia = post.featured_media
-    ? await getFeaturedMediaById(post.featured_media)
-    : null;
-  const author = await getAuthorById(post.author);
-  const date = new Date(post.date).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
+      ? await getFeaturedMediaById(post.featured_media)
+      : null;
+  let categories = [];
+  for (const category of post.categories) {
+    categories.push(await getCategoryById(category));
+  }
+  const words = post.acf.words;
+  const images = post.acf.images;
+  let intro;
+  post.block_data.forEach((block: { blockName: string; }) => {
+    if (block.blockName === "core/heading") {
+      intro = block;
+    }
   });
-  const category = await getCategoryById(post.categories[0]);
 
   return (
-    <Section>
-      <Container>
-        <Prose>
-          <h1>
-            <Balancer>
-              <span
-                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-              ></span>
-            </Balancer>
-          </h1>
-          <div className="flex justify-between items-center gap-4 text-sm mb-4">
-            <h5>
-              Published {date} by{" "}
-              {author.name && (
-                <span>
-                  <a href={`/posts/?author=${author.id}`}>{author.name}</a>{" "}
-                </span>
-              )}
-            </h5>
+      <Section>
+        <Container>
+          <div className="mx-90px grid grid-cols-16 gap-6 article">
+            <h1 dangerouslySetInnerHTML={{__html: post.title.rendered}}
+                className="h1-article-headings"></h1>
 
-            <Link
-              href={`/articles/?category=${category.id}`}
-              className={cn(
-                badgeVariants({ variant: "outline" }),
-                "!no-underline"
+            <div className="article-meta">
+              {words && (
+                  <span>Words: {words}</span>
               )}
-            >
-              {category.name}
-            </Link>
-          </div>
-          {featuredMedia?.source_url && (
-            <div className="h-96 my-12 md:h-[500px] overflow-hidden flex items-center justify-center border rounded-lg bg-accent/25">
-              {/* eslint-disable-next-line */}
-              <img
-                className="w-full h-full object-cover"
-                src={featuredMedia.source_url}
-                alt={post.title.rendered}
-              />
+              {words && images && (<span> | </span>)}
+              {images && (
+                  <span>Images: {images}</span>
+              )}
             </div>
-          )}
-        </Prose>
 
-        <Article dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-      </Container>
-    </Section>
+            <div className="article-categories flex justify-center items-center gap-4">
+              {categories && categories.map((category) => (
+                  <Link
+                      key={category.id}
+                      href={`/articles/?category=${category.id}`}
+                      className={cn(
+                          "!no-underline"
+                      )}
+                  >
+                    {category.name}
+                  </Link>
+              ))}
+            </div>
+
+            {intro && (
+                <div
+                    dangerouslySetInnerHTML={{__html: intro.rendered}}
+                    className="article-intro h2-headings-and-intros"
+                >
+                </div>
+            )}
+
+            {featuredMedia?.source_url && (
+                <div
+                    className="article-featured-image overflow-hidden flex flex-col items-center justify-center">
+                  {/* eslint-disable-next-line */}
+                  <img
+                      className="w-full h-full object-cover"
+                      src={featuredMedia.source_url}
+                      alt={post.title.rendered}
+                  />
+                  {featuredMedia.caption && (
+                      <div className="article-featured-image-caption"
+                           dangerouslySetInnerHTML={{ __html: featuredMedia.caption.rendered }}
+                      ></div>
+                  )}
+                </div>
+            )}
+
+            <div className="article-content"
+                 dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            >
+            </div>
+
+          </div>
+
+          <LatestNews />
+        </Container>
+      </Section>
   );
 }

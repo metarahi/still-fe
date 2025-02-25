@@ -5,7 +5,7 @@ import {
   getAllCategories,
   searchAuthors,
   searchTags,
-  searchCategories,
+  searchCategories, getFeaturedMediaById,
 } from "@/lib/wordpress";
 
 import {
@@ -26,6 +26,8 @@ import type { Metadata } from "next";
 import {FeaturedPost} from "@/components/posts/featured-post";
 import {SelectItem} from "@/components/ui/select";
 import {Button} from "@/components/ui/button";
+import ArticleGrid from "@/components/posts/article-grid";
+import LoadMore from "@/components/posts/load-more";
 
 export const metadata: Metadata = {
   title: "News & Articles",
@@ -60,7 +62,7 @@ export default async function Page({
   // Get one latest featured post
   const featuredPost = featuredPosts[0];
 
-  if (typeof featuredPost === Object && Object.hasOwn(featuredPost, 'id')) {
+  if (!category && Object.hasOwn(featuredPost, 'id')) {
     // Remove featured post from posts
     for (let i = 0; i < posts.length; i++) {
       const obj = posts[i];
@@ -89,6 +91,10 @@ export default async function Page({
     return `/articles${params.toString() ? `?${params.toString()}` : ""}`;
   };
 
+  // function handleLoadMore() {
+  //   return paginatedPosts.push(paginatedPosts[0]);
+  // }
+
   return (
       <Section>
         <Container>
@@ -96,6 +102,7 @@ export default async function Page({
             <h2 className="small-caps-heading">News & Articles</h2>
           </div>
           <div className="article-grid">
+            {/*<ArticleGrid paginatedPosts={paginatedPosts} featuredPost={featuredPost} categories={categories} category={category} posts={posts} />*/}
 
             {paginatedPosts.length > 0 ? (
                 <div className="mx-90px grid grid-cols-16 gap-6">
@@ -103,11 +110,13 @@ export default async function Page({
                       <FeaturedPost post={featuredPost}/>
                   }
 
-                  {paginatedPosts.map(function (post, index) {
+                  {paginatedPosts.map(async function (post, index) {
                     const columnPositions = ["grid-start-4", "grid-start-10"];
                     const gridClass = columnPositions[index % 2];
                     return <PostCard key={post.id} post={post} gridClass={gridClass}/>
                   })}
+
+                  <LoadMore paginatedPosts={paginatedPosts} posts={posts} />
 
                   <div className="article-categories flex flex-col">
                     <div className="small-caps-menu-button-lists">categories:</div>
@@ -124,10 +133,6 @@ export default async function Page({
                   <p>No posts found</p>
                 </div>
             )}
-
-            {/*{displayPosts < posts.length ? (*/}
-            {/*    <button onClick={handleLoadMore}>Load More</button>*/}
-            {/*) : null}*/}
 
             {/*{totalPages > 1 && (*/}
             {/*    <Pagination>*/}

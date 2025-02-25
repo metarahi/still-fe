@@ -1,3 +1,5 @@
+"use server";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -38,8 +40,8 @@ function createExcerpt(string, maxLength = 300) {
 
 export async function PostCard({ post, gridClass }: { post: Post, gridClass?: string }) {
   const media = post.featured_media
-    ? await getFeaturedMediaById(post.featured_media)
-    : null;
+      ? await getFeaturedMediaById(post.featured_media)
+      : null;
 
   return (
     <Link

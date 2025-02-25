@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
 .p1-body-copy {
     font-family: var(--font-sans), sans-serif;
     font-size: 15px;
-    line-height: 18px;
+    line-height: 19px;
 }
 
 p {
@@ -72,6 +72,11 @@ p {
     font-size: 15px;
     line-height: 33px;
     margin-left: 4px;
+}
+
+.h1-article-headings {
+    font-size: 45px;
+    line-height: 55px;
 }
 
 /* Layout */
@@ -884,7 +889,85 @@ img.w-half {
     flex-basis: fit-content;
     height: 31px;
     margin-bottom: 15px;
-    padding: 4px 20px;
+    padding: 7px 20px;
     text-align: center;
-    @extend .paragraph;
+    @extend .p1-body-copy;
+}
+
+.load-more-wrapper {
+    grid-column: 4 / span 3;
+
+    button {
+        width: 100%;
+    }
+}
+
+.article {
+    margin-top: 263px;
+
+    h1 {
+    }
+
+    .article-meta {
+
+    }
+
+    h1,
+    .article-meta,
+    .article-categories,
+    .article-featured-image {
+        grid-column: 4 / span 10;
+        text-align: center;
+    }
+
+    .article-intro {
+        grid-column: 5 / span 8;
+    }
+
+    .article-content {
+        grid-column: 6 / span 6;
+    }
+
+    .article-meta {
+        margin: 38px 0 5px 0;
+    }
+
+    .article-categories {
+        grid-row: 3;
+        margin-bottom: 53px;
+    }
+
+    .article-featured-image {
+        margin: 58px 0 50px 0;
+    }
+
+    .article-featured-image-caption {
+        align-self: start;
+    }
+
+    .article-featured-image-caption p {
+        @extend .caption-large;
+    }
+
+    .article-content {
+        .wp-block-heading {
+            display: none;
+        }
+
+        > p {
+            margin-bottom: 23px;
+        }
+
+        blockquote {
+            margin: 75px 0;
+        }
+
+        blockquote p {
+            @extend .h3-headings-and-pullquotes;
+        }
+
+        .wp-block-image {
+            margin-bottom: 75px;
+        }
+    }
 }

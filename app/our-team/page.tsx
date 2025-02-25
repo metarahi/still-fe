@@ -14,7 +14,7 @@ function featured(src: any, dest: any)  {
     while ( i < src.length ) {
         const item = src[i];
         if (item.acf.featured) {
-            src.splice(i,1);
+            src.splice(i, 1);
             dest.push(item);
         }
         else i++;
