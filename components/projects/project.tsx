@@ -13,6 +13,7 @@ const Project: React.FC<Props> = ({page, gridClass}) => {
     return (
         <div className={gridClass} key="">
             <a href={'/still-100/' + page.slug}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={thumbnail.source_url} alt={page.title.rendered} width={thumbnail.width} height={thumbnail.height} />
             </a>
             <h2><a href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></a></h2>

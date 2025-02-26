@@ -10,7 +10,7 @@ import {
 
 function createExcerpt(string, maxLength = 300) {
     // Replace multiple whitespace with single space and trim
-    string = string.replace(/\s+/g, ' ').trim();
+    string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
     if (string.length >= maxLength) {
         string = string.slice(0, maxLength);
@@ -52,6 +52,7 @@ export async function FeaturedPost({ post }: { post: Post }) {
         >
             <div className="w-full overflow-hidden relative flex items-center justify-center">
                 {media?.source_url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                         className="h-full w-full object-cover"
                         src={media.source_url}

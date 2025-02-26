@@ -3,7 +3,7 @@ import {getFeaturedMediaById, getPageById, getPostById} from "@/lib/wordpress";
 
 function createExcerpt(string, maxLength = 300) {
     // Replace multiple whitespace with single space and trim
-    string = string.replace(/\s+/g, ' ').trim();
+    string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
     if (string.length >= maxLength) {
         string = string.slice(0, maxLength);
@@ -58,6 +58,7 @@ export default async function LatestNews() {
                     className={"article-" + (index + 1)}
                 >
                     <a href={`/articles/${article[0].slug}`}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={article[1].media_details.sizes.full.source_url}
                              alt={article[0].title.rendered}/>
                     </a>

@@ -31,10 +31,12 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                             <div key={index} className={"featured-team-member-" + (index + 1)}>
                                 <div className="team-member-image">
                                     <a href={'/our-team/' + teamMember.slug}>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                         src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                                         alt={teamMember.title.rendered}
                                         className="primary" />
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                         src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
                                         alt={teamMember.title.rendered}
@@ -65,10 +67,12 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                             <div key={index} className={gridClass}>
                                 <div className="team-member-image">
                                     <a href={'/our-team/' + teamMember.slug}>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img
                                             src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}
                                             className="primary"/>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img
                                             src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}

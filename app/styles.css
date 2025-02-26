@@ -79,6 +79,11 @@ p {
     line-height: 55px;
 }
 
+.underline,
+.hover\:underline:hover {
+    text-decoration-thickness: 1px;
+}
+
 /* Layout */
 .is-layout-flex {
     display: grid;
@@ -415,6 +420,9 @@ footer {
 
     h3 {
         margin: 25px 0;
+        .arrow {
+            margin-left: 8px;
+        }
     }
 
     .read-more {
@@ -479,7 +487,7 @@ footer {
         a:active,
         a:focus,
         a:hover {
-            text-decoration: underline;
+            border-bottom: 1px solid var(--still-black);
         }
     }
 }
@@ -498,19 +506,34 @@ footer {
     @extend .caption-large;
 }
 
-.projects-index {
-    > span:nth-child(1) {
-        grid-column: 7 / span 5;
-    }
+.projects-grid h2 a .arrow {
+    @extend .arrow-caption-large;
+}
 
-    > span:nth-child(2) {
-        grid-column: 12 / span 5;
+.projects-index {
+    .project-index-header {
+        border-bottom: 0.7px solid var(--still-grey);
+        display: grid;
+        padding-bottom: 14px;
+        grid-column: 7 / span 10;
+        grid-template-columns: subgrid;
+
+        > p:nth-child(1) {
+            grid-column: 1 / span 5;
+        }
+
+        > p:nth-child(2) {
+            grid-column: 6 / span 5;
+        }
     }
 
     .project-row {
+        border-bottom: 0.7px solid var(--still-grey);
         display: grid;
         grid-template-columns: subgrid;
-        grid-column: 7 / span 9;
+        grid-column: 7 / span 10;
+        padding: 14px 0;
+        @extend .small-caps-menu-button-lists;
 
         span {
             grid-column: 1 / span 5;
@@ -518,7 +541,25 @@ footer {
 
         div {
             grid-column: 6 / span 4;
+            margin-bottom: 9px;
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
+    }
+
+    .project-row > div {
+        @extend .caption-large;
+        font-variant: none;
+        margin-top: 0;
+        text-transform: none;
+    }
+
+    .project-row > span > span,
+    .project-row > div > span {
+        display: inline-block;
+        margin-right: 15px;
+        width: 23px;
     }
 }
 
@@ -711,6 +752,10 @@ footer {
     .arrow {
         margin-left: 8px;
     }
+}
+
+.team-members .arrow {
+    @extend .arrow-caption-large;
 }
 
 .team-member-image {

@@ -86,9 +86,11 @@ export default async function Page({
 
                 <div className="page-html team-page-html grid grid-cols-16 gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                    {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
                     <a href="/our-team" className="button border p-3 border-black">Back to team</a>
 
                     {featuredMedia &&
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                             className="w-half"
                             src={featuredMedia.source_url}

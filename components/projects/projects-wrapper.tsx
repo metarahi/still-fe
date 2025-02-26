@@ -72,9 +72,11 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
                 </div>
             }
             {activeView && activeView === 'index' &&
-                <div className="mx-90px grid grid-cols-16 gap-x-6 gap-y-16 projects-index">
-                    <span>Companies / Projects:</span>
-                    <span>Subsidiaries:</span>
+                <div className="mx-90px grid grid-cols-16 gap-x-6 projects-index">
+                    <div className="project-index-header">
+                        <p>Companies / Projects:</p>
+                        <p>Subsidiaries:</p>
+                    </div>
                     {_projects && _projects.map(
                         function (project: object, index: number) {
                             let subsidiaries;
@@ -84,12 +86,14 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
                             }
 
                             return (
-                                <div className="project-row">
-                                    <span>{project.block_data[0].attrs.data.number} {project.title.rendered}</span>
+                                <div className="project-row" key={index}>
+                                    <span><span>{project.block_data[0].attrs.data.number}</span>{project.title.rendered}</span>
                                     {subsidiaries &&
                                         subsidiaries.map(
-                                            function(subsidiary:any) {
-                                                return <div>{subsidiary.number} {subsidiary.name}</div>;
+                                            function (subsidiary: any, index: number) {
+                                                if (subsidiary.number) {
+                                                    return <div key={index}><span>{("0" + subsidiary.number).slice (-2)}</span>{subsidiary.name}</div>;
+                                                }
                                             }
                                         )}
                                 </div>
