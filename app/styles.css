@@ -901,16 +901,6 @@ img.w-half {
 .article-grid {
     margin-top: 145px;
 
-    .grid-start-4 {
-        grid-column: 4 / span 6;
-        margin-bottom: 38px;
-    }
-
-    .grid-start-10 {
-        grid-column: 10 / span 6;
-        margin-bottom: 38px;
-    }
-
     h3,
     .paragraph,
     p {
@@ -940,10 +930,23 @@ img.w-half {
 }
 
 .load-more-wrapper {
-    grid-column: 4 / span 3;
+    display: grid;
+    grid-column: 4 / span 12;
+    grid-template-columns: subgrid;
+
+    .grid-start-1 {
+        grid-column: 1 / span 6;
+        margin-bottom: 38px;
+    }
+
+    .grid-start-7 {
+        grid-column: 7 / span 6;
+        margin-bottom: 38px;
+    }
 
     button {
-        width: 100%;
+        grid-column: 1 / span 3;
+        margin-top: 57px;
     }
 }
 

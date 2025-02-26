@@ -63,7 +63,7 @@ export default async function LatestNews() {
                              alt={article[0].title.rendered}/>
                     </a>
                     <h3 className="h3-headings-and-pullquotes"><a href={`/articles/${article[0].slug}`}>{article[0].title.rendered} <span className="arrow">→</span></a></h3>
-                    <div className="excerpt" dangerouslySetInnerHTML={{__html: createExcerpt(article[0].excerpt.rendered)}}/>
+                    <p className="excerpt" dangerouslySetInnerHTML={{__html: createExcerpt(article[0].excerpt.rendered)}}/>
                     <a href={`/articles/${article[0].slug}`} className="border-b border-black">Read more</a>
                 </article>
             })}

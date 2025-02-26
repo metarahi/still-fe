@@ -91,10 +91,6 @@ export default async function Page({
     return `/articles${params.toString() ? `?${params.toString()}` : ""}`;
   };
 
-  // function handleLoadMore() {
-  //   return paginatedPosts.push(paginatedPosts[0]);
-  // }
-
   return (
       <Section>
         <Container>
@@ -110,13 +106,7 @@ export default async function Page({
                       <FeaturedPost post={featuredPost}/>
                   }
 
-                  {paginatedPosts.map(async function (post, index) {
-                    const columnPositions = ["grid-start-4", "grid-start-10"];
-                    const gridClass = columnPositions[index % 2];
-                    return <PostCard key={post.id} post={post} gridClass={gridClass}/>
-                  })}
-
-                  <LoadMore paginatedPosts={paginatedPosts} posts={posts} />
+                  <LoadMore initialPaginatedPosts={paginatedPosts} posts={posts} />
 
                   <div className="article-categories flex flex-col">
                     <div className="small-caps-menu-button-lists">categories:</div>
@@ -133,34 +123,6 @@ export default async function Page({
                   <p>No posts found</p>
                 </div>
             )}
-
-            {/*{totalPages > 1 && (*/}
-            {/*    <Pagination>*/}
-            {/*      <PaginationContent>*/}
-            {/*        <PaginationItem>*/}
-            {/*          <PaginationPrevious*/}
-            {/*              className={*/}
-            {/*                page <= 1 ? "pointer-events-none opacity-50" : ""*/}
-            {/*              }*/}
-            {/*              href={createPaginationUrl(page - 1)}*/}
-            {/*          />*/}
-            {/*        </PaginationItem>*/}
-            {/*        <PaginationItem>*/}
-            {/*          <PaginationLink href={createPaginationUrl(page)}>*/}
-            {/*            {page}*/}
-            {/*          </PaginationLink>*/}
-            {/*        </PaginationItem>*/}
-            {/*        <PaginationItem>*/}
-            {/*          <PaginationNext*/}
-            {/*              className={*/}
-            {/*                page >= totalPages ? "pointer-events-none opacity-50" : ""*/}
-            {/*              }*/}
-            {/*              href={createPaginationUrl(page + 1)}*/}
-            {/*          />*/}
-            {/*        </PaginationItem>*/}
-            {/*      </PaginationContent>*/}
-            {/*    </Pagination>*/}
-            {/*)}*/}
           </div>
         </Container>
       </Section>

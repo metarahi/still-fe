@@ -1,14 +1,8 @@
-"use server";
-
 import Image from "next/image";
 import Link from "next/link";
 
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
-
-import {
-  getFeaturedMediaById,
-} from "@/lib/wordpress";
 
 function createExcerpt(string, maxLength = 300) {
   // Replace multiple whitespace with single space and trim
@@ -38,10 +32,12 @@ function createExcerpt(string, maxLength = 300) {
   return string;
 }
 
-export async function PostCard({ post, gridClass }: { post: Post, gridClass?: string }) {
-  const media = post.featured_media
-      ? await getFeaturedMediaById(post.featured_media)
-      : null;
+export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }) {
+  // const media = post.featured_media
+  //     ? await getFeaturedMediaById(post.featured_media)
+  //     : null;
+
+  const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
 
   return (
     <Link
@@ -70,12 +66,12 @@ export async function PostCard({ post, gridClass }: { post: Post, gridClass?: st
         <h3
             className="h3-headings-and-pullquotes"
         >{post.title?.rendered} <span className="arrow">→</span></h3>
-        <div
+        <p
             className="paragraph"
             dangerouslySetInnerHTML={{
               __html: createExcerpt(post.content.rendered)
             }}
-        ></div>
+        ></p>
         <p><span className="border-b border-black read-more">Read more</span></p>
       </div>
     </Link>
