@@ -8,20 +8,24 @@ import {mainMenu} from "@/menu.config";
 import {Button} from "@/components/ui/button";
 import {NavLink} from "@/components/nav/nav-link";
 import {MobileNav} from "@/components/nav/mobile-nav";
+import {useEffect} from "react";
 
 export default function Nav({ className, children, id }: NavProps) {
-    let prevScrollPos = window.pageYOffset;
+    useEffect(() => {
+        let prevScrollPos = window.pageYOffset;
 
-    window.addEventListener('scroll', function() {
-        const currentScrollPos = window.pageYOffset;
+        window.addEventListener('scroll', function () {
+            const currentScrollPos = window.pageYOffset;
+            const nav: HTMLElement | null = document.querySelector('nav');
 
-        if (prevScrollPos < currentScrollPos || currentScrollPos === 0) {
-            document.querySelector('nav').classList.remove('show');
-        } else {
-            document.querySelector('nav').classList.add('show');
-        }
+            if (prevScrollPos < currentScrollPos || currentScrollPos === 0) {
+                nav && nav.classList.remove('show');
+            } else {
+                nav && nav.classList.add('show');
+            }
 
-        prevScrollPos = currentScrollPos;
+            prevScrollPos = currentScrollPos;
+        });
     });
 
     return (

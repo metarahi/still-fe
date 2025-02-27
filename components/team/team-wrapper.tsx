@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import {getFeaturedMediaById} from "@/lib/wordpress";
+import { Post } from "@/lib/wordpress.d";
+import Image from "next/image";
 
 interface TeamWrapperProps {
     featuredTeamMembers?: any[]
@@ -26,21 +27,25 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
 
             <div className="featured-team-members grid grid-cols-16 gap-6">
                 {_featuredTeamMembers && _featuredTeamMembers.map(
-                    function (teamMember: unknown, index: number) {
+                    function (teamMember: Post, index: number) {
                         return (
                             <div key={index} className={"featured-team-member-" + (index + 1)}>
                                 <div className="team-member-image">
                                     <a href={'/our-team/' + teamMember.slug}>
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-                                        alt={teamMember.title.rendered}
-                                        className="primary" />
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
-                                        alt={teamMember.title.rendered}
-                                        className="secondary" />
+                                        <Image
+                                            src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
+                                            alt={teamMember.title.rendered}
+                                            className="primary"
+                                            height={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.height}
+                                            width={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.width}
+                                        />
+                                        <Image
+                                            src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
+                                            alt={teamMember.title.rendered}
+                                            className="secondary"
+                                            height={teamMember._embedded.secondary_image.media_details.sizes.full.height}
+                                            width={teamMember._embedded.secondary_image.media_details.sizes.full.width}
+                                        />
                                     </a>
 
                                 </div>
@@ -59,7 +64,7 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
 
             <div className="team-members grid grid-cols-16 gap-x-6 gap-y-16 mx-90px">
                 {_teamMembers && _teamMembers.map(
-                    function (teamMember: unknown, index: number) {
+                    function (teamMember: Post, index: number) {
                         const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];
                         const gridClass = columnPositions[index % 3];
 
@@ -67,16 +72,20 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                             <div key={index} className={gridClass}>
                                 <div className="team-member-image">
                                     <a href={'/our-team/' + teamMember.slug}>
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img
+                                        <Image
                                             src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}
-                                            className="primary"/>
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img
+                                            className="primary"
+                                            height={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.height}
+                                            width={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.width}
+                                        />
+                                        <Image
                                             src={teamMember._embedded.secondary_image.media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}
-                                            className="secondary"/>
+                                            className="secondary"
+                                            height={teamMember._embedded.secondary_image.media_details.sizes.full.height}
+                                            width={teamMember._embedded.secondary_image.media_details.sizes.full.width}
+                                        />
                                     </a>
                                 </div>
                                 <h2 className="h2-headings-and-intros"><a href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</a>

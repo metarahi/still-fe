@@ -16,6 +16,8 @@ import Balancer from "react-wrap-balancer";
 
 import type { Metadata } from "next";
 import LatestNews from "@/components/latest-news";
+import Image from "next/image";
+import React from "react";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -134,11 +136,12 @@ export default async function Page({
             {featuredMedia?.source_url && (
                 <div
                     className="article-featured-image overflow-hidden flex flex-col items-center justify-center">
-                  {/* eslint-disable-next-line */}
-                  <img
+                  <Image
                       className="w-full h-full object-cover"
                       src={featuredMedia.source_url}
                       alt={post.title.rendered}
+                      height={featuredMedia.media_details.height}
+                      width={featuredMedia.media_details.width}
                   />
                   {featuredMedia.caption && (
                       <div className="article-featured-image-caption"

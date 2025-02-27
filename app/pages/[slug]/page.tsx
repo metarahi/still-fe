@@ -1,6 +1,7 @@
 import {getPageBySlug, getAllPages, getFeaturedMediaById} from "@/lib/wordpress";
 import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
+import Image from "next/image";
 
 import type { Metadata } from "next";
 import React from "react";
@@ -87,7 +88,14 @@ export default async function Page({
           </div>
           <div className="mx-90px grid grid-cols-16 gap-6">
             <div className="featured-image">
-              {media && <img src={media.media_details.sizes.full.source_url} alt={page.title.rendered} />}
+              {media &&
+                  <Image
+                      src={media.media_details.sizes.full.source_url}
+                      alt={page.title.rendered}
+                      height={media.media_details.sizes.full.height}
+                      width={media.media_details.sizes.full.width}
+                  />
+              }
             </div>
             <div className="page-html" dangerouslySetInnerHTML={{'__html': page.content.rendered}}/>
           </div>

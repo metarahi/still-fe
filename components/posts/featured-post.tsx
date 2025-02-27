@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import {
     getFeaturedMediaById,
 } from "@/lib/wordpress";
+import React from "react";
 
 function createExcerpt(string, maxLength = 600) {
     // Replace multiple whitespace with single space and trim
@@ -56,13 +57,12 @@ export async function FeaturedPost({ post }: { post: Post }) {
         >
             <div className="w-full overflow-hidden relative flex items-center justify-center">
                 {media?.source_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                         className="h-full w-full object-cover"
                         src={media.source_url}
                         alt={post.title?.rendered || "Post thumbnail"}
-                        width={565}
-                        height={423}
+                        height={media.height}
+                        width={media.width}
                     />
                 ) : (
                     <div className="flex items-center justify-center w-full h-full text-muted-foreground">

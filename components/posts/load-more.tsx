@@ -1,12 +1,14 @@
 "use client";
 import React, { useState } from 'react';
 import {PostCard} from "@/components/posts/post-card";
+import { Post } from "@/lib/wordpress.d";
 
 interface Props {
-    initialPaginatedPosts: Array<object>,
-    posts: Array<object>
+    initialPaginatedPosts: Array<Post>,
+    paginatedPosts: Array<Post>,
+    posts: Array<Post>
 }
-const LoadMore: React.FC<Props> = ({initialPaginatedPosts, posts}) => {
+const LoadMore: React.FC<Props> = ({initialPaginatedPosts, posts}: Props) => {
     const [paginatedPosts, setPaginatedPosts] = useState(initialPaginatedPosts || []);
 
     function handleLoadMore() {
@@ -19,10 +21,10 @@ const LoadMore: React.FC<Props> = ({initialPaginatedPosts, posts}) => {
     }
 
     return (<div className="load-more-wrapper">
-            {paginatedPosts && paginatedPosts.map(function (post, index) {
+            {paginatedPosts && paginatedPosts.map(function (post: Post, index: number) {
                 const columnPositions = ["grid-start-1", "grid-start-7"];
                 const gridClass = columnPositions[index % 2];
-                return <PostCard key={post.id} post={post} gridClass={gridClass}/>
+                return <PostCard post={post} gridClass={gridClass} key={post.id} />
             })}
 
             {paginatedPosts.length < posts.length ? (

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 function createExcerpt(string, maxLength = 220) {
   // Replace multiple whitespace with single space and trim
@@ -33,9 +34,6 @@ function createExcerpt(string, maxLength = 220) {
 }
 
 export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }) {
-  // const media = post.featured_media
-  //     ? await getFeaturedMediaById(post.featured_media)
-  //     : null;
 
   const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
   let intro;
@@ -55,8 +53,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
       <div className="flex flex-col gap-6">
         <div className="w-full overflow-hidden relative flex items-center justify-center">
           {media?.source_url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                   className="h-full w-full object-cover"
                   src={media.source_url}
                   alt={post.title?.rendered || "Post thumbnail"}

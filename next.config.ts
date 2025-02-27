@@ -4,10 +4,11 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: `${process.env.WORDPRESS_HOSTNAME}`,
+        protocol: "http",
+        hostname: "still-wp.local", //`${process.env.WORDPRESS_HOSTNAME}`,
         port: "",
-        pathname: "/**",
+        pathname: "**",
+        search: "",
       },
     ],
   },
@@ -20,16 +21,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-};
-
-module.exports = {
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
   },
-}
+};
 
 export default nextConfig;

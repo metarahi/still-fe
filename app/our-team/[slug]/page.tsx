@@ -8,6 +8,7 @@ import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 import React from "react";
+import Image from "next/image";
 
 export async function generateStaticParams() {
     const projects = await getAllTeamMembers();
@@ -90,11 +91,12 @@ export default async function Page({
                     <a href="/our-team" className="button border p-3 border-black">Back to team</a>
 
                     {featuredMedia &&
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <Image
                             className="w-half"
                             src={featuredMedia.source_url}
                             alt={post.title.rendered}
+                            height={featuredMedia.media_details.height}
+                            width={featuredMedia.media_details.width}
                         />
                     }
                 </div>

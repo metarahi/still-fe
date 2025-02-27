@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import React from "react";
 import ProjectGallery from "@/components/projects/project-gallery";
 import LatestNews from "@/components/latest-news";
+import Image from "next/image";
 
 export async function generateStaticParams() {
     const projects = await getAllProjects();
@@ -87,11 +88,12 @@ export default async function Page({
                 <div className="page-html project-page-html grid grid-cols-16 gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
                     {featuredMedia &&
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <Image
                             className="w-full"
                             src={featuredMedia.source_url}
                             alt={post.title.rendered}
+                            height={featuredMedia.media_details.height}
+                            width={featuredMedia.media_details.width}
                         />
                     }
 

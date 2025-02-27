@@ -54,7 +54,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .button {
     @extend .small-caps-menu-button-lists;
+    align-items: center;
+    display: inline-flex;
     height: 70px;
+    justify-content: center;
     text-transform: lowercase;
 }
 
@@ -148,7 +151,7 @@ h3 {
 }
 
 nav {
-    transition: all .5s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
 nav.show {
@@ -869,6 +872,10 @@ img.w-half {
     .inner {
         margin-top: 100px;
 
+        img {
+            width: 100%;
+        }
+
         .article-1 {
             grid-column: 2 / span 4;
         }
@@ -888,6 +895,12 @@ img.w-half {
 
         .excerpt {
             margin-bottom: 15px;
+        }
+
+        .button {
+            grid-column: 2 / span 3;
+            grid-row: 2;
+            margin-top: 65px;
         }
     }
 }

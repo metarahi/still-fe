@@ -2,20 +2,15 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/theme/theme-provider';
-import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
-import { mainMenu, footerMenu } from "@/menu.config";
+import { footerMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
 
-import Balancer from "react-wrap-balancer";
-import Logo from '@/public/logo.svg';
-import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import {NavLink} from "@/components/nav/nav-link";
 import Nav from "@/components/nav/nav";
 
 export const metadata: Metadata = {
