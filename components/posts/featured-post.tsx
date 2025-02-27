@@ -8,14 +8,14 @@ import {
     getFeaturedMediaById,
 } from "@/lib/wordpress";
 
-function createExcerpt(string, maxLength = 300) {
+function createExcerpt(string, maxLength = 600) {
     // Replace multiple whitespace with single space and trim
     string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
     if (string.length >= maxLength) {
         string = string.slice(0, maxLength);
 
-        const puncs = ['. ', '! ', '? ']; // Possible endings of sentence
+        const puncs = ['. ', '! ', '? '];
         let maxPos = 0;
 
         // Find the last occurrence of each punctuation
@@ -30,18 +30,22 @@ function createExcerpt(string, maxLength = 300) {
             return string.slice(0, maxPos + 1);
         }
 
-        return string.trim() + '…'; // Using actual ellipsis character instead of HTML entity
+        return string.trim() + '…';
     }
 
     return string;
 }
 
 export async function FeaturedPost({ post }: { post: Post }) {
-    const media = post.featured_media
-        ? await getFeaturedMediaById(post.featured_media)
-        : null;
+    const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
     const words = post.acf.words;
     const images = post.acf.images;
+    let intro;
+    post.block_data.forEach((block: { blockName: string; }) => {
+        if (block.blockName === "core/heading") {
+            intro = block;
+        }
+    });
 
     return (
         <Link
@@ -76,12 +80,12 @@ export async function FeaturedPost({ post }: { post: Post }) {
                 {images && (
                     <p>Images: {images}</p>
                 )}
-                <div
+                <p
                     className="paragraph"
                     dangerouslySetInnerHTML={{
-                        __html: createExcerpt(post.content.rendered)
+                        __html: createExcerpt(intro ? intro.rendered : post.content.rendered, 600)
                     }}
-                ></div>
+                ></p>
                 <p><span className="border-b border-black read-more">Read more</span></p>
             </div>
         </Link>

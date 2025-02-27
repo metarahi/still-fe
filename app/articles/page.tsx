@@ -1,32 +1,12 @@
 import {
   getAllPosts,
-  getAllAuthors,
-  getAllTags,
   getAllCategories,
-  searchAuthors,
-  searchTags,
-  searchCategories, getFeaturedMediaById,
 } from "@/lib/wordpress";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-
-import { Section, Container, Prose } from "@/components/craft";
-import { PostCard } from "@/components/posts/post-card";
-import { FilterPosts } from "@/components/posts/filter";
-import { SearchInput } from "@/components/posts/search-input";
+import { Section, Container } from "@/components/craft";
 
 import type { Metadata } from "next";
 import {FeaturedPost} from "@/components/posts/featured-post";
-import {SelectItem} from "@/components/ui/select";
-import {Button} from "@/components/ui/button";
-import ArticleGrid from "@/components/posts/article-grid";
 import LoadMore from "@/components/posts/load-more";
 
 export const metadata: Metadata = {
@@ -34,8 +14,8 @@ export const metadata: Metadata = {
   description: "Browse all our news & articles",
 };
 
-export const dynamic = "auto";
-export const revalidate = 600;
+// export const dynamic = "auto";
+// export const revalidate = 600;
 
 export default async function Page({
                                      searchParams,
@@ -77,19 +57,11 @@ export default async function Page({
   // Handle pagination
   const page = pageParam ? parseInt(pageParam, 10) : 1;
   const postsPerPage = 6;
-  const totalPages = Math.ceil(posts.length / postsPerPage);
   const paginatedPosts = posts.slice(
       (page - 1) * postsPerPage,
       page * postsPerPage
   );
 
-  // Create pagination URL helper
-  const createPaginationUrl = (newPage: number) => {
-    const params = new URLSearchParams();
-    if (newPage > 1) params.set("page", newPage.toString());
-    if (category) params.set("category", category);
-    return `/articles${params.toString() ? `?${params.toString()}` : ""}`;
-  };
 
   return (
       <Section>
@@ -98,7 +70,6 @@ export default async function Page({
             <h2 className="small-caps-heading">News & Articles</h2>
           </div>
           <div className="article-grid">
-            {/*<ArticleGrid paginatedPosts={paginatedPosts} featuredPost={featuredPost} categories={categories} category={category} posts={posts} />*/}
 
             {paginatedPosts.length > 0 ? (
                 <div className="mx-90px grid grid-cols-16 gap-6">

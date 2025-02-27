@@ -99,7 +99,7 @@ export default async function Page({
             <h1 dangerouslySetInnerHTML={{__html: post.title.rendered}}
                 className="h1-article-headings"></h1>
 
-            <div className="article-meta">
+            <p className="article-meta">
               {words && (
                   <span>Words: {words}</span>
               )}
@@ -107,7 +107,7 @@ export default async function Page({
               {images && (
                   <span>Images: {images}</span>
               )}
-            </div>
+            </p>
 
             <div className="article-categories flex justify-center items-center gap-4">
               {categories && categories.map((category) => (

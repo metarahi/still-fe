@@ -1,11 +1,12 @@
-import { getPageBySlug, getAllPages } from "@/lib/wordpress";
-import { Section, Container, Prose } from "@/components/craft";
+import {getPageBySlug, getAllPages, getFeaturedMediaById} from "@/lib/wordpress";
+import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 
 import type { Metadata } from "next";
+import React from "react";
 
 // Revalidate pages every hour
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const pages = await getAllPages();
@@ -71,15 +72,26 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const page = await getPageBySlug(slug);
+  let media;
+  if (page.featured_media) {
+    media = await getFeaturedMediaById(page.featured_media)
+  }
 
   return (
-    <Section>
-      <Container>
-        <Prose>
-          <h2>{page.title.rendered}</h2>
-          <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-        </Prose>
-      </Container>
-    </Section>
+      <Section className="page-page">
+        <Container>
+          <div
+              className="mx-90px page-header"
+          >
+            <h1 className="h2-headings-and-intros">{page.title.rendered}</h1>
+          </div>
+          <div className="mx-90px grid grid-cols-16 gap-6">
+            <div className="featured-image">
+              {media && <img src={media.media_details.sizes.full.source_url} alt={page.title.rendered} />}
+            </div>
+            <div className="page-html" dangerouslySetInnerHTML={{'__html': page.content.rendered}}/>
+          </div>
+        </Container>
+      </Section>
   );
 }

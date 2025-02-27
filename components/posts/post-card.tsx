@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
 
-function createExcerpt(string, maxLength = 300) {
+function createExcerpt(string, maxLength = 220) {
   // Replace multiple whitespace with single space and trim
   string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
@@ -38,6 +38,12 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
   //     : null;
 
   const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
+  let intro;
+  post.block_data.forEach((block: { blockName: string; }) => {
+    if (block.blockName === "core/heading") {
+      intro = block;
+    }
+  });
 
   return (
     <Link
@@ -69,7 +75,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
         <p
             className="paragraph"
             dangerouslySetInnerHTML={{
-              __html: createExcerpt(post.content.rendered)
+              __html: createExcerpt(intro ? intro.rendered : post.content.rendered, 220)
             }}
         ></p>
         <p><span className="border-b border-black read-more">Read more</span></p>
