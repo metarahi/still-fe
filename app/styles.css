@@ -1,3 +1,9 @@
+/* Breakpoints */
+$small: 40rem;
+$medium: 48rem;
+$large: 64rem;
+$xlarge: 80rem;
+
 /* Styles */
 html {
     font-family: var(--font-sans), sans-serif;
@@ -32,10 +38,14 @@ h1, h2, h3, h4, h5, h6 {
 .small-caps-heading {
     font-family: var(--font-serif), serif;
     font-feature-settings: 'c2sc';
-    font-size: 30px;
+    font-size: 25px;
     font-variant: small-caps;
-    line-height: 33px;
+    line-height: 30px;
     text-transform: lowercase;
+    @media only screen and (min-width: $medium) {
+        font-size: 30px;
+        line-height: 33px;
+    }
 }
 
 .caption-large {
@@ -89,6 +99,13 @@ p {
     @extend .p1-body-copy;
 }
 
+section p {
+    margin-bottom: 20px;
+    @media only screen and (min-width: $medium) {
+        margin-bottom: 0;
+    }
+}
+
 h1 {
     @extend .h1-article-headings;
 }
@@ -111,27 +128,42 @@ h3 {
 }
 
 .wp-container-core-columns-is-layout-3 {
-    gap: 24px;
-    grid-template-columns: repeat(16, 1fr);
-    margin: 125px 90px 0;
-    > div:nth-child(1) {
-        grid-column: 1 / span 4;
-    }
-    > div:nth-child(2) {
-        grid-column: 5 / span 3;
-    }
-    > div:nth-child(3) {
-        grid-column: 9 / span 8;
+    grid-template-columns: 1fr;
+    margin: 100px 28px 0;
+    @media only screen and (min-width: $medium) {
+        gap: 24px;
+        grid-template-columns: repeat(16, 1fr);
+        margin: 125px 90px 0;
+        > div:nth-child(1) {
+            grid-column: 1 / span 4;
+        }
+
+        > div:nth-child(2) {
+            grid-column: 5 / span 3;
+        }
+
+        > div:nth-child(3) {
+            grid-column: 9 / span 8;
+        }
     }
 }
 
 .ml-90px {
-    margin-left: 90px;
+    margin-left: 28px;
+    margin-right: 28px;
+    @media only screen and (min-width: $medium) {
+        margin-left: 90px;
+        margin-right: 0;
+    }
 }
 
 .mx-90px {
-    margin-left: 90px;
-    margin-right: 90px;
+    margin-left: 28px;
+    margin-right: 28px;
+    @media only screen and (min-width: $medium) {
+        margin-left: 90px;
+        margin-right: 90px;
+    }
 }
 
 .grid-cols-16 {
@@ -160,16 +192,34 @@ nav.show {
 }
 
 footer {
-    margin: 0 90px;
-    margin-top: calc(272px - 3rem);
+    margin: 150px 28px 12px;
+    @media only screen and (min-width: $medium) {
+        margin: calc(272px - 3rem) 90px 0;
+    }
+
+    section {
+        padding-bottom: 0 !important;
+        @media only screen and (min-width: $medium) {
+            padding-bottom: 3rem !important;
+        }
+    }
 
     .footer-menu {
         grid-column: 1 / span 4;
+        margin-top: 50px;
+        order: 2;
+        @media only screen and (min-width: $medium) {
+            margin-top: 0;
+        }
     }
 
     .footer-menu a {
-        margin-bottom: 12px;
+        margin-bottom: 5px;
         @extend .small-caps-menu-button-lists;
+
+        @media only screen and (min-width: $medium) {
+            margin-bottom: 12px;
+        }
 
         &:last-child {
             margin-bottom: 0;
@@ -178,6 +228,11 @@ footer {
 
     .footer-copyright {
         grid-column: 5 / span 4;
+        margin-top: 22px;
+        order: 3;
+        @media only screen and (min-width: $medium) {
+            margin-top: 0;
+        }
 
         p {
             align-self: end;
@@ -186,25 +241,59 @@ footer {
 
     .footer-mailing-list {
         grid-column: 9 / span 8;
+        order: 1;
     }
 }
 
 /* Homepage */
 .homepage-hero {
+    margin-top: 118px;
+    @media only screen and (min-width: $medium) {
+        margin-top: 0;
+    }
     &.wp-container-core-columns-is-layout-2 {
-        gap: 24px;
-        grid-template-columns: repeat(8, 1fr);
+        gap: 28px;
+        grid-template-columns: repeat(4, 1fr);
         > div:first-child {
             grid-column: 1 / span 4;
+            grid-row: 2;
+            margin-top: 48px;
         }
+
         > div:last-child {
-            grid-column: 5 / span 4;
+            grid-column: 1 / span 3;
+            grid-row: 1;
+        }
+
+        h2 {
+            margin-bottom: 35px;
+        }
+
+        @media only screen and (min-width: $medium) {
+            gap: 24px;
+            grid-template-columns: repeat(8, 1fr);
+            > div:first-child {
+                grid-column: 1 / span 4;
+                grid-row: 1;
+                margin-top: calc(40vh - 108px);
+            }
+
+            > div:last-child {
+                grid-column: 5 / span 4;
+            }
+
+            h2 {
+                margin-bottom: 0;
+            }
         }
     }
 
     .carousel-wrapper {
-        height: 100vh;
-        min-height: 100%;
+        height: 300px;
+        @media only screen and (min-width: $medium) {
+            height: 100vh;
+            min-height: 100%;
+        }
 
         .basis-full {
             /*transition: opacity 1s ease-in-out;*/
@@ -213,8 +302,10 @@ footer {
         .overflow-hidden,
         .flex,
         .basis-full {
-            height: 100%;
-            min-height: 100%;
+            @media only screen and (min-width: $medium) {
+                height: 100%;
+                min-height: 100%;
+            }
         }
 
         .flex {
@@ -222,38 +313,54 @@ footer {
         }
 
         img {
-            height: 100vh;
-            max-width: none;
-            min-height: 100%;
+            height: 300px;
             object-fit: cover;
-            width: 50vw;
+            width: 100%;
+            @media only screen and (min-width: $medium) {
+                height: 100vh;
+                max-width: none;
+                min-height: 100%;
+                width: 50vw;
+            }
         }
     }
 
-    > div:first-child {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(2, min-content);
-        margin-top: calc(40vh - 108px);
-
-        h2 {
-            grid-column: 1 / span 5;
-        }
-
-        .wp-block-columns {
+    @media only screen and (min-width: $medium) {
+        > div:first-child {
             display: grid;
             gap: 24px;
-            grid-column: 2 / span 6;
-            grid-row: 2;
-            grid-template-columns: repeat(2, 1fr);
-            margin-top: 45px;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(2, min-content);
+
+            h2 {
+                grid-column: 1 / span 5;
+            }
+
+            .wp-block-columns {
+                display: grid;
+                gap: 24px;
+                grid-column: 2 / span 6;
+                grid-row: 2;
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 45px;
+            }
+        }
+    }
+}
+
+#still100 {
+    h2 {
+        margin-bottom: 30px;
+        @media only screen and (min-width: $medium) {
+            margin-bottom: 0;
         }
     }
 }
 
 .details-wrapper {
-    display: flex;
+    @media only screen and (min-width: $medium) {
+        display: flex;
+    }
     @extend .h2-headings-and-intros;
 
     .details-summary {
@@ -286,23 +393,36 @@ footer {
     > div:nth-child(2) {
         margin-top: 2px;
         p {
-            margin-bottom: 16px;
+            margin-bottom: 28px;
+            @media only screen and (min-width: $medium) {
+                margin-bottom: 16px;
+            }
         }
     }
 
     > div:nth-child(3) {
-        margin-top: -3px;
+        margin-top: 7px;
+        @media only screen and (min-width: $medium) {
+            margin-top: -3px;
+        }
     }
 }
 
 .project-gallery-preview {
-    margin: 0 90px;
+    margin: 0 28px;
+    @media only screen and (min-width: $medium) {
+        margin: 0 90px;
+    }
 
     .project-previews {
         display: grid;
         column-gap: 24px;
-        grid-template-columns: repeat(16, 1fr);
-        grid-template-rows: 203px 216px 275px 290px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 275px 275px 183px 226px;
+        @media only screen and (min-width: $medium) {
+            grid-template-columns: repeat(16, 1fr);
+            grid-template-rows: 203px 216px 275px 290px;
+        }
 
         .caption {
             @extend .caption-large;
@@ -315,23 +435,38 @@ footer {
     }
 
     #slot1 {
-        grid-column: 2 / span 4;
-        grid-row: 2 / span 2;
+        grid-column: 1 / span 3;
+        @media only screen and (min-width: $medium) {
+            grid-column: 2 / span 4;
+            grid-row: 2 / span 2;
+        }
     }
 
     #slot2 {
-        grid-column: 7 / span 2;
-        grid-row: 2 / span 2;
+        grid-column: 2 / span 3;
+        grid-row: 2;
+        @media only screen and (min-width: $medium) {
+            grid-column: 7 / span 2;
+            grid-row: 2 / span 2;
+        }
     }
 
     #slot3 {
-        grid-column: 11 / span 6;
-        grid-row: 3 / span 2;
+        grid-column: 1 / span 3;
+        grid-row: 3;
+        @media only screen and (min-width: $medium) {
+            grid-column: 13 / span 3;
+            grid-row: 1 / span 2;
+        }
     }
 
     #slot4 {
-        grid-column: 13 / span 3;
-        grid-row: 1 / span 2;
+        grid-column: 2 / span 3;
+        grid-row: 4;
+        @media only screen and (min-width: $medium) {
+            grid-column: 11 / span 6;
+            grid-row: 3 / span 2;
+        }
     }
 
     .button {
@@ -344,7 +479,13 @@ footer {
     }
 
     .inner {
+        height: 100%;
         position: relative;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
 
         > div {
             position: absolute;
@@ -363,38 +504,76 @@ footer {
 }
 
 .home-our-people {
-    column-gap: 24px;
-    display: grid;
-    grid-template-columns: 90px repeat(16, 1fr) 90px;
-    grid-template-rows: 354px 388px min-content min-content;
-    margin: 205px 0 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 0 28px;
+    @media only screen and (min-width: $medium) {
+        column-gap: 24px;
+        display: grid;
+        grid-template-columns: 90px repeat(16, 1fr) 90px;
+        grid-template-rows: 354px 388px min-content min-content;
+        margin: 205px 0 0;
+        padding: 0;
+    }
 
     > :nth-child(1) {
         grid-column: 2 / span 4;
         grid-row: 1;
+        order: 1;
     }
 
     > :nth-child(2) {
         grid-column: 10 / span 9;
         grid-row: 1 / span 2;
+        margin: 50px -28px 0;
+        order: 4;
+        @media only screen and (min-width: $medium) {
+            margin: 0;
+        }
+
+        figcaption {
+            margin: 12px 28px 0;
+            @media only screen and (min-width: $medium) {
+                margin: 12px 0 0 0;
+            }
+        }
     }
 
     > :nth-child(3) {
         grid-column: 6 / span 3;
         grid-row: 1;
+        margin-top: 16px;
+        order: 2;
+        @media only screen and (min-width: $medium) {
+            margin-top: 0;
+        }
     }
 
     > :nth-child(4) {
         grid-column: 10 / span 6;
         grid-row: 3;
+        order: 5;
+        margin-top: 38px;
+        @media only screen and (min-width: $medium) {
+            margin-top: 0;
+        }
     }
 
     > :nth-child(5) {
         grid-column: 1 / span 7;
         grid-row: 2 / span 3;
+        margin: 25px -28px 0;
+        order: 3;
+        @media only screen and (min-width: $medium) {
+            margin: 0;
+        }
 
         figcaption {
-            margin-left: 90px;
+            margin: 12px 28px 0;
+            @media only screen and (min-width: $medium) {
+                margin: 12px 0 0 90px;
+            }
         }
     }
 
@@ -406,6 +585,13 @@ footer {
         grid-row: 4;
         justify-content: center;
         margin-bottom: 30px;
+        margin-top: 30px;
+        order: 6;
+        width: 100%;
+        @media only screen and (min-width: $medium) {
+            margin-top: 0;
+            width: auto;
+        }
     }
 
     img {
@@ -418,13 +604,26 @@ footer {
 }
 
 .latest-articles {
-    margin: 190px 90px 0;
+    margin: 60px 28px 0;
+    @media only screen and (min-width: $medium) {
+        margin: 190px 90px 0;
+    }
 
     .wrapper {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: repeat(16, 1fr);
-        margin-top: 85px;
+        margin-top: 23px;
+        @media only screen and (min-width: $medium) {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(16, 1fr);
+            margin-top: 85px;
+        }
+    }
+
+    article {
+        margin-bottom: 44px;
+        @media only screen and (min-width: $medium) {
+            margin-bottom: 0;
+        }
     }
 
     .latest-article-1 {
@@ -432,7 +631,9 @@ footer {
 
         h3,
         p {
-            max-width: calc(50% - 12px);
+            @media only screen and (min-width: $medium) {
+                max-width: calc(50% - 12px);
+            }
         }
     }
 
@@ -445,17 +646,22 @@ footer {
     }
 
     h3 {
-        margin: 25px 0;
+        margin: 13px 0;
+        @media only screen and (min-width: $medium) {
+            margin: 25px 0;
+        }
         .arrow {
             margin-left: 8px;
         }
     }
 
     .read-more {
-        margin-top: 25px;
+        @media only screen and (min-width: $medium) {
+            margin-top: 25px;
+        }
 
         a {
-            text-decoration: underline;
+            border-bottom: 1px solid;
         }
     }
 
@@ -464,7 +670,10 @@ footer {
         display: flex;
         grid-column: span 3;
         justify-content: center;
-        margin-top: 80px;
+        margin-top: 14px;
+        @media only screen and (min-width: $medium) {
+            margin-top: 80px;
+        }
     }
 }
 
