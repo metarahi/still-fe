@@ -65,17 +65,17 @@ export default async function LatestNews() {
                     key={index}
                     className={"article-" + (index + 1)}
                 >
-                    <a href={`/articles/${article[0].slug}`}>
+                    <Link href={`/articles/${article[0].slug}`}>
                         <Image
                             src={article[1].media_details.sizes.full.source_url}
                             alt={article[0].title.rendered}
                             height={article[1].media_details.sizes.full.height}
                             width={article[1].media_details.sizes.full.width}
                         />
-                    </a>
-                    <h3 className="h3-headings-and-pullquotes"><a href={`/articles/${article[0].slug}`}>{article[0].title.rendered} <span className="arrow">→</span></a></h3>
+                    </Link>
+                    <h3 className="h3-headings-and-pullquotes"><Link href={`/articles/${article[0].slug}`}>{article[0].title.rendered} <span className="arrow">→</span></Link></h3>
                     <p className="excerpt" dangerouslySetInnerHTML={{__html: createExcerpt(intro ? intro.rendered : article[0].excerpt.rendered, 220)}}/>
-                    <a href={`/articles/${article[0].slug}`} className="border-b border-black">Read more</a>
+                    <Link href={`/articles/${article[0].slug}`} className="border-b border-black">Read more</Link>
                 </article>
             })}
             <Link href="/articles" className="button border p-3 border-black">See all articles</Link>

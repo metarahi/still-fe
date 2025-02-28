@@ -4,40 +4,36 @@ import React from "react";
 import ViewToggle from "@/components/projects/view-toggle";
 import Project from "@/components/projects/project";
 
-function transformSubsidiaryData(flatObject: { [x: string]: any; }) {
-    // Create an empty object to store the grouped result
-    const result = {};
+function transformSubsidiaryData(data: Record<string, any>): Record<string, any> {
+    const groupedSubsidiaries: Record<string, any> = {};
 
-    // Get all keys from the flat object that match our specific pattern
-    const subsidiaryKeys = Object.keys(flatObject).filter(key =>
-        /^subsidiary_\d+_(name|number)$/.test(key)
-    );
+    // Helper function to fetch keys matching the pattern
+    const getMatchingKeys = (obj: Record<string, any>): string[] => {
+        return Object.keys(obj).filter(key =>
+            /^subsidiary_\d+_(name|number)$/.test(key)
+        );
+    };
 
-    // Iterate through each matching key
-    subsidiaryKeys.forEach(key => {
-        // Extract the index and property name
+    // Helper function to process a single key and update the result
+    const processKey = (key: string): void => {
         const match = key.match(/subsidiary_(\d+)_(\w+)/);
-
         if (match) {
             const [, index, property] = match;
-
-            // Initialize the nested object if it doesn't exist
-            // @ts-ignore
-            if (!result[index]) {
-                // @ts-ignore
-                result[index] = {};
+            if (!groupedSubsidiaries[index]) {
+                groupedSubsidiaries[index] = {};
             }
-
-            // Add the property to the nested object
-            // Convert number strings to actual numbers
-            // @ts-ignore
-            result[index][property] = property === 'number' ?
-                parseInt(flatObject[key], 10) :
-                flatObject[key];
+            // Assign value based on property type
+            groupedSubsidiaries[index][property] = property === 'number'
+                ? parseInt(data[key], 10)
+                : data[key];
         }
-    });
+    };
 
-    return result;
+    // Get all relevant keys and process them
+    const matchingKeys = getMatchingKeys(data);
+    matchingKeys.forEach(processKey);
+
+    return groupedSubsidiaries;
 }
 
 const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
@@ -61,7 +57,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
             </div>
 
             {activeView && activeView === 'overview' &&
-                <div className="md:mx-90px grid grid-cols-2 gap-x-7 gap-y-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 projects-grid">
+                <div className="md:mx-90px grid max-md:grid-cols-2 gap-x-7 gap-y-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 projects-grid">
                     {_projects && _projects.map(
                         function (project: unknown, index: number) {
                             const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];

@@ -1,28 +1,26 @@
 import {
   getPostBySlug,
   getFeaturedMediaById,
-  getAuthorById,
   getCategoryById,
   getAllPosts,
 } from "@/lib/wordpress";
 
-import { Section, Container, Article, Prose } from "@/components/craft";
-import { badgeVariants } from "@/components/ui/badge";
+import { Section, Container } from "@/components/craft";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/site.config";
 
 import Link from "next/link";
-import Balancer from "react-wrap-balancer";
 
 import type { Metadata } from "next";
 import LatestNews from "@/components/latest-news";
 import Image from "next/image";
-import React from "react";
+import React, {ReactElement} from "react";
+import { Category, FeaturedMedia, Post } from "@/lib/wordpress.d";
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
+export async function generateStaticParams(): Promise<{slug: string}[]> {
+  const posts: Post[] = await getAllPosts();
 
-  return posts.map((post) => ({
+  return posts.map((post: Post): {slug: string} => ({
     slug: post.slug,
   }));
 }
@@ -33,7 +31,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post: Post = await getPostBySlug(slug);
 
   if (!post) {
     return {};
@@ -42,7 +40,7 @@ export async function generateMetadata({
   const ogUrl = new URL(`${siteConfig.site_domain}/api/og`);
   ogUrl.searchParams.append("title", post.title.rendered);
   // Strip HTML tags for description
-  const description = post.excerpt.rendered.replace(/<[^>]*>/g, "").trim();
+  const description: string = post.excerpt.rendered.replace(/<[^>]*>/g, "").trim();
   ogUrl.searchParams.append("description", description);
 
   return {
@@ -75,20 +73,20 @@ export default async function Page({
                                      params,
                                    }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<ReactElement<any, any>> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  const featuredMedia = post.featured_media
+  const post: Post = await getPostBySlug(slug);
+  const featuredMedia: FeaturedMedia | null = post.featured_media
       ? await getFeaturedMediaById(post.featured_media)
       : null;
-  let categories = [];
+  let categories: any[] = [];
   for (const category of post.categories) {
     categories.push(await getCategoryById(category));
   }
-  const words = post.acf.words;
-  const images = post.acf.images;
+  const words: string = post.acf.words;
+  const images: string = post.acf.images;
   let intro;
-  post.block_data.forEach((block: { blockName: string; }) => {
+  post.block_data.forEach((block: { blockName: string; }): void => {
     if (block.blockName === "core/heading") {
       intro = block;
     }
@@ -112,7 +110,7 @@ export default async function Page({
             </p>
 
             <div className="article-categories flex justify-center items-center gap-4">
-              {categories && categories.map((category) => (
+              {categories && categories.map((category: Category): ReactElement<any, any> => (
                   <Link
                       key={category.id}
                       href={`/articles/?category=${category.id}`}

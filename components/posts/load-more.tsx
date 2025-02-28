@@ -5,7 +5,6 @@ import { Post } from "@/lib/wordpress.d";
 
 interface Props {
     initialPaginatedPosts: Array<Post>,
-    paginatedPosts: Array<Post>,
     posts: Array<Post>
 }
 const LoadMore: React.FC<Props> = ({initialPaginatedPosts, posts}: Props) => {

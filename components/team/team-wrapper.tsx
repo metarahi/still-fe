@@ -3,6 +3,7 @@
 import React from "react";
 import { Post } from "@/lib/wordpress.d";
 import Image from "next/image";
+import Link from "next/link";
 
 interface TeamWrapperProps {
     featuredTeamMembers?: any[]
@@ -31,7 +32,7 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                         return (
                             <div key={index} className={"featured-team-member-" + (index + 1)}>
                                 <div className="team-member-image">
-                                    <a href={'/our-team/' + teamMember.slug}>
+                                    <Link href={'/our-team/' + teamMember.slug}>
                                         <Image
                                             src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}
@@ -46,14 +47,14 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                                             height={teamMember._embedded.secondary_image.media_details.sizes.full.height}
                                             width={teamMember._embedded.secondary_image.media_details.sizes.full.width}
                                         />
-                                    </a>
+                                    </Link>
 
                                 </div>
-                                <h2 className="h2-headings-and-intros"><a href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</a>
+                                <h2 className="h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
-                                <div className="small-caps-menu-button-lists"><a href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
+                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
                                     <span
-                                        className="arrow">→</span></a></div>
+                                        className="arrow">→</span></Link></div>
                                 <div className="paragraph"
                                      dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}}/>
                             </div>
@@ -71,7 +72,7 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                         return (
                             <div key={index} className={gridClass}>
                                 <div className="team-member-image">
-                                    <a href={'/our-team/' + teamMember.slug}>
+                                    <Link href={'/our-team/' + teamMember.slug}>
                                         <Image
                                             src={teamMember._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                                             alt={teamMember.title.rendered}
@@ -86,13 +87,13 @@ const TeamWrapper: (page: any) => React.JSX.Element = (page) => {
                                             height={teamMember._embedded.secondary_image.media_details.sizes.full.height}
                                             width={teamMember._embedded.secondary_image.media_details.sizes.full.width}
                                         />
-                                    </a>
+                                    </Link>
                                 </div>
-                                <h2 className="h2-headings-and-intros"><a href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</a>
+                                <h2 className="h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
-                                <div className="small-caps-menu-button-lists"><a href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
+                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf.job_title}
                                     <span
-                                        className="arrow">→</span></a></div>
+                                        className="arrow">→</span></Link></div>
                                 <div className="paragraph"
                                      dangerouslySetInnerHTML={{__html: teamMember.block_data[0].innerHTML}}/>
                             </div>

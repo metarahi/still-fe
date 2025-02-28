@@ -5,7 +5,7 @@ import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-function createExcerpt(string, maxLength = 220) {
+function createExcerpt(string: string, maxLength = 220) {
   // Replace multiple whitespace with single space and trim
   string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 

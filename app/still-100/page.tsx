@@ -12,13 +12,12 @@ export const metadata: Metadata = {
 
 export default async function Page() {
     const page = await getPageById(173);
-    const pageHtml = {'__html': page.content.rendered};
     const projects = await getAllProjects();
 
     return (
         <Section>
             <Container>
-                <ProjectsWrapper page={page} pageHtml={pageHtml} projects={projects}/>
+                <ProjectsWrapper page={page} pageHtml={{'__html': page.content.rendered}} projects={projects}/>
             </Container>
         </Section>
     );

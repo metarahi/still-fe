@@ -4,9 +4,6 @@ import Link from "next/link";
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
 
-import {
-    getFeaturedMediaById,
-} from "@/lib/wordpress";
 import React from "react";
 
 function createExcerpt(string, maxLength = 600) {

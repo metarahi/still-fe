@@ -9,6 +9,7 @@ import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export async function generateStaticParams() {
     const projects = await getAllTeamMembers();
@@ -87,8 +88,7 @@ export default async function Page({
 
                 <div className="page-html team-page-html grid grid-cols-16 gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
-                    {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-                    <a href="/our-team" className="button border p-3 border-black">Back to team</a>
+                    <Link href="/our-team" className="button border p-3 border-black">Back to team</Link>
 
                     {featuredMedia &&
                         <Image

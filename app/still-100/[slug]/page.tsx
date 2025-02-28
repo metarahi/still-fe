@@ -11,6 +11,7 @@ import React from "react";
 import ProjectGallery from "@/components/projects/project-gallery";
 import LatestNews from "@/components/latest-news";
 import Image from "next/image";
+import Link from "next/link";
 
 export async function generateStaticParams() {
     const projects = await getAllProjects();
@@ -85,7 +86,7 @@ export default async function Page({
                     </h1>
                 </div>
 
-                <div className="page-html project-page-html grid grid-cols-16 gap-6 mx-90px">
+                <div className="page-html project-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
                     {featuredMedia &&
                         <Image
@@ -99,8 +100,7 @@ export default async function Page({
 
                     <ProjectGallery content={post} />
 
-                    {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-                    <a href="/still-100" className="button border p-3 border-black">Back to STILL 100</a>
+                    <Link href="/still-100" className="button border p-3 border-black">Back to STILL 100</Link>
                 </div>
 
                 <LatestNews />

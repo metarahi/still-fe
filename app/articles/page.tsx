@@ -8,6 +8,9 @@ import { Section, Container } from "@/components/craft";
 import type { Metadata } from "next";
 import {FeaturedPost} from "@/components/posts/featured-post";
 import LoadMore from "@/components/posts/load-more";
+import Link from "next/link";
+import { Category, Post } from "@/lib/wordpress.d";
+import {ReactElement} from "react";
 
 export const metadata: Metadata = {
   title: "News & Articles",
@@ -24,8 +27,8 @@ export default async function Page({
     category?: string;
     page?: string;
   }>;
-}) {
-  const params = await searchParams;
+}): Promise<ReactElement<any, any>> {
+  const params: {category?: string | undefined, page?: string | undefined} = await searchParams;
   const { category, page: pageParam } = params;
 
   // Fetch data based on search parameters
@@ -35,16 +38,16 @@ export default async function Page({
   ]);
 
   // Get featured posts
-  const featuredPosts = posts.filter(function(post) {
+  const featuredPosts: Post[] = posts.filter(function(post: Post): boolean {
     return post.acf.featured === true;
   });
 
   // Get one latest featured post
-  const featuredPost = featuredPosts[0];
+  const featuredPost: Post = featuredPosts[0];
 
   if (!category && Object.hasOwn(featuredPost, 'id')) {
     // Remove featured post from posts
-    for (let i = 0; i < posts.length; i++) {
+    for (let i: number = 0; i < posts.length; i++) {
       const obj = posts[i];
 
       if (obj.id === featuredPost.id) {
@@ -55,9 +58,9 @@ export default async function Page({
   }
 
   // Handle pagination
-  const page = pageParam ? parseInt(pageParam, 10) : 1;
+  const page: number = pageParam ? parseInt(pageParam, 10) : 1;
   const postsPerPage = 6;
-  const paginatedPosts = posts.slice(
+  const paginatedPosts: Post[] = posts.slice(
       (page - 1) * postsPerPage,
       page * postsPerPage
   );
@@ -81,11 +84,11 @@ export default async function Page({
 
                   <div className="article-categories flex flex-col">
                     <div className="small-caps-menu-button-lists">categories:</div>
-                    {categories.map((category) => (
-                        <a key={category.id} href={`?category=${category.id.toString()}`}
+                    {categories.map((category: Category): ReactElement<any, any> => (
+                        <Link key={category.id} href={`?category=${category.id.toString()}`}
                            className="border-radius">
                           {category.name}
-                        </a>
+                        </Link>
                     ))}
                   </div>
                 </div>

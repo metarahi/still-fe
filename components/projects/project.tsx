@@ -1,8 +1,7 @@
-// @ts-ignore
-import {Property} from "csstype";
-import Page = Property.Page;
+import { Page } from "@/lib/wordpress.d";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 interface Props {
     page: Page
@@ -14,15 +13,15 @@ const Project: React.FC<Props> = ({page, gridClass}) => {
 
     return (
         <div className={gridClass} key="">
-            <a href={'/still-100/' + page.slug}>
+            <Link href={'/still-100/' + page.slug}>
                 <Image
                     src={thumbnail.source_url}
                     alt={page.title.rendered}
                     height={thumbnail.height}
                     width={thumbnail.width}
                 />
-            </a>
-            <h2><a href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></a></h2>
+            </Link>
+            <h2><Link href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></Link></h2>
         </div>
     );
 }
