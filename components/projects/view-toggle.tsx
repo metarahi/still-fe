@@ -17,7 +17,7 @@ const ViewToggle: React.FC<Props> = ({activeView, setActiveView}) => {
         className={activeView === 'overview' ? 'active' : ''}
         onClick={() => handleClick('overview')}
     >overview
-    </a> | <a
+    </a>  &nbsp;|&nbsp; <a
         className={activeView === 'index' ? 'active' : ''}
         onClick={() => handleClick('index')}
     >index</a>

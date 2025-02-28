@@ -61,7 +61,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
             </div>
 
             {activeView && activeView === 'overview' &&
-                <div className="mx-90px grid grid-cols-16 gap-x-6 gap-y-16 projects-grid">
+                <div className="md:mx-90px grid grid-cols-2 gap-x-7 gap-y-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 projects-grid">
                     {_projects && _projects.map(
                         function (project: unknown, index: number) {
                             const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];
@@ -72,7 +72,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
                 </div>
             }
             {activeView && activeView === 'index' &&
-                <div className="mx-90px grid grid-cols-16 gap-x-6 projects-index">
+                <div className="mx-90px md:grid md:grid-cols-16 md:gap-x-6 projects-index">
                     <div className="project-index-header">
                         <p>Companies / Projects:</p>
                         <p>Subsidiaries:</p>
