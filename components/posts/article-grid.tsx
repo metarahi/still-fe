@@ -12,8 +12,8 @@ interface Props {
     posts: any,
 }
 
-const ArticleGrid: React.FC<Props> = ({paginatedPosts, featuredPost, category, categories, posts}) => {
-    function handleLoadMore() {
+const ArticleGrid: React.FC<Props> = ({paginatedPosts, featuredPost, category, categories, posts}: Props): ReactElement<any, any> => {
+    function handleLoadMore(): Post[] {
         return paginatedPosts.push(paginatedPosts[0]);
     }
 
@@ -26,8 +26,8 @@ const ArticleGrid: React.FC<Props> = ({paginatedPosts, featuredPost, category, c
                         }
 
                         {paginatedPosts.map(function (post: Post, index: number): ReactElement<any, any> {
-                            const columnPositions = ["grid-start-4", "grid-start-10"];
-                            const gridClass = columnPositions[index % 2];
+                            const columnPositions: string[] = ["grid-start-4", "grid-start-10"];
+                            const gridClass: string = columnPositions[index % 2];
                             return <PostCard key={post.id} post={post} gridClass={gridClass}/>
                         })}
 
@@ -49,7 +49,7 @@ const ArticleGrid: React.FC<Props> = ({paginatedPosts, featuredPost, category, c
             }
 
             {paginatedPosts.length < posts.length ? (
-                <button onClick={() => handleLoadMore()}>Load More</button>
+                <button onClick={(): Post[] => handleLoadMore()}>Load More</button>
             ) : null}
         </div>
     )

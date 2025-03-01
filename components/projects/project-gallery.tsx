@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, {ReactElement} from "react";
 import {
     Carousel,
     CarouselContent,
@@ -17,13 +17,13 @@ interface Props {
     content: any
 }
 
-const ProjectGallery: React.FC<Props> = ({content}) => {
+const ProjectGallery: React.FC<Props> = ({content}: Props): ReactElement<any, any> => {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
-    const gallery = htmlFrom(content.block_data[2].innerBlocks[0].innerBlocks[0].rendered, setApi);
+    const gallery: string | ReactElement | ReactElement[] = htmlFrom(content.block_data[2].innerBlocks[0].innerBlocks[0].rendered, setApi);
 
-    React.useEffect(() => {
+    React.useEffect((): void => {
         if (!api) {
             return
         }
@@ -46,12 +46,12 @@ const ProjectGallery: React.FC<Props> = ({content}) => {
     )
 }
 
-function htmlFrom(htmlString: any, setApi: any) {
+function htmlFrom(htmlString: any, setApi: any): string | ReactElement | ReactElement[] {
     const options = {
         htmlparser2: {
             lowerCaseTags: false,
         },
-        replace(domNode: any) {
+        replace(domNode: any): any {
             if (!domNode.name) {
                 return domNode;
             }
@@ -84,7 +84,7 @@ function htmlFrom(htmlString: any, setApi: any) {
         }
     };
 
-    const cleanHtmlString = DOMPurify.sanitize(htmlString,
+    const cleanHtmlString: string = DOMPurify.sanitize(htmlString,
         {
             USE_PROFILES: { html: true },
             ADD_TAGS: ["carousel", "carouselcontent", "carouselitem"]

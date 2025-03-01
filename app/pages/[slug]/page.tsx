@@ -4,15 +4,16 @@ import { siteConfig } from "@/site.config";
 import Image from "next/image";
 
 import type { Metadata } from "next";
-import React from "react";
+import React, {ReactElement} from "react";
+import { Page as WordpressPage } from "@/lib/wordpress.d";
 
 // Revalidate pages every hour
 // export const revalidate = 3600;
 
-export async function generateStaticParams() {
-  const pages = await getAllPages();
+export async function generateStaticParams(): Promise<{slug: string}[]> {
+  const pages: WordpressPage[] = await getAllPages();
 
-  return pages.map((page) => ({
+  return pages.map((page: WordpressPage): {slug: string} => ({
     slug: page.slug,
   }));
 }
@@ -32,7 +33,7 @@ export async function generateMetadata({
   const ogUrl = new URL(`${siteConfig.site_domain}/api/og`);
   ogUrl.searchParams.append("title", page.title.rendered);
   // Strip HTML tags for description and limit length
-  const description = page.excerpt?.rendered
+  const description: string = page.excerpt?.rendered
     ? page.excerpt.rendered.replace(/<[^>]*>/g, "").trim()
     : page.content.rendered
         .replace(/<[^>]*>/g, "")
@@ -70,9 +71,9 @@ export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<ReactElement<any, any>> {
   const { slug } = await params;
-  const page = await getPageBySlug(slug);
+  const page: WordpressPage = await getPageBySlug(slug);
   let media;
   if (page.featured_media) {
     media = await getFeaturedMediaById(page.featured_media)

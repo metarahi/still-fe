@@ -3,21 +3,26 @@ import Link from "next/link";
 
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, {ReactElement} from "react";
 
-function createExcerpt(string: string, maxLength = 220) {
+type Intro = {
+  blockName: string;
+  rendered?: string;
+};
+
+function createExcerpt(string: string, maxLength = 600): string {
   // Replace multiple whitespace with single space and trim
   string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
   if (string.length >= maxLength) {
     string = string.slice(0, maxLength);
 
-    const puncs = ['. ', '! ', '? ']; // Possible endings of sentence
-    let maxPos = 0;
+    const punctuations: string[] = ['. ', '! ', '? '];
+    let maxPos: number = 0;
 
     // Find the last occurrence of each punctuation
-    puncs.forEach(punc => {
-      const pos = string.lastIndexOf(punc);
+    punctuations.forEach(function (punctuation: string): void {
+      const pos: number = string.lastIndexOf(punctuation);
       if (pos !== -1 && pos > maxPos) {
         maxPos = pos;
       }
@@ -27,19 +32,19 @@ function createExcerpt(string: string, maxLength = 220) {
       return string.slice(0, maxPos + 1);
     }
 
-    return string.trim() + '…'; // Using actual ellipsis character instead of HTML entity
+    return string.trim() + '…';
   }
 
   return string;
 }
 
-export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }) {
+export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }): ReactElement<any, any> {
 
-  const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
-  let intro;
-  post.block_data.forEach((block: { blockName: string; }) => {
+  const media: any | undefined = post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.full;
+  let renderedContent: string = post.content.rendered;
+  post.block_data?.forEach((block: Intro): void => {
     if (block.blockName === "core/heading") {
-      intro = block;
+      renderedContent = block.rendered || "";
     }
   });
 
@@ -72,7 +77,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
         <p
             className="paragraph"
             dangerouslySetInnerHTML={{
-              __html: createExcerpt(intro ? intro.rendered : post.content.rendered, 220)
+              __html: createExcerpt(renderedContent, 220)
             }}
         ></p>
         <p><span className="border-b border-black read-more">Read more</span></p>

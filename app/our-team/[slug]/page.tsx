@@ -7,14 +7,15 @@ import {
 import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
-import React from "react";
+import React, {ReactElement} from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FeaturedMedia, Post } from "@/lib/wordpress.d";
 
 export async function generateStaticParams() {
-    const projects = await getAllTeamMembers();
+    const projects: Post[] = await getAllTeamMembers();
 
-    return projects.map((project) => ({
+    return projects.map((project: Post): {slug: any} => ({
         slug: project.slug,
     }));
 }
@@ -25,7 +26,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const post = await getTeamMemberBySlug(slug);
+    const post: Post = await getTeamMemberBySlug(slug);
 
     if (!post) {
         return {};
@@ -34,7 +35,7 @@ export async function generateMetadata({
     const ogUrl = new URL(`${siteConfig.site_domain}/api/og`);
     ogUrl.searchParams.append("title", post.title.rendered);
     // Strip HTML tags for description
-    const description = post.excerpt?.rendered.replace(/<[^>]*>/g, "").trim();
+    const description: string = post.excerpt?.rendered.replace(/<[^>]*>/g, "").trim();
     ogUrl.searchParams.append("description", description);
 
     return {
@@ -67,11 +68,11 @@ export default async function Page({
                                        params,
                                    }: {
     params: Promise<{ slug: string }>;
-}) {
+}): Promise<ReactElement<any, any>> {
     const { slug } = await params;
-    const post = await getTeamMemberBySlug(slug);
-    const featuredMedia = post.acf.secondary_image
-        ? await getFeaturedMediaById(post.acf.secondary_image)
+    const post: Post = await getTeamMemberBySlug(slug);
+    const featuredMedia: FeaturedMedia = post.acf?.secondary_image
+        ? await getFeaturedMediaById(Number(post.acf?.secondary_image))
         : await getFeaturedMediaById(post.featured_media);
 
     return (
@@ -82,7 +83,7 @@ export default async function Page({
                 >
                     <h1 className="h2-headings-and-intros">
                         {post.title.rendered}
-                        <span className="job-title small-caps-menu-button-lists">{post.acf.job_title}</span>
+                        <span className="job-title small-caps-menu-button-lists">{post.acf?.job_title}</span>
                     </h1>
                 </div>
 

@@ -1,15 +1,15 @@
-import { Page } from "@/lib/wordpress.d";
+import { Post } from "@/lib/wordpress.d";
 import Image from "next/image";
-import React from "react";
+import React, {ReactElement} from "react";
 import Link from "next/link";
 
 interface Props {
-    page: Page
+    page: Post
     gridClass: string
     key: number
 }
-const Project: React.FC<Props> = ({page, gridClass}) => {
-    const thumbnail = page._embedded['wp:featuredmedia'][0].media_details.sizes.medium;
+const Project: React.FC<Props> = ({page, gridClass}: Props): ReactElement<any, any> => {
+    const thumbnail: any | undefined = page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium;
 
     return (
         <div className={gridClass} key="">

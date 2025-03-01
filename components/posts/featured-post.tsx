@@ -4,21 +4,26 @@ import Link from "next/link";
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
 
-import React from "react";
+import React, {ReactElement} from "react";
 
-function createExcerpt(string, maxLength = 600) {
+type Intro = {
+    blockName: string;
+    rendered?: string;
+};
+
+function createExcerpt(string: string, maxLength = 600): string {
     // Replace multiple whitespace with single space and trim
     string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
     if (string.length >= maxLength) {
         string = string.slice(0, maxLength);
 
-        const puncs = ['. ', '! ', '? '];
-        let maxPos = 0;
+        const punctuations: string[] = ['. ', '! ', '? '];
+        let maxPos: number = 0;
 
         // Find the last occurrence of each punctuation
-        puncs.forEach(punc => {
-            const pos = string.lastIndexOf(punc);
+        punctuations.forEach(function (punctuation: string): void {
+            const pos: number = string.lastIndexOf(punctuation);
             if (pos !== -1 && pos > maxPos) {
                 maxPos = pos;
             }
@@ -34,14 +39,14 @@ function createExcerpt(string, maxLength = 600) {
     return string;
 }
 
-export async function FeaturedPost({ post }: { post: Post }) {
-    const media = post._embedded['wp:featuredmedia'][0].media_details.sizes.full || null;
-    const words = post.acf.words;
-    const images = post.acf.images;
-    let intro;
-    post.block_data.forEach((block: { blockName: string; }) => {
+export async function FeaturedPost({ post }: { post: Post }): Promise<ReactElement<any, any>> {
+    const media: any | undefined = post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.full;
+    const words: string | undefined = post.acf?.words;
+    const images: string | undefined = post.acf?.images;
+    let renderedContent: string = post.content.rendered;
+    post.block_data?.forEach((block: Intro): void => {
         if (block.blockName === "core/heading") {
-            intro = block;
+            renderedContent = block.rendered || "";
         }
     });
 
@@ -80,7 +85,7 @@ export async function FeaturedPost({ post }: { post: Post }) {
                 <p
                     className="paragraph"
                     dangerouslySetInnerHTML={{
-                        __html: createExcerpt(intro ? intro.rendered : post.content.rendered, 600)
+                        __html: createExcerpt(renderedContent, 600)
                     }}
                 ></p>
                 <p><span className="border-b border-black read-more">Read more</span></p>

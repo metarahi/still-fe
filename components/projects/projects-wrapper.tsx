@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, {ReactElement} from "react";
 import ViewToggle from "@/components/projects/view-toggle";
 import Project from "@/components/projects/project";
+import {Post} from "@/lib/wordpress.d";
 
 function transformSubsidiaryData(data: Record<string, any>): Record<string, any> {
     const groupedSubsidiaries: Record<string, any> = {};
@@ -16,7 +17,7 @@ function transformSubsidiaryData(data: Record<string, any>): Record<string, any>
 
     // Helper function to process a single key and update the result
     const processKey = (key: string): void => {
-        const match = key.match(/subsidiary_(\d+)_(\w+)/);
+        const match: RegExpMatchArray | null = key.match(/subsidiary_(\d+)_(\w+)/);
         if (match) {
             const [, index, property] = match;
             if (!groupedSubsidiaries[index]) {
@@ -30,20 +31,20 @@ function transformSubsidiaryData(data: Record<string, any>): Record<string, any>
     };
 
     // Get all relevant keys and process them
-    const matchingKeys = getMatchingKeys(data);
+    const matchingKeys: string[] = getMatchingKeys(data);
     matchingKeys.forEach(processKey);
 
     return groupedSubsidiaries;
 }
 
-const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
+const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, any> => {
     const [activeView, setActiveView] = React.useState('overview');
-    const _page = page.page;
-    const _pageHtml = page.pageHtml;
-    let _projects = page.projects;
+    const _page: any = page.page;
+    const _pageHtml: any = page.pageHtml;
+    let _projects: any = page.projects;
 
     if (activeView === 'index') {
-        _projects = _projects.sort((a, b) => a.block_data[0].attrs.data.number - b.block_data[0].attrs.data.number);
+        _projects = _projects.sort((a: any, b: any): number => a.block_data[0].attrs.data.number - b.block_data[0].attrs.data.number);
     }
 
     return (
@@ -59,7 +60,7 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
             {activeView && activeView === 'overview' &&
                 <div className="md:mx-90px grid max-md:grid-cols-2 gap-x-7 gap-y-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 projects-grid">
                     {_projects && _projects.map(
-                        function (project: unknown, index: number) {
+                        function (project: Post, index: number) {
                             const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];
                             const gridClass = columnPositions[index % 3];
                             return <Project page={project} gridClass={gridClass} key={index}></Project>
@@ -74,26 +75,29 @@ const ProjectsWrapper: (page: any) => React.JSX.Element = (page) => {
                         <p>Subsidiaries:</p>
                     </div>
                     {_projects && _projects.map(
-                        function (project: object, index: number) {
-                            let subsidiaries;
-                            if (project.block_data[1].innerBlocks[1].innerBlocks[0].attrs.data.subsidiary_0_name) {
-                                subsidiaries = transformSubsidiaryData(project.block_data[1].innerBlocks[1].innerBlocks[0].attrs.data);
-                                subsidiaries = Object.values(subsidiaries);
-                            }
+                        function renderProjectRow(project: Post, index: number): ReactElement {
+                            const hasSubsidiaryData: boolean = !!project.block_data?.[1]?.innerBlocks?.[1]?.innerBlocks?.[0]?.attrs?.data?.subsidiary_0_name;
+                            const subsidiaries: any[] | null = hasSubsidiaryData
+                                ? Object.values(transformSubsidiaryData(project.block_data?.[1]?.innerBlocks?.[1]?.innerBlocks?.[0]?.attrs?.data))
+                                : null;
+
+                            const renderSubsidiary = (subsidiary: Record<string, any>, subIndex: number): ReactElement | null => {
+                                if (!subsidiary.number) return null;
+                                return (
+                                    <div key={subIndex}>
+                                        <span>{`0${subsidiary.number}`.slice(-2)}</span>{subsidiary.name}
+                                    </div>
+                                );
+                            };
 
                             return (
                                 <div className="project-row" key={index}>
-                                    <span><span>{project.block_data[0].attrs.data.number}</span>{project.title.rendered}</span>
-                                    {subsidiaries &&
-                                        subsidiaries.map(
-                                            function (subsidiary: any, index: number) {
-                                                if (subsidiary.number) {
-                                                    return <div key={index}><span>{("0" + subsidiary.number).slice (-2)}</span>{subsidiary.name}</div>;
-                                                }
-                                            }
-                                        )}
+                                    <span>
+                                        <span>{project.block_data?.[0].attrs.data.number}</span>{project.title.rendered}
+                                    </span>
+                                    {subsidiaries?.map(renderSubsidiary)}
                                 </div>
-                            )
+                            );
                         }
                     )}
                 </div>

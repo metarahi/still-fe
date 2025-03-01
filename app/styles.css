@@ -185,7 +185,18 @@ h3 {
     }
 }
 
+.md\:mx-90px {
+    @media only screen and (min-width: $medium) {
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+}
+
 .grid-cols-16 {
+    grid-template-columns: repeat(16, 1fr);
+}
+
+.md\:grid-cols-16 {
     grid-template-columns: repeat(16, 1fr);
 }
 
@@ -845,12 +856,18 @@ footer {
 .projects-grid > div:nth-child(odd) {
     h2 {
         margin-left: 28px;
+        @media only screen and (min-width: $medium) {
+            margin-left: 0;
+        }
     }
 }
 
 .projects-grid > div:nth-child(even) {
     h2 {
         margin-right: 28px;
+        @media only screen and (min-width: $medium) {
+            margin-left: 0;
+        }
     }
 }
 

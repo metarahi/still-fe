@@ -2,10 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import {ReactElement} from "react";
 
-export function NavLink({ href, text }: { href: string; text: string; }) {
-    const pathname = usePathname();
-    const isActive = pathname.startsWith(href);
+export function NavLink({ href, text }: { href: string; text: string; }): ReactElement<any, any> {
+    const pathname: string = usePathname();
+    const isActive: boolean = pathname.startsWith(href);
 
     return (
         <Link

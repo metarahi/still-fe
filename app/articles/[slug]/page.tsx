@@ -83,12 +83,13 @@ export default async function Page({
   for (const category of post.categories) {
     categories.push(await getCategoryById(category));
   }
-  const words: string = post.acf.words;
-  const images: string = post.acf.images;
+  const words: string | undefined = post.acf?.words;
+  const images: string | undefined = post.acf?.images;
   let intro;
-  post.block_data.forEach((block: { blockName: string; }): void => {
+  post.block_data?.forEach((block: { blockName: string; }): void => {
     if (block.blockName === "core/heading") {
-      intro = block;
+      // @ts-ignore
+      intro = block.rendered;
     }
   });
 
@@ -125,7 +126,7 @@ export default async function Page({
 
             {intro && (
                 <div
-                    dangerouslySetInnerHTML={{__html: intro.rendered}}
+                    dangerouslySetInnerHTML={{__html: intro}}
                     className="article-intro h2-headings-and-intros"
                 >
                 </div>

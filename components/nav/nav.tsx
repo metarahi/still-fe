@@ -8,14 +8,14 @@ import {mainMenu} from "@/menu.config";
 import {Button} from "@/components/ui/button";
 import {NavLink} from "@/components/nav/nav-link";
 import {MobileNav} from "@/components/nav/mobile-nav";
-import {useEffect} from "react";
+import {ReactElement, useEffect} from "react";
 
-export default function Nav({ className, children, id }: NavProps) {
-    useEffect(() => {
-        let prevScrollPos = window.pageYOffset;
+export default function Nav({ className, children, id }: NavProps): ReactElement<any, any> {
+    useEffect((): void => {
+        let prevScrollPos: number = window.pageYOffset;
 
         window.addEventListener('scroll', function () {
-            const currentScrollPos = window.pageYOffset;
+            const currentScrollPos: number = window.pageYOffset;
             const nav: HTMLElement | null = document.querySelector('nav');
 
             if (prevScrollPos < currentScrollPos || currentScrollPos === 0) {
@@ -52,7 +52,7 @@ export default function Nav({ className, children, id }: NavProps) {
                 {children}
                 <div className="flex items-center gap-2">
                     <div className="mx-2 hidden md:flex">
-                        {Object.entries(mainMenu).map(([key, href]) => (
+                        {Object.entries(mainMenu).map(([key, href]: [string, string]): ReactElement<any, any> => (
                             <Button key={href} asChild variant="link" size="menu">
                                 <NavLink href={href} text={key.charAt(0).toUpperCase() + key.slice(1)}></NavLink>
                             </Button>

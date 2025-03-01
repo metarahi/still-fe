@@ -39,7 +39,7 @@ export default async function Page({
 
   // Get featured posts
   const featuredPosts: Post[] = posts.filter(function(post: Post): boolean {
-    return post.acf.featured === true;
+    return post.acf?.featured === true;
   });
 
   // Get one latest featured post

@@ -1,16 +1,17 @@
 import {Container, Section} from "@/components/craft";
 import {getPageById} from "@/lib/wordpress";
 import type {Metadata} from "next";
-import React from "react";
+import React, {ReactElement} from "react";
 import ContactForm from "@/components/contact-form";
+import {Page as WordpressPage} from "@/lib/wordpress.d";
 
 export const metadata: Metadata = {
     title: "Contact Us",
     description: "Contact us",
 };
 
-export default async function Page() {
-    const page = await getPageById(270);
+export default async function Page(): Promise<ReactElement<any, any>> {
+    const page: WordpressPage = await getPageById(270);
 
     return (
         <Section className="contact-page">

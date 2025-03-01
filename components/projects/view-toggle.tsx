@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
+import React, {ReactElement} from "react";
 
 interface Props {
     activeView: any,
     setActiveView: any
 }
-const ViewToggle: React.FC<Props> = ({activeView, setActiveView}) => {
+const ViewToggle: React.FC<Props> = ({activeView, setActiveView}: Props): ReactElement<any, any> => {
 
-    function handleClick(view: string) {
+    function handleClick(view: string): void {
         setActiveView(view);
     }
 

@@ -7,16 +7,17 @@ import {
 import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
-import React from "react";
+import React, {ReactElement} from "react";
 import ProjectGallery from "@/components/projects/project-gallery";
 import LatestNews from "@/components/latest-news";
 import Image from "next/image";
 import Link from "next/link";
+import {FeaturedMedia, Post} from "@/lib/wordpress.d";
 
-export async function generateStaticParams() {
-    const projects = await getAllProjects();
+export async function generateStaticParams(): Promise<{slug: string}[]> {
+    const projects: Post[] = await getAllProjects();
 
-    return projects.map((project) => ({
+    return projects.map((project: Post): {slug: string} => ({
         slug: project.slug,
     }));
 }
@@ -27,7 +28,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const post = await getProjectBySlug(slug);
+    const post: Post = await getProjectBySlug(slug);
 
     if (!post) {
         return {};
@@ -36,7 +37,7 @@ export async function generateMetadata({
     const ogUrl = new URL(`${siteConfig.site_domain}/api/og`);
     ogUrl.searchParams.append("title", post.title.rendered);
     // Strip HTML tags for description
-    const description = post.excerpt?.rendered.replace(/<[^>]*>/g, "").trim();
+    const description: string = post.excerpt?.rendered.replace(/<[^>]*>/g, "").trim();
     ogUrl.searchParams.append("description", description);
 
     return {
@@ -65,16 +66,21 @@ export async function generateMetadata({
     };
 }
 
+function getCompanyNumber(post: Post): string {
+    return post.block_data?.[0]?.attrs?.data?.number || "";
+}
+
 export default async function Page({
                                        params,
                                    }: {
     params: Promise<{ slug: string }>;
-}) {
+}): Promise<ReactElement<any, any>> {
     const { slug } = await params;
-    const post = await getProjectBySlug(slug);
-    const featuredMedia = post.featured_media
+    const post: Post = await getProjectBySlug(slug);
+    const featuredMedia: FeaturedMedia | null = post.featured_media
         ? await getFeaturedMediaById(post.featured_media)
         : null;
+    const companyNumber: string = getCompanyNumber(post);
 
     return (
         <Section>
@@ -82,7 +88,7 @@ export default async function Page({
                 <div
                     className="mx-90px page-header"
                 >
-                    <h1 className="small-caps-heading">{post.title.rendered}<sup className="numbers-company-page">{post.block_data[0].attrs.data.number}</sup>
+                    <h1 className="small-caps-heading">{post.title.rendered}<sup className="numbers-company-page">{companyNumber}</sup>
                     </h1>
                 </div>
 
