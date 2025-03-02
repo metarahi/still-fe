@@ -22,11 +22,11 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                 <div className="page-html" dangerouslySetInnerHTML={_pageHtml}/>
             </div>
 
-            <div className="featured-team-members grid grid-cols-16 gap-6">
+            <div className="featured-team-members md:grid md:grid-cols-16 md:gap-6">
                 {_featuredTeamMembers && _featuredTeamMembers.map(
                     function (teamMember: Post, index: number): ReactElement<any, any> {
                         return (
-                            <div key={index} className={"featured-team-member-" + (index + 1)}>
+                            <div key={index} className={"featured-team-member featured-team-member-" + (index + 1)}>
                                 <div className="team-member-image">
                                     <Link href={'/our-team/' + teamMember.slug}>
                                         <Image
@@ -46,7 +46,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                                     </Link>
 
                                 </div>
-                                <h2 className="h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
+                                <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
                                 <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}
                                     <span
@@ -59,7 +59,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                 )}
             </div>
 
-            <div className="team-members grid grid-cols-16 gap-x-6 gap-y-16 mx-90px">
+            <div className="team-members grid max-md:grid-cols-4 gap-x-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 mx-90px">
                 {_teamMembers && _teamMembers.map(
                     function (teamMember: Post, index: number): ReactElement<any, any> {
                         const columnPositions: string[] = ["grid-start-2", "grid-start-7", "grid-start-12"];
@@ -85,7 +85,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                                         />
                                     </Link>
                                 </div>
-                                <h2 className="h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
+                                <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
                                 <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}
                                     <span

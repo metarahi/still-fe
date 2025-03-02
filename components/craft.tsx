@@ -181,7 +181,7 @@ const styles = {
     spacing: "[&>*+*]:mt-6",
     article: "max-w-prose",
     container: "max-w-full mx-auto",
-    section: "pb-8 md:pb-12",
+    section: "",
   },
 };
 

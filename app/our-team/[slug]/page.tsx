@@ -81,15 +81,14 @@ export default async function Page({
                 <div
                     className="mx-90px page-header"
                 >
-                    <h1 className="h2-headings-and-intros">
+                    <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">
                         {post.title.rendered}
                         <span className="job-title small-caps-menu-button-lists">{post.acf?.job_title}</span>
                     </h1>
                 </div>
 
-                <div className="page-html team-page-html grid grid-cols-16 gap-6 mx-90px">
+                <div className="page-html team-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px">
                     <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
-                    <Link href="/our-team" className="button border p-3 border-black">Back to team</Link>
 
                     {featuredMedia &&
                         <Image
@@ -100,6 +99,8 @@ export default async function Page({
                             width={featuredMedia.media_details.width}
                         />
                     }
+
+                    <Link href="/our-team" className="button border p-3 border-black">Back to team</Link>
                 </div>
 
             </Container>
