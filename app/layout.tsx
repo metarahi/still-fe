@@ -2,11 +2,11 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/theme/theme-provider';
-import { MobileNav } from "@/components/nav/mobile-nav";
 import { footerMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
+import { AOSInit } from '@/components/ui/aos';
 
 import Link from "next/link";
 
@@ -35,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
+      <AOSInit />
       <body className={cn('min-h-screen font-sans antialiased')}>
         <ThemeProvider
           attribute="class"

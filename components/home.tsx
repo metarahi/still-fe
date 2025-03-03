@@ -3,13 +3,14 @@
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import parse, {domToReact} from "html-react-parser";
 import Autoplay from "embla-carousel-autoplay";
-import Fade from "embla-carousel-fade";
+import Fade from "@/lib/embla-carousel-fade-custom";
 // @ts-ignore
 import {Property} from "csstype";
 import DOMPurify from "isomorphic-dompurify";
 import Page = Property.Page;
+import {ReactElement} from "react";
 
-export default function HomePage(page: Page) {
+export default function HomePage(page: Page): ReactElement<any, any> {
     const homePageDom = htmlFrom(page.data.content.rendered);
 
     function init_crossFade(element: Element) {
@@ -18,7 +19,7 @@ export default function HomePage(page: Page) {
                 element.querySelectorAll('.slide')
             ),
 
-            randomize: function(arrayLength: number) {
+            randomize: function(arrayLength: number): number {
                 return Math.floor(arrayLength * Math.random());
             },
             setImageOnLoad: function(path: number) {
@@ -48,7 +49,7 @@ export default function HomePage(page: Page) {
             }
         };
 
-        let randomNumber = setBackground.randomize(
+        let randomNumber: number = setBackground.randomize(
             setBackground.crossFadeImages.length
         );
         const activeImage: Element | null = setBackground.setImageOnLoad(randomNumber);
@@ -57,7 +58,7 @@ export default function HomePage(page: Page) {
 
     try {
         document.querySelectorAll('.project-previews .inner').forEach(
-            function(currentValue) {
+            function(currentValue: Element): void {
                 init_crossFade(currentValue);
             }
         )
@@ -77,15 +78,10 @@ function htmlFrom(htmlString: any) {
         htmlparser2: {
             lowerCaseTags: false,
         },
-        replace(domNode: any) {
+        replace(domNode: any): any {
             if (!domNode.name) {
                 return domNode;
             }
-
-            // if (domNode.name === 'SpecialButton') {
-            //     console.log(domNode.attribs)
-            //     return <SpecialButton color={domNode.attribs.color}>{domToReact(domNode.children)}</SpecialButton>
-            // }
 
             if (domNode.name === 'carousel') {
                 return <Carousel
@@ -95,7 +91,7 @@ function htmlFrom(htmlString: any) {
                         }),
                         Fade()
                     ]}
-                    opts={{ align: "start", loop: true }}
+                    opts={{ align: "start", loop: true, duration: 60 }}
                     className="carousel-wrapper"
                 >{domToReact(domNode.children, options)}</Carousel>
             }
@@ -120,7 +116,7 @@ function htmlFrom(htmlString: any) {
         }
     };
 
-    const cleanHtmlString = DOMPurify.sanitize(htmlString,
+    const cleanHtmlString: string = DOMPurify.sanitize(htmlString,
         {
             USE_PROFILES: { html: true },
             ADD_TAGS: ["carousel", "carouselcontent", "carouselitem"]

@@ -91,6 +91,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 70px;
     justify-content: center;
     text-transform: lowercase;
+    &:hover {
+        background: var(--still-sand-light);
+        border: 1px solid var(--still-sand-light);
+    }
 }
 
 .h3-headings-and-pullquotes {
@@ -235,10 +239,15 @@ h3 {
     }
 }
 
-nav {
-    transition: all .25s ease-in-out;
+body {
+    transition: background-color .35s ease-in-out;
 }
 
+nav {
+    transition: all .35s ease-in-out;
+}
+
+nav:hover,
 nav.show {
     background: #fff;
     border-bottom: 1px solid;
@@ -619,6 +628,54 @@ footer {
     }
 }
 
+.project-previews img,
+.latest-articles-home img {
+    transition: filter .35s ease-in-out;
+}
+
+body:has(.project-previews img:hover) {
+    background: var(--still-sand-dark);
+
+    nav {
+        background: var(--still-sand-dark);
+    }
+
+    .project-previews img:not(:hover) {
+        filter: grayscale(1);
+    }
+}
+
+body:has(.latest-articles-home .img-wrapper:hover) {
+    background: var(--still-sand-dark);
+
+    nav {
+        background: var(--still-sand-dark);
+    }
+
+    .latest-articles-home .img-wrapper:not(:hover) img {
+        filter: grayscale(1);
+    }
+
+    .latest-articles-home .img-wrapper:not(:hover) span {
+        opacity: .2;
+    }
+}
+
+.latest-articles-home .img-wrapper {
+    position: relative;
+}
+
+.latest-articles-home .img-wrapper span {
+    background: var(--still-sand-dark);
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .35s ease-in-out;
+    top: 0;
+    width: 100%;
+}
+
 .home-our-people {
     display: flex;
     flex-direction: column;
@@ -885,6 +942,33 @@ footer {
     }
 }
 
+.projects-grid .img-wrapper {
+    position: relative;
+}
+
+.projects-grid .img-wrapper img {
+    transition: filter .35s ease-in-out;
+}
+
+.projects-grid .img-wrapper span {
+    background: var(--still-sand-dark);
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .35s ease-in-out;
+    top: 0;
+    width: 100%;
+}
+
+.projects-grid .img-wrapper:hover img {
+    filter: grayscale(1);
+}
+
+.projects-grid .img-wrapper:hover span {
+    opacity: .2;
+}
+
 .projects-grid h2 a {
     display: block;
     @extend .caption-small;
@@ -918,6 +1002,7 @@ footer {
 body:has(div.projects-index) {
     background: var(--still-sand-dark);
 
+    nav:hover,
     nav.show,
     .sheet-bg {
         background: var(--still-sand-dark);
@@ -1323,21 +1408,29 @@ body:has(div.projects-index) {
 
 .team-member-image {
 
+    a {
+        position: relative;
+    }
+
     .secondary {
-        display: none;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.35s ease-in-out;
     }
 
     .primary {
-        display: block;
+        opacity: 1;
+        transition: opacity 0.35s ease-in-out;
     }
 
     &:hover {
         .secondary {
-            display: block;
+            opacity: 1;
         }
 
         .primary {
-            display: none;
+            opacity: 0;
         }
     }
 }
@@ -1715,6 +1808,7 @@ img.w-half {
 body:has(section.contact-page) {
     background: var(--still-sand-dark);
 
+    nav:hover,
     nav.show,
     .sheet-bg {
         background: var(--still-sand-dark);
@@ -1822,6 +1916,7 @@ body:has(section.contact-page) {
 body:has(section.page-page) {
     background: var(--still-sand-dark);
 
+    nav:hover,
     nav.show,
     .sheet-bg {
         background: var(--still-sand-dark);
