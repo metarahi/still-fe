@@ -19,9 +19,9 @@ export default async function Page(): Promise<ReactElement<any, any>> {
                 <div
                     className="mx-90px page-header"
                 >
-                    <h1 className="h2-headings-and-intros">{page.title.rendered}</h1>
+                    <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">{page.title.rendered}</h1>
                 </div>
-                <div className="mx-90px grid grid-cols-16 gap-6">
+                <div className="mx-90px md:grid grid-cols-16 gap-6">
                     <div className="page-html" dangerouslySetInnerHTML={{'__html': page.content.rendered}}/>
                     <ContactForm/>
                 </div>

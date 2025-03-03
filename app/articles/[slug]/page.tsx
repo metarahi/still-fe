@@ -96,21 +96,21 @@ export default async function Page({
   return (
       <Section>
         <Container>
-          <div className="mx-90px grid grid-cols-16 gap-6 article">
+          <div className="mx-90px md:grid md:grid-cols-16 md:gap-6 article">
             <h1 dangerouslySetInnerHTML={{__html: post.title.rendered}}
-                className="h1-article-headings"></h1>
+                className="h3-headings-and-pullquotes md:h1-article-headings"></h1>
 
             <p className="article-meta">
               {words && (
                   <span>Words: {words}</span>
               )}
-              {words && images && (<span> | </span>)}
+              {words && images && (<span className="delimiter"> | </span>)}
               {images && (
                   <span>Images: {images}</span>
               )}
             </p>
 
-            <div className="article-categories flex justify-center items-center gap-4">
+            <div className="article-categories flex flex-wrap justify-center items-center gap-3 md:gap-4">
               {categories && categories.map((category: Category): ReactElement<any, any> => (
                   <Link
                       key={category.id}
@@ -126,8 +126,8 @@ export default async function Page({
 
             {intro && (
                 <div
-                    dangerouslySetInnerHTML={{__html: intro}}
-                    className="article-intro h2-headings-and-intros"
+                    dangerouslySetInnerHTML={{__html: intro.replace(/(<([^>]+)>)/gi, "")}}
+                    className="article-intro h4-article-feature-text md:h2-headings-and-intros"
                 >
                 </div>
             )}

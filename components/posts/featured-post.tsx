@@ -77,10 +77,10 @@ export async function FeaturedPost({ post }: { post: Post }): Promise<ReactEleme
                     className="h3-headings-and-pullquotes"
                 >{post.title?.rendered} <span className="arrow">→</span></h3>
                 {words && (
-                    <p>Words: {words}</p>
+                    <p className="article-words">Words: {words}</p>
                 )}
                 {images && (
-                    <p>Images: {images}</p>
+                    <p className="article-images">Images: {images}</p>
                 )}
                 <p
                     className="paragraph"
@@ -88,7 +88,7 @@ export async function FeaturedPost({ post }: { post: Post }): Promise<ReactEleme
                         __html: createExcerpt(renderedContent, 600)
                     }}
                 ></p>
-                <p><span className="border-b border-black read-more">Read more</span></p>
+                <p className="read-more-wrapper"><span className="border-b border-black read-more">Read more</span></p>
             </div>
         </Link>
     );

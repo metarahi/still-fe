@@ -8,9 +8,9 @@ import { Section, Container } from "@/components/craft";
 import type { Metadata } from "next";
 import {FeaturedPost} from "@/components/posts/featured-post";
 import LoadMore from "@/components/posts/load-more";
-import Link from "next/link";
-import { Category, Post } from "@/lib/wordpress.d";
+import { Post } from "@/lib/wordpress.d";
 import {ReactElement} from "react";
+import ArticleCategories from "@/components/posts/article-categories";
 
 export const metadata: Metadata = {
   title: "News & Articles",
@@ -39,6 +39,7 @@ export default async function Page({
 
   // Get featured posts
   const featuredPosts: Post[] = posts.filter(function(post: Post): boolean {
+    // @ts-ignore
     return post.acf?.featured === true;
   });
 
@@ -75,22 +76,14 @@ export default async function Page({
           <div className="article-grid">
 
             {paginatedPosts.length > 0 ? (
-                <div className="mx-90px grid grid-cols-16 gap-6">
+                <div className="mx-90px md:grid md:grid-cols-16 md:gap-6">
+                  <ArticleCategories categories={categories} />
+
                   {!category &&
                       <FeaturedPost post={featuredPost}/>
                   }
 
-                  <LoadMore initialPaginatedPosts={paginatedPosts} posts={posts} />
-
-                  <div className="article-categories flex flex-col">
-                    <div className="small-caps-menu-button-lists">categories:</div>
-                    {categories.map((category: Category): ReactElement<any, any> => (
-                        <Link key={category.id} href={`?category=${category.id.toString()}`}
-                           className="border-radius">
-                          {category.name}
-                        </Link>
-                    ))}
-                  </div>
+                  <LoadMore initialPaginatedPosts={paginatedPosts} posts={posts}/>
                 </div>
             ) : (
                 <div>

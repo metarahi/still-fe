@@ -78,7 +78,7 @@ export default async function LatestNews(): Promise<ReactElement<any, any>> {
     return (
         <div className="latest-news-block mx-90px">
             <h2 className="small-caps-menu-button-lists">News & Articles</h2>
-            <div className="inner grid grid-cols-16 gap-6 mb-24">
+            <div className="inner md:grid grid-cols-16 gap-6 mb-24">
                 {latestArticles.map(({ article, featuredMedia }, index: number): ReactElement<any, any> => {
                     const intro = extractIntro(article.block_data);
                     return (

@@ -35,7 +35,7 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
         >
             <div
                 id="nav-container"
-                className="max-w-full mx-auto py-4 px-6 sm:px-8 flex justify-center items-center"
+                className="max-w-full mx-auto py-4 px-6 sm:px-8 flex justify-end md:justify-center items-center"
             >
                 <Link
                     className="hover:opacity-75 transition-all flex gap-4 items-center position-absolute left-8"

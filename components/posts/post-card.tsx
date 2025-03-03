@@ -55,7 +55,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
           gridClass
       )}
     >
-      <div className="flex flex-col gap-6">
+      <div className="md:flex md:flex-col md:gap-6">
         <div className="w-full overflow-hidden relative flex items-center justify-center">
           {media?.source_url ? (
               <Image
@@ -80,7 +80,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
               __html: createExcerpt(renderedContent, 220)
             }}
         ></p>
-        <p><span className="border-b border-black read-more">Read more</span></p>
+        <p className="read-more-wrapper"><span className="border-b border-black read-more">Read more</span></p>
       </div>
     </Link>
   );
