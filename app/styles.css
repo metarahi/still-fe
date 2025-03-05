@@ -923,7 +923,7 @@ body:has(.latest-articles-home img:hover) {
         display: grid;
         gap: 24px;
         grid-template-columns: repeat(16, 1fr);
-        margin-top: 188px;
+        margin-top: 257px;
     }
 
     h1 {
@@ -931,6 +931,7 @@ body:has(.latest-articles-home img:hover) {
         @media only screen and (min-width: $medium) {
             grid-column: 1 / span 5;
             margin-bottom: 0;
+            margin-top: -2px;
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 1 / span 6;
@@ -975,7 +976,7 @@ body:has(.latest-articles-home img:hover) {
         margin: 52px 0 47px 0;
         @extend .small-caps-menu-button-lists;
         @media only screen and (min-width: $medium) {
-            margin: 24px 0 90px 0;
+            margin: 27px 0 96px 0;
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 12 / span 3;
@@ -999,6 +1000,10 @@ body:has(.project-page-html) .page-header h1 {
 }
 
 .projects-grid {
+    > div {
+        margin-bottom: 5px;
+    }
+
     > div > a {
         background-color: var(--still-sand-dark);
         display: block;
@@ -1009,7 +1014,7 @@ body:has(.project-page-html) .page-header h1 {
     }
 
     h2 {
-        margin-top: 12px;
+        margin-top: 13px;
     }
 }
 
@@ -1022,7 +1027,10 @@ body:has(.project-page-html) .page-header h1 {
     display: block;
     @extend .caption-small;
     @media only screen and (min-width: $medium) {
-        @extend .caption-large;
+        font-size: 16px;
+        letter-spacing: .8px;
+        line-height: 18px;
+        margin-top: 12px;
     }
 }
 
@@ -1055,6 +1063,10 @@ body:has(div.projects-index) {
     nav.show,
     .sheet-bg {
         background: var(--still-sand-dark);
+    }
+
+    .project-view-toggle {
+        margin-bottom: 68px;
     }
 }
 
@@ -1103,7 +1115,7 @@ body:has(div.projects-index) {
             display: grid;
             grid-template-columns: subgrid;
             grid-column: 6 / span 10;
-            padding: 14px 0;
+            padding: 12px 0;
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 7 / span 10;
@@ -1121,10 +1133,11 @@ body:has(div.projects-index) {
         div {
             @media only screen and (min-width: $medium) {
                 grid-column: 7 / span 4;
-                margin-bottom: 9px;
-                &:last-child {
-                    margin-bottom: 0;
-                }
+                margin-bottom: 1px;
+                padding-top: 2px;
+                /*&:last-child {*/
+                /*    margin-bottom: 0;*/
+                /*}*/
             }
             @media only screen and (min-width: $xlarge) {
                 grid-column: 6 / span 4;
@@ -1152,8 +1165,12 @@ body:has(div.projects-index) {
 
     .project-row > span > span,
     .project-row > div > span {
+        @extend .caption-large;
         display: inline-block;
+        font-feature-settings: 'c2sc';
+        font-variant: small-caps;
         margin-right: 15px;
+        margin-top: 0;
         width: 23px;
     }
 }
