@@ -13,6 +13,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/nav/nav";
 import dynamic from "next/dynamic";
+import {Input} from "@/components/ui/input";
 
 // @ts-ignore
 // const AOSInit = dynamic(() => import('@/components/ui/aos'), { ssr: true });
@@ -79,6 +80,13 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex flex-col footer-mailing-list">
+            <div className="inner">
+              <p>Sign up to our mailing list</p>
+              <form className="mailing-list-form">
+                <Input placeholder="Enter email" />
+                <button type="submit" className="button border p-3 border-black">Submit</button>
+              </form>
+            </div>
           </div>
         </Container>
       </Section>

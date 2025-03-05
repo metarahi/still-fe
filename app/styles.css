@@ -316,12 +316,45 @@ footer {
 
         p {
             align-self: end;
+            margin-bottom: -1px;
         }
     }
 
     .footer-mailing-list {
         grid-column: 9 / span 8;
+        justify-content: end;
         order: 1;
+
+        @media only screen and (min-width: $medium) {
+            order: 4;
+        }
+
+        .inner {
+            align-self: start;
+            margin-bottom: 3px;
+            width: 100%;
+        }
+
+        form {
+            align-items: end;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(8, 1fr);
+            width: 100%;
+
+            input {
+                grid-column: 1 / span 6;
+                padding-top: 22px;
+            }
+
+            input::placeholder {
+                color: var(--still-grey);
+            }
+
+            button {
+                grid-column: 7 / span 2;
+            }
+        }
     }
 }
 
@@ -1226,7 +1259,9 @@ body:has(div.projects-index) {
         margin-bottom: 25px;
         padding-bottom: 25px;
         @media only screen and (min-width: $medium) {
-            display: flex;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 2fr 3fr;
         }
     }
 
@@ -1238,19 +1273,15 @@ body:has(div.projects-index) {
     @media only screen and (min-width: $medium) {
         .project-endorsements:not(:empty):before,
         .project-collaboration:not(:empty):before {
-            width: calc(12.5vw - 20px);
-            height: 100%;
-            float: left;
-            margin-bottom: 0;
-            min-height: 40px;
-            padding-right: 48px;
+            grid-column: 1;
+            padding-right: 24px;
         }
     }
 
     .project-link {
         list-style-type: none;
         @media only screen and (min-width: $medium) {
-            margin-left: calc(12.5vw - 20px);
+            margin-left: calc(40% + 15px);
         }
     }
 
@@ -1960,7 +1991,8 @@ body:has(section.contact-page) {
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.mailing-list-form {
     @extend .p1-body-copy;
 }
 
