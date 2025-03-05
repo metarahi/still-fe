@@ -17,15 +17,12 @@ const Project: React.FC<Props> = ({page, gridClass}: Props): ReactElement<any, a
              data-aos="fade-up"
         >
             <Link href={'/still-100/' + page.slug}>
-                <div className="img-wrapper">
                 <Image
                     src={thumbnail.source_url}
                     alt={page.title.rendered}
                     height={thumbnail.height}
                     width={thumbnail.width}
                 />
-                    <span></span>
-                </div>
             </Link>
             <h2><Link href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></Link></h2>
         </div>

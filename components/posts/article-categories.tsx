@@ -19,8 +19,8 @@ const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<a
     return (
         <div className="article-categories flex flex-col">
             <div className="small-caps-menu-button-lists w-full">
-                <span className="max-md:hidden">Categories:</span>
-                <span className="md:hidden flex justify-between w-full">Categories
+                <span className="max-xl:hidden">Categories:</span>
+                <span className="xl:hidden flex justify-between w-full">Categories
                     <Image src={Plus} alt="Categories"
                            height="11"
                            width="11"
@@ -29,7 +29,7 @@ const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<a
             </div>
             {categories.map((category: Category): ReactElement<any, any> => (
                 <Link key={category.id} href={`?category=${category.id.toString()}`}
-                      className={"border-radius" + (showArticleCategories ? "" : " max-md:hidden")}>
+                      className={"border-radius" + (showArticleCategories ? "" : " max-xl:hidden")}>
                     {category.name}
                 </Link>
             ))}

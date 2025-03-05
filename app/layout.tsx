@@ -12,6 +12,10 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import Nav from "@/components/nav/nav";
+import dynamic from "next/dynamic";
+
+// @ts-ignore
+// const AOSInit = dynamic(() => import('@/components/ui/aos'), { ssr: true });
 
 export const metadata: Metadata = {
   title: siteConfig.site_name,
@@ -75,7 +79,20 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex flex-col footer-mailing-list">
-            <p>Mailing list signup placeholder</p>
+            <form data-hsfc-id="Form" id="9a0f9a3a-f404-4f17-abee-6826221621a7-d47b0539-2daf-4018-a799-a75133d31127"
+                  method="POST" accept-charset="UTF-8" encType="multipart/form-data"
+                  action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/47738603/d47b0539-2daf-4018-a799-a75133d31127"
+                  className="hsfc-Form">
+              <input
+                  type="email"
+                  name="0-1/email"
+                  placeholder=""
+                  autoComplete="email"
+                  className="hsfc-TextInput" value=""/>
+              <button type="submit"
+                      className="hsfc-Button">Submit
+              </button>
+            </form>
           </div>
         </Container>
       </Section>

@@ -2,13 +2,19 @@
 
 import { useEffect } from 'react'
 import AOS from "aos";
-import "aos/dist/aos.css";
 
 export const AOSInit = () => {
     useEffect(() => {
+        const elementsToAnimate = document.querySelectorAll('.aos-fade-up');
+        elementsToAnimate.forEach(function (element) {
+            element.setAttribute('data-aos', 'fade-up');
+        });
+
         AOS.init({
-            easing: 'ease-out-quad',
-            duration: 1000,
+            easing: 'ease-in-out',
+            duration: 400,
+            offset: 120,
+            delay: 0,
         });
     }, [])
 

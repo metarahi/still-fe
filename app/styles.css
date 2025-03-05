@@ -91,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 70px;
     justify-content: center;
     text-transform: lowercase;
+    transition: all .35s ease-in-out;
     &:hover {
         background: var(--still-sand-light);
         border: 1px solid var(--still-sand-light);
@@ -156,6 +157,10 @@ h3 {
     @media only screen and (min-width: $medium) {
         top: -.5em;
     }
+}
+
+html:not(.no-js) [data-aos="fade-up"] {
+    transform: translate3d(0, 30px, 0);
 }
 
 /* Layout */
@@ -445,6 +450,7 @@ footer {
     .details-summary {
         color: var(--still-grey);
         display: inline;
+        transition: color .35s ease-in-out;
     }
 
     p {
@@ -456,6 +462,11 @@ footer {
         font-family: var(--font-serif), serif;
         font-size: 30px;
         line-height: 38px;
+        @media only screen and (min-width: $xlarge) {
+            display: inline;
+            opacity: 0;
+            transition: opacity .35s ease-in-out;
+        }
     }
 
     &:hover {
@@ -464,6 +475,9 @@ footer {
         }
         p {
             display: inline;
+            @media only screen and (min-width: $xlarge) {
+                opacity: 1;
+            }
         }
     }
 }
@@ -608,7 +622,15 @@ footer {
         position: relative;
         width: 100%;
 
+        .slide > a {
+            background-color: var(--still-sand-dark);
+            display: block;
+            overflow: hidden;
+        }
+
         img {
+            height: 100%;
+            object-fit: cover;
             width: 100%;
         }
 
@@ -630,7 +652,7 @@ footer {
 
 .project-previews img,
 .latest-articles-home img {
-    transition: filter .35s ease-in-out;
+    transition: all .35s ease-in-out;
 }
 
 body:has(.project-previews img:hover) {
@@ -642,38 +664,21 @@ body:has(.project-previews img:hover) {
 
     .project-previews img:not(:hover) {
         filter: grayscale(1);
+        mix-blend-mode: multiply;
     }
 }
 
-body:has(.latest-articles-home .img-wrapper:hover) {
+body:has(.latest-articles-home img:hover) {
     background: var(--still-sand-dark);
 
     nav {
         background: var(--still-sand-dark);
     }
 
-    .latest-articles-home .img-wrapper:not(:hover) img {
+    .latest-articles-home img:not(:hover) {
         filter: grayscale(1);
+        mix-blend-mode: multiply;
     }
-
-    .latest-articles-home .img-wrapper:not(:hover) span {
-        opacity: .2;
-    }
-}
-
-.latest-articles-home .img-wrapper {
-    position: relative;
-}
-
-.latest-articles-home .img-wrapper span {
-    background: var(--still-sand-dark);
-    display: block;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    transition: opacity .35s ease-in-out;
-    top: 0;
-    width: 100%;
 }
 
 .home-our-people {
@@ -797,6 +802,10 @@ body:has(.latest-articles-home .img-wrapper:hover) {
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
         }
+    }
+
+    article > a {
+        background: var(--still-sand-dark);
     }
 
     .latest-article-1 {
@@ -932,8 +941,17 @@ body:has(.latest-articles-home .img-wrapper:hover) {
     }
 }
 
+body:has(.project-page-html) .page-header h1 {
+    grid-column: 1 / span 16;
+}
+
 .projects-grid {
+    > div > a {
+        background-color: var(--still-sand-dark);
+        display: block;
+    }
     img {
+        transition: all .35s ease-in-out;
         width: 100%;
     }
 
@@ -942,31 +960,9 @@ body:has(.latest-articles-home .img-wrapper:hover) {
     }
 }
 
-.projects-grid .img-wrapper {
-    position: relative;
-}
-
-.projects-grid .img-wrapper img {
-    transition: filter .35s ease-in-out;
-}
-
-.projects-grid .img-wrapper span {
-    background: var(--still-sand-dark);
-    display: block;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    transition: opacity .35s ease-in-out;
-    top: 0;
-    width: 100%;
-}
-
-.projects-grid .img-wrapper:hover img {
+.projects-grid img:hover {
     filter: grayscale(1);
-}
-
-.projects-grid .img-wrapper:hover span {
-    opacity: .2;
+    mix-blend-mode: multiply;
 }
 
 .projects-grid h2 a {
@@ -1416,12 +1412,12 @@ body:has(div.projects-index) {
         opacity: 0;
         position: absolute;
         top: 0;
-        transition: opacity 0.35s ease-in-out;
+        transition: opacity .45s ease-in-out;
     }
 
     .primary {
         opacity: 1;
-        transition: opacity 0.35s ease-in-out;
+        transition: opacity .45s ease-in-out;
     }
 
     &:hover {
@@ -1560,6 +1556,12 @@ img.w-half {
             @media only screen and (min-width: $medium) {
                 margin-top: 65px;
             }
+            @media only screen and (min-width: $large) {
+                grid-column: 2 / span 6;
+            }
+            @media only screen and (min-width: $xlarge) {
+                grid-column: 2 / span 3;
+            }
         }
     }
 }
@@ -1572,13 +1574,31 @@ img.w-half {
         grid-template-columns: subgrid;
         margin-bottom: 40px;
     }
+    @media only screen and (min-width: $large) {
+        grid-column: 2 / span 14;
+    }
+    @media only screen and (min-width: $xlarge) {
+        grid-column: 4 / span 12;
+    }
 
     .w-full {
         grid-column: 1 / span 8;
+        @media only screen and (min-width: $large) {
+            grid-column: 1 / span 9;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 1 / span 8;
+        }
     }
 
     > div:last-child {
         grid-column: 9 / span 4;
+        @media only screen and (min-width: $large) {
+            grid-column: 10 / span 7;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 9 / span 4;
+        }
 
         h3 {
             margin-bottom: 15px;
@@ -1624,6 +1644,12 @@ img.w-half {
         @media only screen and (min-width: $medium) {
             max-width: calc(25vw - 63px);
         }
+        @media only screen and (min-width: $large) {
+            max-width: none;
+        }
+        @media only screen and (min-width: $xlarge) {
+            max-width: calc(25vw - 63px);
+        }
     }
 }
 
@@ -1638,12 +1664,18 @@ img.w-half {
     align-items: flex-start;
     grid-column: 1 / span 3;
     grid-row: 1;
+    @media only screen and (min-width: $large) {
+        grid-column: 2 / span 14;
+    }
+    @media only screen and (min-width: $xlarge) {
+        grid-column: 1 / span 3;
+    }
 
     > div {
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
         margin-bottom: 24px;
         padding-bottom: 22px;
-        @media only screen and (min-width: $medium) {
+        @media only screen and (min-width: $xlarge) {
             border-bottom: 0;
             margin-bottom: 49px;
             padding-bottom: 0;
@@ -1687,15 +1719,33 @@ img.w-half {
         grid-column: 4 / span 12;
         grid-template-columns: subgrid;
     }
+    @media only screen and (min-width: $large) {
+        grid-column: 2 / span 14;
+    }
+    @media only screen and (min-width: $xlarge) {
+        grid-column: 4 / span 12;
+    }
 
     .grid-start-1 {
         grid-column: 1 / span 6;
         margin-bottom: 38px;
+        @media only screen and (min-width: $large) {
+            grid-column: 1 / span 7;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 1 / span 6;
+        }
     }
 
     .grid-start-7 {
         grid-column: 7 / span 6;
         margin-bottom: 38px;
+        @media only screen and (min-width: $large) {
+            grid-column: 8 / span 7;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 7 / span 6;
+        }
     }
 
     button {
@@ -1703,6 +1753,12 @@ img.w-half {
         @media only screen and (min-width: $medium) {
             grid-column: 1 / span 3;
             margin-top: 57px;
+        }
+        @media only screen and (min-width: $large) {
+            grid-column: 1 / span 7;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 1 / span 3;
         }
     }
 

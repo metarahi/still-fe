@@ -26,7 +26,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                 {_featuredTeamMembers && _featuredTeamMembers.map(
                     function (teamMember: Post, index: number): ReactElement<any, any> {
                         return (
-                            <div key={index} className={"featured-team-member featured-team-member-" + (index + 1)}>
+                            <div key={index} className={"featured-team-member featured-team-member-" + (index + 1)} data-aos="fade-up">
                                 <div className="team-member-image">
                                     <Link href={'/our-team/' + teamMember.slug}>
                                         <Image
@@ -66,7 +66,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                         const gridClass: string = columnPositions[index % 3];
 
                         return (
-                            <div key={index} className={gridClass}>
+                            <div key={index} className={gridClass} data-aos="fade-up">
                                 <div className="team-member-image">
                                     <Link href={'/our-team/' + teamMember.slug}>
                                         <Image
