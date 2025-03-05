@@ -178,7 +178,7 @@ html:not(.no-js) [data-aos="fade-up"] {
     @media only screen and (min-width: $medium) {
         gap: 24px;
         grid-template-columns: repeat(16, 1fr);
-        margin: 125px 90px 0;
+        margin: 119px 90px 0;
         > div:nth-child(1) {
             grid-column: 1 / span 4;
         }
@@ -274,13 +274,13 @@ nav.show {
 footer {
     margin: 150px 28px 12px;
     @media only screen and (min-width: $medium) {
-        margin: calc(272px - 3rem) 90px 0;
+        margin: 269px 90px 0;
     }
 
     section {
         padding-bottom: 0 !important;
         @media only screen and (min-width: $medium) {
-            padding-bottom: 3rem !important;
+            padding-bottom: 85px !important;
         }
     }
 
@@ -294,11 +294,11 @@ footer {
     }
 
     .footer-menu a {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         @extend .small-caps-menu-button-lists;
 
         @media only screen and (min-width: $medium) {
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
 
         &:last-child {
@@ -317,6 +317,10 @@ footer {
         p {
             align-self: end;
             margin-bottom: -1px;
+        }
+
+        span {
+            margin-left: 2px;
         }
     }
 
@@ -465,7 +469,7 @@ footer {
                 grid-column: 2 / span 6;
                 grid-row: 2;
                 grid-template-columns: repeat(2, 1fr);
-                margin-top: 45px;
+                margin-top: 48px;
             }
         }
     }
@@ -476,6 +480,7 @@ footer {
         margin-bottom: 30px;
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
+            margin-top: -5px;
         }
     }
 }
@@ -523,11 +528,17 @@ footer {
 
 .home-still-100-1 {
     > div:nth-child(2) {
-        margin-top: 2px;
+        margin-top: 1px;
         p {
             margin-bottom: 28px;
             @media only screen and (min-width: $medium) {
                 margin-bottom: 16px;
+            }
+        }
+
+        p:last-child {
+            @media only screen and (min-width: $medium) {
+                margin-bottom: 0;
             }
         }
     }
@@ -543,7 +554,7 @@ footer {
 .project-gallery-preview {
     margin: 42px 28px 0;
     @media only screen and (min-width: $medium) {
-        margin: 0 90px;
+        margin: -5px 90px 0;
     }
 
     .project-previews {
@@ -559,6 +570,9 @@ footer {
 
         .caption {
             @extend .caption-large;
+            @media only screen and (min-width: $medium) {
+                margin-top: 16px;
+            }
         }
 
         .caption span {
@@ -728,9 +742,9 @@ body:has(.latest-articles-home img:hover) {
     @media only screen and (min-width: $medium) {
         column-gap: 24px;
         display: grid;
-        grid-template-columns: 90px repeat(16, 1fr) 90px;
+        grid-template-columns: 66px repeat(16, 1fr) 66px;
         grid-template-rows: 354px 388px min-content min-content;
-        margin: 205px 0 0;
+        margin: 208px 0 0;
         padding: 0;
     }
 
@@ -738,6 +752,9 @@ body:has(.latest-articles-home img:hover) {
         grid-column: 2 / span 4;
         grid-row: 1;
         order: 1;
+        @media only screen and (min-width: $medium) {
+            margin-top: -10px;
+        }
     }
 
     > :nth-child(2) {
@@ -752,7 +769,7 @@ body:has(.latest-articles-home img:hover) {
         figcaption {
             margin: 12px 28px 0;
             @media only screen and (min-width: $medium) {
-                margin: 12px 0 0 0;
+                margin: 15px 0 0 0;
             }
         }
     }
@@ -763,7 +780,7 @@ body:has(.latest-articles-home img:hover) {
         margin-top: 16px;
         order: 2;
         @media only screen and (min-width: $medium) {
-            margin-top: 0;
+            margin-top: -4px;
         }
     }
 
@@ -789,7 +806,7 @@ body:has(.latest-articles-home img:hover) {
         figcaption {
             margin: 12px 28px 0;
             @media only screen and (min-width: $medium) {
-                margin: 12px 0 0 90px;
+                margin: 15px 0 0 90px;
             }
         }
     }
@@ -823,7 +840,7 @@ body:has(.latest-articles-home img:hover) {
 .latest-articles {
     margin: 60px 28px 0;
     @media only screen and (min-width: $medium) {
-        margin: 190px 90px 0;
+        margin: 181px 90px 0;
     }
 
     .wrapper {
@@ -832,7 +849,7 @@ body:has(.latest-articles-home img:hover) {
             display: grid;
             gap: 24px;
             grid-template-columns: repeat(16, 1fr);
-            margin-top: 85px;
+            margin-top: 78px;
         }
     }
 
@@ -869,16 +886,13 @@ body:has(.latest-articles-home img:hover) {
     h3 {
         margin: 13px 0;
         @media only screen and (min-width: $medium) {
-            margin: 25px 0;
-        }
-        .arrow {
-            margin-left: 8px;
+            margin: 18px 0 11px;
         }
     }
 
     .read-more {
         @media only screen and (min-width: $medium) {
-            margin-top: 25px;
+            margin-top: 14px;
         }
 
         a {
@@ -893,7 +907,7 @@ body:has(.latest-articles-home img:hover) {
         justify-content: center;
         margin-top: 14px;
         @media only screen and (min-width: $medium) {
-            margin-top: 80px;
+            margin-top: 70px;
         }
     }
 }
@@ -990,7 +1004,7 @@ body:has(.project-page-html) .page-header h1 {
         display: block;
     }
     img {
-        transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out allow-discrete;
         width: 100%;
     }
 

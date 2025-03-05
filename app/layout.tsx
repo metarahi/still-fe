@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
           <div className="flex footer-copyright">
             <p>
-              Copyright &copy; {getYear()} {siteConfig.site_name}&reg;
+              Copyright &copy; {getYear()} {siteConfig.site_name}<span>&reg;</span>
             </p>
           </div>
           <div className="flex flex-col footer-mailing-list">

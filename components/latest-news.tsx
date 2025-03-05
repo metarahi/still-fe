@@ -93,7 +93,7 @@ export default async function LatestNews(): Promise<ReactElement<any, any>> {
                             </Link>
                             <h3 className="h3-headings-and-pullquotes">
                                 <Link href={`/articles/${article.slug}`}>
-                                    {article.title.rendered} <span className="arrow">→</span>
+                                    {article.title.rendered} &nbsp; &nbsp; <span className="arrow">→</span>
                                 </Link>
                             </h3>
                             <p
