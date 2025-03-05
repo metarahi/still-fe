@@ -55,8 +55,8 @@ export function MobileNav() {
             </MobileLink>
           </SheetTitle>
         </SheetHeader>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)]">
-          <div className="flex flex-col text-center">
+        <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
+          <div className="flex flex-col text-center h-[calc(100vh-6rem)] justify-center">
             {Object.entries(mainMenu).map(([key, href]) => (
               <MobileLink key={key} href={href} className="small-caps-menu-button-lists mobile-menu-link" onOpenChange={setOpen}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}

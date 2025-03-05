@@ -39,7 +39,7 @@ const ProjectGallery: React.FC<Props> = ({content}: Props): ReactElement<any, an
     return (
         <div className="project-gallery">
             {gallery}
-            <div className="py-2 text-right">
+            <div className="text-right">
                 {current}/{count}
             </div>
         </div>

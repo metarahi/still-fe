@@ -343,8 +343,11 @@ footer {
             width: 100%;
 
             input {
-                grid-column: 1 / span 6;
+                grid-column: 1 / span 8;
                 padding-top: 22px;
+                @media only screen and (min-width: $medium) {
+                    grid-column: 1 / span 6;
+                }
             }
 
             input::placeholder {
@@ -352,7 +355,10 @@ footer {
             }
 
             button {
-                grid-column: 7 / span 2;
+                grid-column: 1 / span 8;
+                @media only screen and (min-width: $medium) {
+                    grid-column: 7 / span 2;
+                }
             }
         }
     }
@@ -1294,7 +1300,10 @@ body:has(div.projects-index) {
         grid-row: 2 / span 2;
 
         .text-right {
-            margin-top: -40px;
+            margin-top: -37px;
+            @media only screen and (min-width: $medium) {
+                margin-top: -25px;
+            }
         }
     }
 
@@ -1306,12 +1315,24 @@ body:has(div.projects-index) {
         grid-row: 3;
         justify-content: center;
         margin-bottom: 40px;
+        @media only screen and (min-width: $medium) {
+            margin-bottom: 31px;
+        }
     }
 
     .carousel-indicators {
+        padding-top: 10px;
         position: relative;
         width: 50%;
+
+        button {
+            margin-right: 4px;
+        }
     }
+}
+
+.project-page-html .project-gallery .text-right {
+    @extend .p1-body-copy;
 }
 
 /* Team Members */
@@ -1719,6 +1740,7 @@ img.w-half {
     border-radius: 50px;
     flex-basis: fit-content;
     height: 31px;
+    line-height: 17px;
     margin-bottom: 15px;
     padding: 7px 20px;
     text-align: center;
@@ -1737,6 +1759,9 @@ img.w-half {
     margin-bottom: 0;
     @media only screen and (min-width: $medium) {
         margin-bottom: 15px;
+    }
+    @media only screen and (min-width: $xlarge) {
+        margin-bottom: 0;
     }
 }
 
