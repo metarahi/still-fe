@@ -1211,7 +1211,10 @@ body:has(div.projects-index) {
     img.w-full {
         grid-column: 12 / span 5;
         grid-row: 1;
-        margin-bottom: 168px;
+        margin-bottom: 45px;
+        @media only screen and (min-width: $medium) {
+            margin-bottom: 168px;
+        }
     }
 
     .project-intro {
@@ -1298,12 +1301,24 @@ body:has(div.projects-index) {
     .project-gallery {
         grid-column: 1 / span 10;
         grid-row: 2 / span 2;
+        margin: 25px 0 47px;
+
+        @media only screen and (min-width: $medium) {
+            margin: 0;
+        }
 
         .text-right {
             margin-top: -37px;
             @media only screen and (min-width: $medium) {
                 margin-top: -25px;
             }
+        }
+
+        .button:active,
+        .button:focus,
+        .button:hover {
+            background: transparent;
+            border: none;
         }
     }
 
@@ -1844,16 +1859,24 @@ img.w-half {
     }
 
     .article-meta {
-        margin: 40px 0 5px 0;
+        margin: 11px 0 20px;
         @media only screen and (min-width: $medium) {
             margin: 38px 0 5px 0;
         }
-    }
 
-    .delimiter {
-        display: none;
-        @media only screen and (min-width: $medium) {
-            display: inline;
+        span {
+            display: block;
+
+            @media only screen and (min-width: $medium) {
+                display: inline;
+            }
+        }
+
+        .delimiter {
+            display: none;
+            @media only screen and (min-width: $medium) {
+                display: inline;
+            }
         }
     }
 

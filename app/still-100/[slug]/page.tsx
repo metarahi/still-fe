@@ -13,6 +13,12 @@ import LatestNews from "@/components/latest-news";
 import Image from "next/image";
 import Link from "next/link";
 import {FeaturedMedia, Post} from "@/lib/wordpress.d";
+import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import Fade from "@/lib/embla-carousel-fade-custom";
+import parse, {domToReact} from "html-react-parser";
+import DOMPurify from "isomorphic-dompurify";
+import ProjectPageContent from "@/components/projects/project-page-content";
 
 export async function generateStaticParams(): Promise<{slug: string}[]> {
     const projects: Post[] = await getAllProjects();
@@ -93,10 +99,10 @@ export default async function Page({
                 </div>
 
                 <div className="page-html project-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px">
-                    <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                    <ProjectPageContent post={post} featuredMedia={featuredMedia} />
                     {featuredMedia &&
                         <Image
-                            className="w-full"
+                            className="w-full max-md:hidden"
                             src={featuredMedia.source_url}
                             alt={post.title.rendered}
                             height={featuredMedia.media_details.height}
@@ -104,7 +110,7 @@ export default async function Page({
                         />
                     }
 
-                    <ProjectGallery content={post} />
+                    <ProjectGallery content={post} className="max-md:hidden" />
 
                     <Link href="/still-100" className="button border p-3 border-black">Back to STILL 100</Link>
                 </div>

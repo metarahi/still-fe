@@ -12,12 +12,14 @@ import {
 import Fade from "embla-carousel-fade";
 import parse, {domToReact} from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
+import {cn} from "@/components/craft";
 
 interface Props {
     content: any
+    className?: string
 }
 
-const ProjectGallery: React.FC<Props> = ({content}: Props): ReactElement<any, any> => {
+const ProjectGallery: React.FC<Props> = ({content, className}: Props): ReactElement<any, any> => {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
@@ -37,7 +39,7 @@ const ProjectGallery: React.FC<Props> = ({content}: Props): ReactElement<any, an
     }, [api])
 
     return (
-        <div className="project-gallery">
+        <div className={cn("project-gallery", className)}>
             {gallery}
             <div className="text-right">
                 {current}/{count}
