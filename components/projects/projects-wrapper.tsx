@@ -4,6 +4,7 @@ import React, {ReactElement} from "react";
 import ViewToggle from "@/components/projects/view-toggle";
 import Project from "@/components/projects/project";
 import {Post} from "@/lib/wordpress.d";
+import Link from "next/link";
 
 function transformSubsidiaryData(data: Record<string, any>): Record<string, any> {
     const groupedSubsidiaries: Record<string, any> = {};
@@ -42,10 +43,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
     const _page: any = page.page;
     const _pageHtml: any = page.pageHtml;
     let _projects: any = page.projects;
-
-    if (activeView === 'index') {
-        _projects = _projects.sort((a: any, b: any): number => a.block_data[0].attrs.data.number - b.block_data[0].attrs.data.number);
-    }
+    let _projectsIndex = structuredClone(_projects).sort((a: any, b: any): number => a.block_data[0].attrs.data.number - b.block_data[0].attrs.data.number);
 
     return (
         <div>
@@ -74,7 +72,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
                         <p>Companies / Projects:</p>
                         <p>Subsidiaries:</p>
                     </div>
-                    {_projects && _projects.map(
+                    {_projectsIndex && _projectsIndex.map(
                         function renderProjectRow(project: Post, index: number): ReactElement {
                             const hasSubsidiaryData: boolean = !!project.block_data?.[1]?.innerBlocks?.[1]?.innerBlocks?.[0]?.attrs?.data?.subsidiary_0_name;
                             const subsidiaries: any[] | null = hasSubsidiaryData
@@ -93,7 +91,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
                             return (
                                 <div className="project-row" key={index}>
                                     <span>
-                                        <span>{project.block_data?.[0].attrs.data.number}</span>{project.title.rendered}
+                                        <span>{project.block_data?.[0].attrs.data.number}</span><Link href={`/still-100/${project.slug}`} className="hover:border-b hover:border-black">{project.title.rendered}</Link>
                                     </span>
                                     {subsidiaries?.map(renderSubsidiary)}
                                 </div>

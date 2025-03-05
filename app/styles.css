@@ -1178,7 +1178,7 @@ body:has(div.projects-index) {
 .project-page-html {
     margin-top: -7px;
     @media only screen and (min-width: $medium) {
-        margin-top: 140px;
+        margin-top: 137px;
     }
 
     .project-number {
@@ -1229,6 +1229,10 @@ body:has(div.projects-index) {
         grid-row: 3;
         grid-template-columns: subgrid;
 
+        @media only screen and (min-width: $medium) {
+            margin-top: 95px;
+        }
+
         > div:first-child {
             display: none;
         }
@@ -1236,6 +1240,9 @@ body:has(div.projects-index) {
         > div:last-child {
             grid-column: 12 / span 5;
             grid-row: 1;
+            @media only screen and (min-width: $medium) {
+                margin-top: -4px;
+            }
         }
     }
 
@@ -1251,11 +1258,18 @@ body:has(div.projects-index) {
     .project-intro {
         @extend .h3-headings-and-pullquotes;
         @media only screen and (min-width: $medium) {
-            @extend .h2-headings-and-intros;
+            /*@extend .h2-headings-and-intros;*/
+            font-size: 30px;
+            line-height: 38px;
+            margin-top: -7px;
         }
     }
 
     .project-subsidiaries {
+        @media only screen and (min-width: $medium) {
+            margin-top: -5px;
+        }
+
         .wrapper {
             margin-top: 17px;
         }
@@ -1281,8 +1295,12 @@ body:has(div.projects-index) {
         }
     }
 
+    .project-subsidiaries .wrapper {
+        @extend .p1-body-copy;
+    }
+
     .project-body {
-        margin-top: 48px;
+        margin-top: 46px;
     }
 
     .project-endorsements:not(:empty):before {
@@ -1296,8 +1314,8 @@ body:has(div.projects-index) {
     .project-endorsements:not(:empty),
     .project-collaboration:not(:empty) {
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        margin-bottom: 25px;
-        padding-bottom: 25px;
+        margin-bottom: 21px;
+        padding-bottom: 21px;
         @media only screen and (min-width: $medium) {
             display: grid;
             gap: 24px;
@@ -1314,6 +1332,7 @@ body:has(div.projects-index) {
         .project-endorsements:not(:empty):before,
         .project-collaboration:not(:empty):before {
             grid-column: 1;
+            margin-bottom: 0;
             padding-right: 24px;
         }
     }
@@ -1322,6 +1341,7 @@ body:has(div.projects-index) {
         list-style-type: none;
         @media only screen and (min-width: $medium) {
             margin-left: calc(40% + 15px);
+            margin-top: -2px;
         }
     }
 
@@ -1335,7 +1355,7 @@ body:has(div.projects-index) {
         margin: 25px 0 47px;
 
         @media only screen and (min-width: $medium) {
-            margin: 0;
+            margin: 95px 0 0 0;
         }
 
         .text-right {
@@ -1605,15 +1625,15 @@ img.w-half {
     border-top: .7px solid var(--still-grey);
     margin-top: 100px;
     @media only screen and (min-width: $medium) {
-        margin-top: 182px;
+        margin-top: 195px;
     }
 
     h2 {
-        margin-top: 30px;
+        margin-top: 27px;
     }
 
     .inner {
-        margin-top: 100px;
+        margin-top: 96px;
 
         img {
             width: 100%;
@@ -1639,12 +1659,12 @@ img.w-half {
         }
 
         h3 {
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             margin-top: 18px;
         }
 
         .excerpt {
-            margin-bottom: 15px;
+            margin-bottom: 17px;
         }
 
         .button {
@@ -1652,13 +1672,13 @@ img.w-half {
             grid-row: 2;
             width: 100%;
             @media only screen and (min-width: $medium) {
-                margin-top: 65px;
+                margin-top: 69px;
             }
             @media only screen and (min-width: $large) {
                 grid-column: 2 / span 6;
             }
             @media only screen and (min-width: $xlarge) {
-                grid-column: 2 / span 3;
+                grid-column: 1 / span 3;
             }
         }
     }
