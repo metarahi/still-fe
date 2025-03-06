@@ -250,6 +250,16 @@ body {
 
 nav {
     transition: all .35s ease-in-out;
+
+    @media only screen and (width < $medium) {
+        .px-7 {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .left-8 {
+            left: 20px;
+        }
+    }
 }
 
 nav:hover,
