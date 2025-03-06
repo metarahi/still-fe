@@ -43,6 +43,14 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
     const _page: any = page.page;
     const _pageHtml: any = page.pageHtml;
     let _projects: any = page.projects;
+    // Sort teamMembers by acf.sort_order
+    _projects.sort((a: Post, b: Post): number => {
+        // @ts-ignore
+        const sortA: number = a.acf?.sort_order === "" ? Infinity : a.acf?.sort_order || 0;
+        // @ts-ignore
+        const sortB: number = b.acf?.sort_order === "" ? Infinity : b.acf?.sort_order || 0;
+        return sortA - sortB;
+    });
     let _projectsIndex = structuredClone(_projects).sort((a: any, b: any): number => a.block_data[0].attrs.data.number - b.block_data[0].attrs.data.number);
 
     return (
