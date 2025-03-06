@@ -96,7 +96,7 @@ export default async function Page({
   return (
       <Section>
         <Container>
-          <div className="mx-90px md:grid md:grid-cols-16 md:gap-6 article">
+          <div className="mx-90px md:grid md:grid-cols-16 md:gap-x-6 article">
             <h1 dangerouslySetInnerHTML={{__html: post.title.rendered}}
                 className="h3-headings-and-pullquotes md:h1-article-headings"></h1>
 

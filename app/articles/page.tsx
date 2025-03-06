@@ -71,7 +71,7 @@ export default async function Page({
       <Section>
         <Container>
           <div className="mx-90px page-header">
-            <h2 className="small-caps-heading">News & Articles</h2>
+            <h1 className="small-caps-heading">News & Articles</h1>
           </div>
           <div className="article-grid">
 

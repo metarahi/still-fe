@@ -48,7 +48,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                                 </div>
                                 <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
-                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}
+                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}&nbsp;
                                     <span
                                         className="arrow">→</span></Link></div>
                                 <div className="paragraph"
@@ -87,7 +87,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
                                 </div>
                                 <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
                                 </h2>
-                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}
+                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}&nbsp;
                                     <span
                                         className="arrow">→</span></Link></div>
                                 <div className="paragraph"

@@ -75,7 +75,7 @@ export async function FeaturedPost({ post }: { post: Post }): Promise<ReactEleme
             <div>
                 <h3
                     className="h3-headings-and-pullquotes"
-                >{post.title?.rendered} <span className="arrow">→</span></h3>
+                >{post.title?.rendered}&nbsp;&nbsp;<span className="arrow">→</span></h3>
                 {words && (
                     <p className="article-words">Words: {words}</p>
                 )}

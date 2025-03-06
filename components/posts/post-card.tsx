@@ -52,10 +52,11 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
     <Link
       href={`/articles/${post.slug}`}
       className={cn(
+          "post-card",
           gridClass
       )}
     >
-      <div className="md:flex md:flex-col md:gap-6">
+      <div className="md:flex md:flex-col md:gap-x-6">
         <div className="w-full overflow-hidden relative flex items-center justify-center">
           {media?.source_url ? (
               <Image

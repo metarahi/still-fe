@@ -87,7 +87,7 @@ export default async function Page({
           >
             <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">{page.title.rendered}</h1>
           </div>
-          <div className="mx-90px grid grid-cols-4 md:grid-cols-16 md:gap-6">
+          <div className="mx-90px grid max-md:grid-cols-4 md:grid-cols-16 md:gap-6">
             <div className="featured-image">
               {media &&
                   <Image
