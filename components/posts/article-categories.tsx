@@ -29,7 +29,7 @@ const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<a
                     /></span>
             </div>
             {categories.map((category: Category): ReactElement<any, any> => (
-                <Link key={category.id} href={`?category=${category.id.toString()}`}
+                <Link key={category.id} href={`/category/${category.slug}`}
                       className={"border-radius" + (showArticleCategories ? "" : " max-xl:hidden")}>
                     {category.name}
                 </Link>

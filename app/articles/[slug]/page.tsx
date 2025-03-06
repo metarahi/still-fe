@@ -113,7 +113,7 @@ export default async function Page({
               {categories && categories.map((category: Category): ReactElement<any, any> => (
                   <Link
                       key={category.id}
-                      href={`/articles/?category=${category.id}`}
+                      href={`/category/${category.slug}`}
                       className={cn(
                           "!no-underline"
                       )}

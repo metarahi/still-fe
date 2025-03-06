@@ -17,23 +17,11 @@ export const metadata: Metadata = {
   description: "Browse all our news & articles",
 };
 
-// export const dynamic = "auto";
-// export const revalidate = 600;
-
-export default async function Page({
-                                     searchParams,
-                                   }: {
-  searchParams: Promise<{
-    category?: string;
-    page?: string;
-  }>;
-}): Promise<ReactElement<any, any>> {
-  const params: {category?: string | undefined, page?: string | undefined} = await searchParams;
-  const { category, page: pageParam } = params;
+export default async function Page(): Promise<ReactElement<any, any>> {
 
   // Fetch data based on search parameters
   const [posts, categories] = await Promise.all([
-    getAllPosts({ category }),
+    getAllPosts(),
     getAllCategories(),
   ]);
 
@@ -45,6 +33,7 @@ export default async function Page({
 
   // Get one latest featured post
   const featuredPost: Post = featuredPosts[0];
+  const category = null;
 
   if (!category && Object.hasOwn(featuredPost, 'id')) {
     // Remove featured post from posts
@@ -59,7 +48,8 @@ export default async function Page({
   }
 
   // Handle pagination
-  const page: number = pageParam ? parseInt(pageParam, 10) : 1;
+  // const page: number = pageParam ? parseInt(pageParam, 10) : 1;
+  const page: number = 1;
   const postsPerPage = 6;
   const paginatedPosts: Post[] = posts.slice(
       (page - 1) * postsPerPage,
