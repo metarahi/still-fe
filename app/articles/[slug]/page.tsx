@@ -85,10 +85,9 @@ export default async function Page({
   }
   const words: string | undefined = post.acf?.words;
   const images: string | undefined = post.acf?.images;
-  let intro;
-  post.block_data?.forEach((block: { blockName: string; }): void => {
+  let intro: string | undefined = "";
+  post.block_data?.forEach((block: { blockName: string, rendered: string; }): void => {
     if (block.blockName === "core/heading") {
-      // @ts-ignore
       intro = block.rendered;
     }
   });
