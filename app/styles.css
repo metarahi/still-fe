@@ -389,7 +389,7 @@ footer {
         margin-top: 0;
     }
     &.wp-container-core-columns-is-layout-2 {
-        gap: 28px;
+        gap: 20px;
         grid-template-columns: repeat(4, 1fr);
         > div:first-child {
             grid-column: 1 / span 4;
@@ -426,7 +426,6 @@ footer {
     }
 
     .carousel-wrapper {
-        height: 300px;
         @media only screen and (min-width: $medium) {
             height: 100vh;
             min-height: 100%;
@@ -450,10 +449,11 @@ footer {
         }
 
         img {
-            height: 300px;
+            aspect-ratio: 49 / 60;
             object-fit: cover;
             width: 100%;
             @media only screen and (min-width: $medium) {
+                aspect-ratio: auto;
                 height: 100vh;
                 max-width: none;
                 min-height: 100%;
