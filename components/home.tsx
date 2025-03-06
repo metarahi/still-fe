@@ -8,7 +8,8 @@ import Fade from "@/lib/embla-carousel-fade-custom";
 import {Property} from "csstype";
 import DOMPurify from "isomorphic-dompurify";
 import Page = Property.Page;
-import {ReactElement} from "react";
+import {ReactElement, useEffect} from "react";
+import AOS from "aos";
 
 export default function HomePage(page: Page): ReactElement<any, any> {
     const homePageDom = htmlFrom(page.data.content.rendered);
@@ -56,15 +57,17 @@ export default function HomePage(page: Page): ReactElement<any, any> {
         setBackground.setNextImage(activeImage);
     }
 
-    try {
-        document.querySelectorAll('.project-previews .inner').forEach(
-            function(currentValue: Element): void {
-                init_crossFade(currentValue);
-            }
-        )
-    } catch (ev) {
-        // do nothing.
-    }
+    useEffect((): void => {
+        try {
+            document.querySelectorAll('.project-previews .inner').forEach(
+                function(currentValue: Element): void {
+                    init_crossFade(currentValue);
+                }
+            )
+        } catch (ev) {
+            // do nothing.
+        }
+    }, []);
 
     return (
         <div>
