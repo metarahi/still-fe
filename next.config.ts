@@ -19,6 +19,26 @@ const nextConfig: NextConfig = {
         destination: `${process.env.WORDPRESS_URL}/wp-admin`,
         permanent: true,
       },
+      {
+        source: "/pages/contact-us",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/pages/our-team",
+        destination: "/our-team",
+        permanent: true,
+      },
+      {
+        source: "/pages/still-100",
+        destination: "/still-100",
+        permanent: true,
+      },
+      {
+        source: "/pages/home",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
   typescript: {
