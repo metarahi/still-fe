@@ -1254,7 +1254,7 @@ body:has(div.projects-index) {
 
         > div:first-child {
             grid-column: 2 / span 5;
-            margin-bottom: 68px;
+            margin-bottom: 76px;
             @media only screen and (min-width: $medium) {
                 margin-bottom: 0;
             }
@@ -1290,7 +1290,7 @@ body:has(div.projects-index) {
     img.w-full {
         grid-column: 12 / span 5;
         grid-row: 1;
-        margin-bottom: 45px;
+        margin-bottom: 46px;
         @media only screen and (min-width: $medium) {
             margin-bottom: 168px;
         }
@@ -1330,7 +1330,7 @@ body:has(div.projects-index) {
         .subsidiary-number {
             color: var(--still-grey);
             font-family: var(--font-numeric), serif;
-            font-size: 16px;
+            font-size: 15px;
             justify-self: end;
             order: 2;
         }
@@ -1341,7 +1341,10 @@ body:has(div.projects-index) {
     }
 
     .project-body {
-        margin-top: 46px;
+        margin-top: 50px;
+        @media only screen and (min-width: $medium) {
+            margin-top: 46px;
+        }
     }
 
     .project-endorsements:not(:empty):before {
@@ -1393,17 +1396,14 @@ body:has(div.projects-index) {
     .project-gallery {
         grid-column: 1 / span 10;
         grid-row: 2 / span 2;
-        margin: 25px 0 47px;
+        margin: 32px 0 42px;
 
         @media only screen and (min-width: $medium) {
             margin: 95px 0 0 0;
         }
 
         .text-right {
-            margin-top: -37px;
-            @media only screen and (min-width: $medium) {
-                margin-top: -25px;
-            }
+            margin-top: -25px;
         }
 
         .button:active,
@@ -1422,8 +1422,10 @@ body:has(div.projects-index) {
         grid-row: 3;
         justify-content: center;
         margin-bottom: 40px;
+        margin-top: 44px;
         @media only screen and (min-width: $medium) {
             margin-bottom: 31px;
+            margin-top: 0;
         }
     }
 
