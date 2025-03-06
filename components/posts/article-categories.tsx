@@ -20,11 +20,12 @@ const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<a
         <div className="article-categories flex flex-col">
             <div className="small-caps-menu-button-lists w-full">
                 <span className="max-xl:hidden">Categories:</span>
-                <span className="xl:hidden flex justify-between w-full">Categories
+                <span className="xl:hidden flex justify-between w-full"
+                      onClick={() => handleToggleCategories()}
+                >Categories
                     <Image src={Plus} alt="Categories"
                            height="11"
                            width="11"
-                           onClick={() => handleToggleCategories()}
                     /></span>
             </div>
             {categories.map((category: Category): ReactElement<any, any> => (
