@@ -17,6 +17,8 @@ import Image from "next/image";
 import React, {ReactElement} from "react";
 import { Category, FeaturedMedia, Post } from "@/lib/wordpress.d";
 
+export const revalidate = 600;
+
 export async function generateStaticParams(): Promise<{slug: string}[]> {
   const posts: Post[] = await getAllPosts();
 

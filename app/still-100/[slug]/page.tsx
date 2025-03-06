@@ -20,6 +20,8 @@ import parse, {domToReact} from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
 import ProjectPageContent from "@/components/projects/project-page-content";
 
+export const revalidate = 600;
+
 export async function generateStaticParams(): Promise<{slug: string}[]> {
     const projects: Post[] = await getAllProjects();
 

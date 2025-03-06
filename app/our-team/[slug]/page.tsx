@@ -12,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FeaturedMedia, Post } from "@/lib/wordpress.d";
 
+export const revalidate = 600;
+
 export async function generateStaticParams() {
     const projects: Post[] = await getAllTeamMembers();
 

@@ -5,6 +5,7 @@ import React, { ReactElement } from "react";
 import TeamWrapper from "@/components/team/team-wrapper";
 import { Page as WordpressPage, Post } from "@/lib/wordpress.d";
 
+export const revalidate = 600;
 export const metadata: Metadata = {
     title: "Our Team",
     description: "Meet our team",

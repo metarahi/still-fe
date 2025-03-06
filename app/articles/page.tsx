@@ -12,6 +12,7 @@ import { Post } from "@/lib/wordpress.d";
 import {ReactElement} from "react";
 import ArticleCategories from "@/components/posts/article-categories";
 
+export const revalidate = 600;
 export const metadata: Metadata = {
   title: "News & Articles",
   description: "Browse all our news & articles",

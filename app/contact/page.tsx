@@ -5,6 +5,7 @@ import React, {ReactElement} from "react";
 import ContactForm from "@/components/contact-form";
 import {Page as WordpressPage} from "@/lib/wordpress.d";
 
+export const revalidate = 600;
 export const metadata: Metadata = {
     title: "Contact Us",
     description: "Contact us",

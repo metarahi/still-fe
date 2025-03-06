@@ -20,6 +20,7 @@ export async function generateStaticParams(): Promise<{slug: string}[]> {
     }));
 }
 
+export const revalidate = 600;
 export const metadata: Metadata = {
     title: "News & Articles",
     description: "Browse all our news & articles",

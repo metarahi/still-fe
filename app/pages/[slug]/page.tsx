@@ -7,8 +7,7 @@ import type { Metadata } from "next";
 import React, {ReactElement} from "react";
 import { Page as WordpressPage } from "@/lib/wordpress.d";
 
-// Revalidate pages every hour
-// export const revalidate = 3600;
+export const revalidate = 600;
 
 export async function generateStaticParams(): Promise<{slug: string}[]> {
   const pages: WordpressPage[] = await getAllPages();

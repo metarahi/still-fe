@@ -4,7 +4,7 @@ import type {Metadata} from "next";
 import React from "react";
 import ProjectsWrapper from "@/components/projects/projects-wrapper";
 
-
+export const revalidate = 600;
 export const metadata: Metadata = {
     title: "STILL 100",
     description: "View all of our projects",
