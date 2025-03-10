@@ -4,5 +4,6 @@ module.exports = {
     autoprefixer: {},
     "postcss-extend": {},
     "postcss-simple-vars": {},
+    "postcss-nesting": {},
   },
 };

@@ -371,7 +371,7 @@ footer {
         input::placeholder {
             color: var(--still-grey);
         }
-        
+
         button {
             grid-column: 1 / span 8;
             @media only screen and (min-width: $medium) {
