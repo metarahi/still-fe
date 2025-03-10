@@ -18,14 +18,16 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetTitle,
   SheetHeader,
 } from "@/components/ui/sheet";
 
 import { mainMenu } from "@/menu.config";
+import MenuClose from "@/public/menu-close.svg";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
+  const [closing, setClosing] = React.useState(false);
+  const wait = () => new Promise((resolve) => setTimeout(resolve, 500));
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -37,23 +39,32 @@ export function MobileNav() {
           <Image src={MenuOpen} alt="Toggle menu" height="10" width="28" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent side="fade" className={closing ? 'closing' : ''}>
         <SheetHeader>
-          <SheetTitle className="text-left">
-            <MobileLink
+          <MobileLink
               href="/"
-              className="flex items-center"
+              className="transition-all flex gap-4 items-center position-absolute left-8"
               onOpenChange={setOpen}
-            >
-              <Image
-                  src={Logo}
-                  alt="Logo"
-                  loading="eager"
-                  width={72}
-                  height={15}
-              ></Image>
-            </MobileLink>
-          </SheetTitle>
+          >
+            <Image
+                src={Logo}
+                alt="Logo"
+                loading="eager"
+                width={72}
+                height={15}
+            ></Image>
+          </MobileLink>
+          <div className="p-3 px-0 h-10 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary">
+            <Image src={MenuClose} alt="Close" height={20} width={20}
+              onClick={function() {
+                setClosing(true);
+                wait().then(function() {
+                  setOpen(false);
+                  setClosing(false);
+                })
+              }}
+            />
+          </div>
         </SheetHeader>
         <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
           <div className="flex flex-col text-center h-[calc(100vh-6rem)] justify-center">
