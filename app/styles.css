@@ -356,25 +356,26 @@ footer {
             gap: 24px;
             grid-template-columns: repeat(8, 1fr);
             width: 100%;
+        }
 
-            input {
-                grid-column: 1 / span 8;
-                padding-top: 22px;
-                -webkit-appearance: none;
-                @media only screen and (min-width: $medium) {
-                    grid-column: 1 / span 6;
-                }
+        input {
+            border-radius: 0;
+            grid-column: 1 / span 8;
+            padding-top: 22px;
+            -webkit-appearance: none;
+            @media only screen and (min-width: $medium) {
+                grid-column: 1 / span 6;
             }
+        }
 
-            input::placeholder {
-                color: var(--still-grey);
-            }
-
-            button {
-                grid-column: 1 / span 8;
-                @media only screen and (min-width: $medium) {
-                    grid-column: 7 / span 2;
-                }
+        input::placeholder {
+            color: var(--still-grey);
+        }
+        
+        button {
+            grid-column: 1 / span 8;
+            @media only screen and (min-width: $medium) {
+                grid-column: 7 / span 2;
             }
         }
     }
