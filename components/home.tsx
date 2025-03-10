@@ -32,21 +32,17 @@ export default function HomePage(page: Page): ReactElement<any, any> {
             },
 
             setNextImage: function(activeImage: Element | null) {
-                setTimeout(function() {
-                    if (activeImage !== null) {
-                        activeImage.classList.remove('active');
-                        let nextImage: Element | null = element.querySelector('.slide');
-                        if (activeImage.nextElementSibling !== null) {
-                            nextImage = activeImage.nextElementSibling;
-                        }
-                        if (nextImage !== null) {
-                            nextImage.classList.add('active');
-                            setTimeout(function() {
-                                setBackground.setNextImage(nextImage);
-                            }, 2000);
-                        }
+                if (activeImage !== null) {
+                    activeImage.classList.remove('active');
+                    let nextImage: Element | null = element.querySelector('.slide');
+                    if (activeImage.nextElementSibling !== null) {
+                        nextImage = activeImage.nextElementSibling;
                     }
-                }, 2000);
+                    if (nextImage !== null) {
+                        nextImage.classList.add('active');
+                        // setBackground.setNextImage(nextImage);
+                    }
+                }
             }
         };
 
@@ -58,15 +54,23 @@ export default function HomePage(page: Page): ReactElement<any, any> {
     }
 
     useEffect((): void => {
-        try {
-            document.querySelectorAll('.project-previews .inner').forEach(
-                function(currentValue: Element): void {
-                    init_crossFade(currentValue);
-                }
-            )
-        } catch (ev) {
-            // do nothing.
+        const projectPreviews: NodeListOf<Element> = document.querySelectorAll('.project-previews .inner');
+
+        function handleTimer(): void {
+            const random: number = Math.floor(Math.random() * projectPreviews.length);
+            init_crossFade(projectPreviews[random]);
         }
+
+        let timer = setInterval(handleTimer, 4000);
+
+        projectPreviews.forEach(function(element: Element): void {
+            element.addEventListener("mouseover", (event): void => {
+                clearInterval(timer);
+            });
+            element.addEventListener("mouseout", (event): void => {
+                setInterval(handleTimer, 4000);
+            });
+        })
     }, []);
 
     return (
