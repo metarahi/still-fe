@@ -91,7 +91,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
                                 if (!subsidiary.number) return null;
                                 return (
                                     <div key={subIndex}>
-                                        <span>{`0${subsidiary.number}`.slice(-2)}</span>{subsidiary.name}
+                                        <span>{`0${subsidiary.number}`.slice(-2)}</span><span className="index-subsidiary-name">{subsidiary.name}</span>
                                     </div>
                                 );
                             };
