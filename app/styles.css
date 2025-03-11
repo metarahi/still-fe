@@ -273,6 +273,15 @@ nav {
     }
 }
 
+nav.hidden-scroll {
+    @media only screen and (min-width: $medium) {
+        background: rgba(255, 255, 255, .75);
+        border-bottom: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 nav:hover,
 nav.show {
     background: #fff;
@@ -281,6 +290,8 @@ nav.show {
     @media only screen and (min-width: $medium) {
         background: rgba(255, 255, 255, .75);
         border-bottom: none;
+        opacity: 1;
+        visibility: visible;
     }
 }
 
