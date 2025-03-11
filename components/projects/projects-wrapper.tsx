@@ -3,7 +3,7 @@
 import React, {ReactElement} from "react";
 import ViewToggle from "@/components/projects/view-toggle";
 import Project from "@/components/projects/project";
-import {Post} from "@/lib/wordpress.d";
+import {Project as WordpressProject} from "@/lib/wordpress.d";
 import Link from "next/link";
 
 function transformSubsidiaryData(data: Record<string, any>): Record<string, any> {
@@ -44,7 +44,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
     const _pageHtml: any = page.pageHtml;
     let _projects: any = page.projects;
     // Sort teamMembers by acf.sort_order
-    _projects.sort((a: Post, b: Post): number => {
+    _projects.sort((a: WordpressProject, b: WordpressProject): number => {
         // @ts-ignore
         const sortA: number = a.acf?.sort_order === "" ? Infinity : a.acf?.sort_order || 0;
         // @ts-ignore
@@ -66,7 +66,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
             {activeView && activeView === 'overview' &&
                 <div className="md:mx-90px grid max-md:grid-cols-2 gap-x-7 gap-y-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 projects-grid">
                     {_projects && _projects.map(
-                        function (project: Post, index: number) {
+                        function (project: WordpressProject, index: number) {
                             const columnPositions = ["grid-start-2", "grid-start-7", "grid-start-12"];
                             const gridClass = columnPositions[index % 3];
                             return <Project page={project} gridClass={gridClass} key={index}></Project>
@@ -81,7 +81,7 @@ const ProjectsWrapper: (page: any) => ReactElement = (page: any): ReactElement<a
                         <p>Subsidiaries:</p>
                     </div>
                     {_projectsIndex && _projectsIndex.map(
-                        function renderProjectRow(project: Post, index: number): ReactElement {
+                        function renderProjectRow(project: WordpressProject, index: number): ReactElement {
                             const hasSubsidiaryData: boolean = !!project.block_data?.[1]?.innerBlocks?.[1]?.innerBlocks?.[0]?.attrs?.data?.subsidiary_0_name;
                             const subsidiaries: any[] | null = hasSubsidiaryData
                                 ? Object.values(transformSubsidiaryData(project.block_data?.[1]?.innerBlocks?.[1]?.innerBlocks?.[0]?.attrs?.data))

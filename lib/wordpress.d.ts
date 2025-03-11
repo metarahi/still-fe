@@ -98,6 +98,35 @@ export interface Page extends WPEntity {
   block_data?: Record<string, unknown>;
 }
 
+export interface Project extends WPEntity {
+  title: RenderedTitle;
+  content: RenderedContent;
+  excerpt: RenderedContent;
+  author: number;
+  featured_media: number;
+  comment_status: "open" | "closed";
+  ping_status: "open" | "closed";
+  sticky: boolean;
+  template: string;
+  format:
+      | "standard"
+      | "aside"
+      | "chat"
+      | "gallery"
+      | "link"
+      | "image"
+      | "quote"
+      | "status"
+      | "video"
+      | "audio";
+  categories: number[];
+  tags: number[];
+  meta: Record<string, unknown>;
+  acf: Record<string, string>;
+  _embedded: Record<string, Array>;
+  block_data: Record<string, Array>;
+}
+
 // Taxonomy types
 interface Taxonomy {
   id: number;

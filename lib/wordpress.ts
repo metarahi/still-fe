@@ -11,6 +11,7 @@ import type {
   Category,
   Tag,
   Page,
+  Project,
   Author,
   FeaturedMedia,
 } from "./wordpress.d";
@@ -456,14 +457,14 @@ export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
   }
 }
 
-export async function getAllProjects(): Promise<Post[]> {
+export async function getAllProjects(): Promise<Project[]> {
   const query: Record<string, any> = {
     _embed: true,
     per_page: 100,
   };
 
   const url = getUrl("/wp-json/wp/v2/project", query);
-  return wordpressFetch<Post[]>(url, {
+  return wordpressFetch<Project[]>(url, {
     next: {
       ...defaultFetchOptions.next,
       tags: ["wordpress", "projects"],
@@ -471,9 +472,9 @@ export async function getAllProjects(): Promise<Post[]> {
   });
 }
 
-export async function getProjectBySlug(slug: string): Promise<Post> {
-  const url = getUrl("/wp-json/wp/v2/project", { slug });
-  const response = await wordpressFetch<Post[]>(url, {
+export async function getProjectBySlug(slug: string): Promise<Project> {
+  const url: string = getUrl("/wp-json/wp/v2/project", { slug });
+  const response: Project[] = await wordpressFetch<Project[]>(url, {
     next: {
       ...defaultFetchOptions.next,
       tags: ["wordpress", `project-${slug}`],

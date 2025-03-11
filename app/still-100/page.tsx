@@ -1,8 +1,9 @@
 import {Container, Section} from "@/components/craft";
 import {getAllProjects, getPageById} from "@/lib/wordpress";
 import type {Metadata} from "next";
-import React from "react";
+import React, {ReactElement} from "react";
 import ProjectsWrapper from "@/components/projects/projects-wrapper";
+import {Page as WordpressPage, Project} from "@/lib/wordpress.d";
 
 export const revalidate = 600;
 export const metadata: Metadata = {
@@ -10,9 +11,9 @@ export const metadata: Metadata = {
     description: "View all of our projects",
 };
 
-export default async function Page() {
-    const page = await getPageById(173);
-    const projects = await getAllProjects();
+export default async function Page(): Promise<ReactElement<any, any>> {
+    const page: WordpressPage = await getPageById(173);
+    const projects: Project[] = await getAllProjects();
 
     return (
         <Section>
