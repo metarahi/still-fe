@@ -166,7 +166,7 @@ html:not(.no-js) [data-aos="fade-up"] {
 
 ::placeholder,
 input::placeholder {
-    color: red !important;
+    color: var(--still-grey);
 }
 
 /* Layout */
