@@ -164,6 +164,10 @@ html:not(.no-js) [data-aos="fade-up"] {
     transform: translate3d(0, 30px, 0);
 }
 
+::placeholder {
+    color: var(--still-grey);
+}
+
 /* Layout */
 .is-layout-flex {
     display: grid;
