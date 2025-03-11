@@ -6,6 +6,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import React, {ReactElement} from "react";
 import { Page as WordpressPage } from "@/lib/wordpress.d";
+import {notFound} from "next/navigation";
 
 export const revalidate = 600;
 
@@ -73,6 +74,11 @@ export default async function Page({
 }): Promise<ReactElement<any, any>> {
   const { slug } = await params;
   const page: WordpressPage = await getPageBySlug(slug);
+
+  if (!page) {
+    notFound();
+  }
+
   let media;
   if (page.featured_media) {
     media = await getFeaturedMediaById(page.featured_media)

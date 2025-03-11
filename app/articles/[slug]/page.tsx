@@ -16,6 +16,7 @@ import LatestNews from "@/components/latest-news";
 import Image from "next/image";
 import React, {ReactElement} from "react";
 import { Category, FeaturedMedia, Post } from "@/lib/wordpress.d";
+import {notFound} from "next/navigation";
 
 export const revalidate = 600;
 
@@ -78,6 +79,11 @@ export default async function Page({
 }): Promise<ReactElement<any, any>> {
   const { slug } = await params;
   const post: Post = await getPostBySlug(slug);
+
+  if (!post) {
+    notFound();
+  }
+
   const featuredMedia: FeaturedMedia | null = post.featured_media
       ? await getFeaturedMediaById(post.featured_media)
       : null;

@@ -19,6 +19,7 @@ import Fade from "@/lib/embla-carousel-fade-custom";
 import parse, {domToReact} from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
 import ProjectPageContent from "@/components/projects/project-page-content";
+import {notFound} from "next/navigation";
 
 export const revalidate = 600;
 
@@ -85,6 +86,11 @@ export default async function Page({
 }): Promise<ReactElement<any, any>> {
     const { slug } = await params;
     const post: Post = await getProjectBySlug(slug);
+
+    if (!post) {
+        notFound();
+    }
+
     const featuredMedia: FeaturedMedia | null = post.featured_media
         ? await getFeaturedMediaById(post.featured_media)
         : null;
