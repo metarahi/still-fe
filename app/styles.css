@@ -5,6 +5,8 @@ $large: 64rem;
 $xlarge: 80rem;
 $xxlarge: 96rem;
 
+$ipadPortrait: 85rem;
+
 /* Styles */
 html {
     font-family: var(--font-sans), sans-serif;
@@ -392,6 +394,12 @@ footer {
             @media only screen and (min-width: $medium) {
                 grid-column: 1 / span 6;
             }
+            @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+                grid-column: 1 / span 5;
+            }
+            @media only screen and (min-width: $xxlarge) {
+                grid-column: 1 / span 6;
+            }
         }
 
         input::placeholder {
@@ -401,6 +409,12 @@ footer {
         button {
             grid-column: 1 / span 8;
             @media only screen and (min-width: $medium) {
+                grid-column: 7 / span 2;
+            }
+            @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+                grid-column: 6 / span 3;
+            }
+            @media only screen and (min-width: $xxlarge) {
                 grid-column: 7 / span 2;
             }
         }
@@ -457,6 +471,7 @@ footer {
         @media only screen and (min-width: $medium) {
             gap: 24px;
             grid-template-columns: repeat(8, 1fr);
+
             > div:first-child {
                 grid-column: 1 / span 4;
                 grid-row: 1;
@@ -471,16 +486,29 @@ footer {
                 margin-bottom: 0;
             }
         }
+
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            > div:first-child {
+                margin-top: 118px;
+            }
+        }
+
+        @media only screen and (min-width: $xlarge) {
+            > div:first-child {
+                margin-top: calc(40vh - 108px);
+            }
+        }
     }
 
     .carousel-wrapper {
-        @media only screen and (min-width: $medium) {
-            height: 100vh;
-            min-height: 100%;
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            height: 50vh;
+            min-height: 50%;
         }
 
-        .basis-full {
-            /*transition: opacity 1s ease-in-out;*/
+        @media only screen and (min-width: $xlarge) {
+            height: 100vh;
+            min-height: 100%;
         }
 
         .overflow-hidden,
@@ -502,10 +530,16 @@ footer {
             width: 100%;
             @media only screen and (min-width: $medium) {
                 aspect-ratio: auto;
-                height: 100vh;
                 max-width: none;
-                min-height: 100%;
                 width: 50vw;
+            }
+            @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+                height: 50vh;
+                min-height: 50%;
+            }
+            @media only screen and (min-width: $xlarge) {
+                height: 100vh;
+                min-height: 100%;
             }
         }
     }
@@ -753,6 +787,9 @@ footer {
             grid-row: 4;
             margin-top: 0;
         }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-column: 2 / span 5;
+        }
         @media only screen and (min-width: $xxlarge) {
             grid-column: 2 / span 3;
         }
@@ -831,9 +868,17 @@ body:has(.latest-articles-home img:hover) {
         column-gap: 24px;
         display: grid;
         grid-template-columns: 66px repeat(16, 1fr) 66px;
-        grid-template-rows: 354px 388px min-content min-content;
+        grid-template-rows: 354px 215px min-content min-content;
         margin: 208px 0 0;
         padding: 0;
+    }
+
+    @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+        grid-template-rows: 354px 72px min-content min-content;
+    }
+
+    @media only screen and (min-width: $xxlarge) {
+        grid-template-rows: 354px 388px min-content min-content;
     }
 
     > :nth-child(1) {
@@ -879,6 +924,13 @@ body:has(.latest-articles-home img:hover) {
         margin-top: 39px;
         @media only screen and (min-width: $medium) {
             margin-top: 0;
+            grid-row: 2;
+        }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-row: 3;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-row: 3;
         }
     }
 
@@ -913,6 +965,12 @@ body:has(.latest-articles-home img:hover) {
         @media only screen and (min-width: $medium) {
             margin-top: 0;
             width: auto;
+        }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-column: 10 / span 4;
+        }
+        @media only screen and (min-width: $xxlarge) {
+            grid-column: 10 / span 3;
         }
     }
 
@@ -996,6 +1054,12 @@ body:has(.latest-articles-home img:hover) {
         margin-top: 10px;
         @media only screen and (min-width: $medium) {
             margin-top: 70px;
+        }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-column: span 4;
+        }
+        @media only screen and (min-width: $xxlarge) {
+            grid-column: span 3;
         }
     }
 }
@@ -1515,6 +1579,12 @@ body:has(div.projects-index) {
             margin-bottom: 31px;
             margin-top: 0;
         }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-column: 12 / span 5;
+        }
+        @media only screen and (min-width: $xxlarge) {
+            grid-column: 12 / span 3;
+        }
     }
 
     .carousel-indicators {
@@ -1738,6 +1808,14 @@ h1 .job-title {
             grid-column: 2 / span 3;
             grid-row: 2;
         }
+        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            grid-column: 2 / span 4;
+            grid-row: 1;
+        }
+        @media only screen and (min-width: $xxlarge) {
+            grid-column: 2 / span 3;
+            grid-row: 2;
+        }
     }
 }
 
@@ -1748,13 +1826,19 @@ img.w-half {
         grid-row: 1 / span 2;
         height: 100vh;
         margin: 0;
-        max-width: none;
+        max-width: 50vw;
         width: 50vh;
         min-width: 50vw;
         object-fit: cover;
         position: absolute;
         right: 0;
         top: 0;
+    }
+    @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+        height: 50vh;
+    }
+    @media only screen and (min-width: $xxlarge) {
+        height: 100vh;
     }
 }
 
