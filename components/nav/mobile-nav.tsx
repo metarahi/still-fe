@@ -27,14 +27,14 @@ import MenuClose from "@/public/menu-close.svg";
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const [closing, setClosing] = React.useState(false);
-  const wait = () => new Promise((resolve) => setTimeout(resolve, 500));
+  const wait = () => new Promise((resolve) => setTimeout(resolve, 400));
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
           variant="carousel"
-          className="px-0 hover:bg-transparent focus-visible:bg-transparent md:hidden"
+          className="px-0 bg-transparent hover:opacity-100 hover:bg-transparent hover:border-none focus-visible:outline-none focus:outline-none outline-none md:hidden"
         >
           <Image src={MenuOpen} alt="Toggle menu" height="10" width="28" />
         </Button>
@@ -54,7 +54,7 @@ export function MobileNav() {
                 height={15}
             ></Image>
           </MobileLink>
-          <div className="p-3 px-0 h-10 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary">
+          <div className="p-3 px-0 h-10 hover:opacity-100 focus:outline-none">
             <Image src={MenuClose} alt="Close" height={20} width={20}
               onClick={function() {
                 setClosing(true);
@@ -66,8 +66,8 @@ export function MobileNav() {
             />
           </div>
         </SheetHeader>
-        <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
-          <div className="flex flex-col text-center h-[calc(100vh-6rem)] justify-center">
+        <ScrollArea className="my-4 h-[calc(100vh-144px)]">
+          <div className="flex flex-col text-center h-[calc(100vh-144px)] justify-center">
             {Object.entries(mainMenu).map(([key, href]) => (
               <MobileLink key={key} href={href} className="small-caps-menu-button-lists mobile-menu-link" onOpenChange={setOpen}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}
