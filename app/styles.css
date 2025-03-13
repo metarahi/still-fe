@@ -2540,3 +2540,24 @@ body:has(section.page-page) {
 .page-page .page-html h2.wp-block-heading {
     @extend .small-caps-menu-button-lists;
 }
+
+/* 404 */
+.page-not-found {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    .page-html {
+        grid-column: 6 / span 6;
+
+        p {
+            margin: 30px 0 25px;
+        }
+
+        a {
+            width: 271px;
+        }
+    }
+}
