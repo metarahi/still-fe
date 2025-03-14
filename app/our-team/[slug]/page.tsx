@@ -87,7 +87,7 @@ export default async function Page({
         <Section>
             <Container>
                 <div
-                    className="mx-90px page-header"
+                    className="mx-90px page-header team-member-page-header"
                 >
                     <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">
                         {post.title.rendered}

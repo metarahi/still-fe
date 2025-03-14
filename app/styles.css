@@ -316,6 +316,7 @@ nav.hidden-scroll {
         background: rgba(255, 255, 255, .75);
         border-bottom: none;
         opacity: 0;
+        position: fixed;
         visibility: hidden;
     }
 }
@@ -412,18 +413,30 @@ footer {
         form {
             align-items: end;
             display: grid;
-            column-gap: 24px;
+            gap: 24px;
             grid-template-columns: repeat(8, 1fr);
             width: 100%;
+            @media only screen and (min-width: $medium) {
+                row-gap: 0;
+            }
         }
 
         form > div {
             align-items: end;
             display: grid;
-            grid-column: 1 / span 6;
+            grid-column: 1 / span 8;
             grid-row: 1;
             grid-template-columns: subgrid;
             grid-template-rows: subgrid;
+            @media only screen and (min-width: $medium) {
+                grid-column: 1 / span 6;
+            }
+            @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+                grid-column: 1 / span 5;
+            }
+            @media only screen and (min-width: $xxlarge) {
+                grid-column: 1 / span 6;
+            }
         }
 
         input {
@@ -929,28 +942,32 @@ footer {
 }
 
 body:has(.project-previews img:hover) {
-    background: var(--still-sand-dark);
-
-    nav {
+    @media only screen and (min-width: $medium) {
         background: var(--still-sand-dark);
-    }
 
-    .project-previews img:not(:hover) {
-        filter: grayscale(1);
-        mix-blend-mode: multiply;
+        nav {
+            background: var(--still-sand-dark);
+        }
+
+        .project-previews img:not(:hover) {
+            filter: grayscale(1);
+            mix-blend-mode: multiply;
+        }
     }
 }
 
 body:has(.latest-articles-home img:hover) {
-    background: var(--still-sand-dark);
-
-    nav {
+    @media only screen and (min-width: $medium) {
         background: var(--still-sand-dark);
-    }
 
-    .latest-articles-home img:not(:hover) {
-        filter: grayscale(1);
-        mix-blend-mode: multiply;
+        nav {
+            background: var(--still-sand-dark);
+        }
+
+        .latest-articles-home img:not(:hover) {
+            filter: grayscale(1);
+            mix-blend-mode: multiply;
+        }
     }
 }
 
@@ -1283,8 +1300,10 @@ body:has(.project-page-html) .page-header h1 {
 }
 
 .projects-grid img:hover {
-    filter: grayscale(1);
-    mix-blend-mode: multiply;
+    @media only screen and (min-width: $medium) {
+        filter: grayscale(1);
+        mix-blend-mode: multiply;
+    }
 }
 
 .projects-grid h2 a {
@@ -1698,6 +1717,12 @@ body:has(div.projects-index) {
 }
 
 /* Team Members */
+.our-team-page-header {
+    h2 {
+        margin-bottom: 25px;
+    }
+}
+
 .featured-team-members {
     margin: 78px 20px 0;
     @media only screen and (min-width: $medium) {
@@ -1850,6 +1875,10 @@ h1 .job-title {
         display: inline;
         margin: 0 0 0 24px;
     }
+}
+
+.team-member-page-header h1 {
+    margin-bottom: 22px;
 }
 
 .team-page-html {
@@ -2117,7 +2146,7 @@ img.w-half {
 
     > div {
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        margin-bottom: 24px;
+        margin-bottom: 50px;
         padding-bottom: 21px;
         @media only screen and (min-width: $xlarge) {
             border-bottom: 0;
@@ -2125,6 +2154,10 @@ img.w-half {
             padding-bottom: 0;
         }
     }
+}
+
+.article-categories.toggle-open > div {
+    margin-bottom: 24px;
 }
 
 .article-categories a {

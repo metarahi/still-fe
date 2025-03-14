@@ -16,7 +16,7 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
     return (
         <div>
             <div
-                className="mx-90px page-header"
+                className="mx-90px page-header our-team-page-header"
             >
                 <h1 className="small-caps-heading">{_page.title.rendered}</h1>
                 <div className="page-html" dangerouslySetInnerHTML={_pageHtml}/>

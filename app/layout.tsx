@@ -63,7 +63,7 @@ const Footer = () => {
   return (
     <footer>
       <Section>
-        <Container className="flex flex-col md:grid md:grid-cols-16 md:gap-6 items-end">
+        <Container className="flex flex-col md:grid md:grid-cols-16 md:gap-6 md:items-end">
           <div className="flex flex-col footer-menu">
             {Object.entries(footerMenu).map(([key, href]) => (
                 <Link

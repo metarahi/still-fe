@@ -17,7 +17,7 @@ const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<a
     }
 
     return (
-        <div className="article-categories flex flex-col">
+        <div className={"article-categories flex flex-col" + (showArticleCategories ? " toggle-open" : " toggle-closed")}>
             <div className="small-caps-menu-button-lists w-full">
                 <span className="max-xl:hidden">Categories:</span>
                 <span className="xl:hidden flex justify-between w-full"
