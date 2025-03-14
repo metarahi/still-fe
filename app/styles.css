@@ -313,7 +313,7 @@ nav {
 
 nav.hidden-scroll {
     @media only screen and (min-width: $medium) {
-        background: rgba(255, 255, 255, .75);
+        background: rgba(255, 255, 255, .85);
         border-bottom: none;
         opacity: 0;
         position: fixed;
@@ -327,7 +327,7 @@ nav.show {
     border-bottom: 1px solid;
     position: fixed;
     @media only screen and (min-width: $medium) {
-        background: rgba(255, 255, 255, .75);
+        background: rgba(255, 255, 255, .85);
         border-bottom: none;
         opacity: 1;
         visibility: visible;
@@ -1857,13 +1857,15 @@ body:has(div.projects-index) {
         transition: opacity .45s ease-in-out;
     }
 
-    &:hover {
-        .secondary {
-            opacity: 1;
-        }
+    @media only screen and (min-width: $medium) {
+        &:hover {
+            .secondary {
+                opacity: 1;
+            }
 
-        .primary {
-            opacity: 0;
+            .primary {
+                opacity: 0;
+            }
         }
     }
 }
