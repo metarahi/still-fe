@@ -1887,7 +1887,7 @@ h1 .job-title {
     margin-top: 5px;
     @media only screen and (min-width: $medium) {
         margin-top: 133px;
-        min-height: calc(100vh - 426px);
+        min-height: calc(100vh - 448px);
     }
 
     .rendered-content {
@@ -1941,6 +1941,7 @@ h1 .job-title {
         @media only screen and (min-width: $xxlarge) {
             grid-column: 2 / span 3;
             grid-row: 2;
+            position: relative;
         }
     }
 }

@@ -1,11 +1,15 @@
 import type { NextConfig } from "next";
+let hostname = "localhost";
+if (process.env.WORDPRESS_HOSTNAME) {
+  hostname = process.env.WORDPRESS_HOSTNAME;
+}
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: `${process.env.WORDPRESS_HOSTNAME}`,
+        hostname: hostname,
         port: "",
         pathname: "**",
         search: "",

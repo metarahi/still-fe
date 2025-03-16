@@ -1,9 +1,10 @@
 import {Container, Section} from "@/components/craft";
-import {getPageById} from "@/lib/wordpress";
+import {getPageById, getPostRevisionsById} from "@/lib/wordpress";
 import type {Metadata} from "next";
 import React, {ReactElement} from "react";
 import ContactForm from "@/components/contact-form";
 import {Page as WordpressPage} from "@/lib/wordpress.d";
+import {draftMode} from "next/headers";
 
 export const revalidate = 600;
 export const metadata: Metadata = {
@@ -12,7 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Page(): Promise<ReactElement<any, any>> {
-    const page: WordpressPage = await getPageById(270);
+    let page: WordpressPage = await getPageById(270);
+    const { isEnabled } = await draftMode();
+    if (isEnabled) {
+        // @ts-ignore
+        page = await getPostRevisionsById(page.id);
+    }
 
     return (
         <Section className="contact-page">

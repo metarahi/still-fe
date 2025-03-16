@@ -12,12 +12,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import Nav from "@/components/nav/nav";
-import dynamic from "next/dynamic";
-import {Input} from "@/components/ui/input";
 import MailingList from "@/components/mailing-list";
-
-// @ts-ignore
-// const AOSInit = dynamic(() => import('@/components/ui/aos'), { ssr: true });
 
 export const metadata: Metadata = {
   title: siteConfig.site_name,

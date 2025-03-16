@@ -1,11 +1,11 @@
 import { Container, Section } from "@/components/craft";
-import { getAllTeamMembers, getFeaturedMediaById, getPageById } from "@/lib/wordpress";
+import {getAllTeamMembers, getFeaturedMediaById, getPageById, getPostRevisionsById} from "@/lib/wordpress";
 import type { Metadata } from "next";
 import React, { ReactElement } from "react";
 import TeamWrapper from "@/components/team/team-wrapper";
 import { Page as WordpressPage, Post } from "@/lib/wordpress.d";
+import {draftMode} from "next/headers";
 
-export const revalidate = 600;
 export const metadata: Metadata = {
     title: "Our Team",
     description: "Meet our team",
@@ -23,7 +23,12 @@ function featured(src: any, dest: any): void {
 }
 
 export default async function Page(): Promise<ReactElement<any, any>> {
-    const page: WordpressPage = await getPageById(208);
+    let page: WordpressPage = await getPageById(208);
+    const { isEnabled } = await draftMode();
+    if (isEnabled) {
+        // @ts-ignore
+        page = await getPostRevisionsById(page.id);
+    }
     let teamMembers: Post[] = await getAllTeamMembers();
 
     // Sort teamMembers by acf.sort_order

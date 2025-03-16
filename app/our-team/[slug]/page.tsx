@@ -1,7 +1,7 @@
 import {
     getFeaturedMediaById,
     getTeamMemberBySlug,
-    getAllTeamMembers,
+    getAllTeamMembers, getPostRevisionsById,
 } from "@/lib/wordpress";
 
 import { Section, Container } from "@/components/craft";
@@ -12,8 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FeaturedMedia, Post } from "@/lib/wordpress.d";
 import {notFound} from "next/navigation";
-
-export const revalidate = 600;
+import {draftMode} from "next/headers";
 
 export async function generateStaticParams() {
     const projects: Post[] = await getAllTeamMembers();
@@ -73,7 +72,12 @@ export default async function Page({
     params: Promise<{ slug: string }>;
 }): Promise<ReactElement<any, any>> {
     const { slug } = await params;
-    const post: Post = await getTeamMemberBySlug(slug);
+    let post: Post = await getTeamMemberBySlug(slug);
+    const { isEnabled } = await draftMode();
+    if (isEnabled) {
+        // @ts-ignore
+        post = await getPostRevisionsById(post.id);
+    }
 
     if (!post) {
         notFound();

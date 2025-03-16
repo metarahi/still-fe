@@ -1,19 +1,18 @@
-import { draftMode } from "next/headers";
-import { NextResponse } from "next/server";
+import {cookies, draftMode} from "next/headers";
+import {redirect} from "next/navigation";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const path = searchParams.get("path");
-    const draft = await draftMode()
+    const draft = await draftMode();
     draft.disable();
 
-    const response = NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
-    );
-    response.headers.set(
-        "Set-Cookie",
-        `wp_jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`,
-    );
+    const cookieStore = await cookies();
+    cookieStore.delete('wordpress_nonce');
 
-    return response;
+    if (path) {
+        return redirect(path);
+    }
+
+    return redirect('/');
 }

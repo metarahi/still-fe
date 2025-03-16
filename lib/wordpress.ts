@@ -22,7 +22,6 @@ interface FetchOptions {
     revalidate?: number | false;
     tags?: string[];
   };
-  withCredentials: true;
 }
 
 const AxiosInstance = axios.create({
@@ -40,7 +39,6 @@ const defaultFetchOptions: FetchOptions = {
     tags: ["wordpress"],
     revalidate: 3600, // Revalidate every hour by default
   },
-  withCredentials: true,
 };
 
 AxiosInstance.interceptors.request.use(
@@ -64,9 +62,7 @@ class WordPressAPIError extends Error {
 // Utility function for making WordPress API requests
 async function wordpressFetch<T>(
   url: string,
-  options: FetchOptions = {
-    withCredentials: true,
-  },
+  options: FetchOptions = {},
 ): Promise<T> {
   const userAgent = 'STILL website';
   // TODO remove for prod, prevents caching
@@ -181,7 +177,7 @@ export async function getPostRevisionsById(id: number): Promise<Post> {
   if (wordpressNonce) {
     wordpressNonceValue = wordpressNonce.value;
   }
-  const url = getUrl(`/wp-json/wp/v2/posts/${id}/autosaves?_wpnonce=${wordpressNonceValue}`);
+  const url = getUrl(`/wp-json/still/v1/preview/posts/${id}?secret=${wordpressNonceValue}`);
 
   return await wordpressFetch<Post>(url, {
     next: {

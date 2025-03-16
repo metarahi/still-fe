@@ -1,4 +1,4 @@
-import {getPageBySlug, getAllPages, getFeaturedMediaById} from "@/lib/wordpress";
+import {getPageBySlug, getAllPages, getFeaturedMediaById, getPostRevisionsById} from "@/lib/wordpress";
 import { Section, Container } from "@/components/craft";
 import { siteConfig } from "@/site.config";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import React, {ReactElement} from "react";
 import { Page as WordpressPage } from "@/lib/wordpress.d";
 import {notFound} from "next/navigation";
+import {draftMode} from "next/headers";
 
 export const revalidate = 600;
 
@@ -73,7 +74,12 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }): Promise<ReactElement<any, any>> {
   const { slug } = await params;
-  const page: WordpressPage = await getPageBySlug(slug);
+  let page: WordpressPage = await getPageBySlug(slug);
+  const { isEnabled } = await draftMode();
+  if (isEnabled) {
+    // @ts-ignore
+    page = await getPostRevisionsById(page.id);
+  }
 
   if (!page) {
     notFound();

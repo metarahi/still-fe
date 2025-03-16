@@ -1,7 +1,7 @@
 import {
     getFeaturedMediaById,
     getProjectBySlug,
-    getAllProjects,
+    getAllProjects, getPostRevisionsById,
 } from "@/lib/wordpress";
 
 import { Section, Container } from "@/components/craft";
@@ -20,6 +20,7 @@ import parse, {domToReact} from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
 import ProjectPageContent from "@/components/projects/project-page-content";
 import {notFound} from "next/navigation";
+import {draftMode} from "next/headers";
 
 export const revalidate = 600;
 
@@ -85,7 +86,12 @@ export default async function Page({
     params: Promise<{ slug: string }>;
 }): Promise<ReactElement<any, any>> {
     const { slug } = await params;
-    const post: Post = await getProjectBySlug(slug);
+    let post: Post = await getProjectBySlug(slug);
+    const { isEnabled } = await draftMode();
+    if (isEnabled) {
+        // @ts-ignore
+        post = await getPostRevisionsById(post.id);
+    }
 
     if (!post) {
         notFound();
