@@ -55,6 +55,7 @@ export function PostCard({ post, gridClass }: { post: Post, gridClass?: string }
           "post-card",
           gridClass
       )}
+      data-aos="fade-up"
     >
       <div className="md:flex md:flex-col md:gap-x-6">
         <div className="w-full overflow-hidden relative flex items-center justify-center">

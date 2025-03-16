@@ -7,7 +7,7 @@ export const AOSInit = (): null => {
     useEffect((): void => {
         AOS.init({
             easing: 'ease-in-out',
-            duration: 500,
+            duration: 350,
             offset: 120,
             delay: 0,
         });

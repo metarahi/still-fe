@@ -56,6 +56,7 @@ export async function FeaturedPost({ post }: { post: Post }): Promise<ReactEleme
             className={cn(
                 "featured-article"
             )}
+            data-aos="fade-up"
         >
             <div className="w-full overflow-hidden relative flex items-center justify-center">
                 {media?.source_url ? (
