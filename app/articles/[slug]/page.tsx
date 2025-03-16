@@ -2,7 +2,7 @@ import {
   getPostBySlug,
   getFeaturedMediaById,
   getCategoryById,
-  getAllPosts,
+  getAllPosts, getPostRevisionsById,
 } from "@/lib/wordpress";
 
 import { Section, Container } from "@/components/craft";
@@ -17,8 +17,7 @@ import Image from "next/image";
 import React, {ReactElement} from "react";
 import { Category, FeaturedMedia, Post } from "@/lib/wordpress.d";
 import {notFound} from "next/navigation";
-
-export const revalidate = 600;
+import { draftMode } from 'next/headers';
 
 export async function generateStaticParams(): Promise<{slug: string}[]> {
   const posts: Post[] = await getAllPosts();
@@ -77,8 +76,12 @@ export default async function Page({
                                    }: {
   params: Promise<{ slug: string }>;
 }): Promise<ReactElement<any, any>> {
+  const { isEnabled } = await draftMode();
   const { slug } = await params;
-  const post: Post = await getPostBySlug(slug);
+  let post: Post = await getPostBySlug(slug);
+  if (isEnabled) {
+    post = await getPostRevisionsById(post.id);
+  }
 
   if (!post) {
     notFound();

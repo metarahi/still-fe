@@ -3,18 +3,11 @@
 // Types are imported from `wp.d.ts`
 
 import querystring from "query-string";
-import { revalidateTag } from "next/cache";
+import {revalidateTag} from "next/cache";
 import axios from "axios";
 
-import type {
-  Post,
-  Category,
-  Tag,
-  Page,
-  Project,
-  Author,
-  FeaturedMedia,
-} from "./wordpress.d";
+import type {Author, Category, FeaturedMedia, Page, Post, Project, Tag,} from "./wordpress.d";
+import {cookies} from "next/headers";
 
 // WordPress Config
 const baseUrl = process.env.WORDPRESS_URL;
@@ -29,6 +22,7 @@ interface FetchOptions {
     revalidate?: number | false;
     tags?: string[];
   };
+  withCredentials: true;
 }
 
 const AxiosInstance = axios.create({
@@ -46,6 +40,7 @@ const defaultFetchOptions: FetchOptions = {
     tags: ["wordpress"],
     revalidate: 3600, // Revalidate every hour by default
   },
+  withCredentials: true,
 };
 
 AxiosInstance.interceptors.request.use(
@@ -69,7 +64,9 @@ class WordPressAPIError extends Error {
 // Utility function for making WordPress API requests
 async function wordpressFetch<T>(
   url: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {
+    withCredentials: true,
+  },
 ): Promise<T> {
   const userAgent = 'STILL website';
   // TODO remove for prod, prevents caching
@@ -85,11 +82,17 @@ async function wordpressFetch<T>(
     },
   }).then(response => {
     return response.data;
+  }).catch(error => {
+    throw new WordPressAPIError(
+        `WordPress API request failed: ${error}`,
+        0,
+        url
+    );
   })
 
   if (!response) {
     throw new WordPressAPIError(
-        `WordPress API request failed: ${response.statusText}`,
+        `WordPress API request failed: ${response.status}`,
         response.status,
         url
     );
@@ -169,6 +172,23 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   });
 
   return response[0];
+}
+
+export async function getPostRevisionsById(id: number): Promise<Post> {
+  const cookieStore = await cookies();
+  const wordpressNonce = cookieStore.get('wordpress_nonce');
+  let wordpressNonceValue = '';
+  if (wordpressNonce) {
+    wordpressNonceValue = wordpressNonce.value;
+  }
+  const url = getUrl(`/wp-json/wp/v2/posts/${id}/autosaves?_wpnonce=${wordpressNonceValue}`);
+
+  return await wordpressFetch<Post>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", `post-${id}`],
+    },
+  });
 }
 
 export async function getAllCategories(): Promise<Category[]> {
