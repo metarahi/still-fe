@@ -18,7 +18,7 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
             const currentScrollPos: number = window.pageYOffset;
             const nav: HTMLElement | null = document.querySelector('nav');
 
-            if (prevScrollPos < currentScrollPos || currentScrollPos === 0) {
+            if (prevScrollPos < currentScrollPos) {
                 nav && nav.classList.remove('show');
             } else {
                 nav && nav.classList.add('show');
@@ -32,8 +32,10 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
 
             // Tablet
             if (currentScrollPos === 0) {
-                nav && nav.classList.remove('show');
                 nav && nav.classList.remove('hidden-scroll');
+                setTimeout(function(){
+                    nav && nav.classList.remove('show');
+                }, 50);
             }
 
             prevScrollPos = currentScrollPos;
