@@ -718,7 +718,7 @@ footer {
     margin-bottom: 2px;
 
     @media only screen and (min-width: $medium) {
-        display: flex;
+        /*display: flex;*/
         /*@extend .h2-headings-and-intros;*/
         font-size: 30px;
         line-height: 38px;
@@ -745,9 +745,6 @@ footer {
             line-height: 38px;
             opacity: 0;
             transition: opacity .35s ease-in-out;
-        }
-        @media only screen and (min-width: $xxlarge) {
-            display: inline;
         }
     }
 
