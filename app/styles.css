@@ -19,11 +19,15 @@ h1, h2, h3, h4, h5, h6 {
 .small-caps-menu-button-lists {
     font-family: var(--font-serif), serif;
     font-feature-settings: 'c2sc';
-    font-size: 17px;
+    font-size: 18px;
     font-variant: small-caps;
-    line-height: 19px;
+    line-height: 20.12px;
     letter-spacing: 1.7px;
     text-transform: lowercase;
+    @media only screen and (min-width: $medium) {
+        font-size: 17px;
+        line-height: 19px;
+    }
 }
 
 .h2-headings-and-intros {
@@ -50,14 +54,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans), sans-serif;
     font-size: 16px;
     line-height: 21.3px;
+    @media only screen and (min-width: $medium) {
+        font-size: 15px;
+        line-height: 20px;
+    }
 }
 
 .small-caps-heading {
     font-family: var(--font-serif), serif;
     font-feature-settings: 'c2sc';
-    font-size: 25px;
+    font-size: 26px;
     font-variant: small-caps;
-    line-height: 30px;
+    line-height: 31.2px;
     text-transform: lowercase;
     @media only screen and (min-width: $medium) {
         font-size: 30px;
@@ -67,24 +75,36 @@ h1, h2, h3, h4, h5, h6 {
 
 .caption-small {
     font-family: var(--font-serif), serif;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 0.75px;
-    line-height: 20px;
+    line-height: 21.33px;
     margin-top: 12px;
+    @media only screen and (min-width: $medium) {
+        font-size: 15px;
+        line-height: 20px;
+    }
 }
 
 .caption-large {
     font-family: var(--font-serif), serif;
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: 0.8px;
-    line-height: 18px;
+    line-height: 19.13px;
     margin-top: 12px;
+    @media only screen and (min-width: $medium) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 }
 
 .arrow-caption-large {
     font-family: var(--font-sans), sans-serif;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 17px;
+    line-height: 19.13px;
+    @media only screen and (min-width: $medium) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 }
 
 .button {
@@ -103,8 +123,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .h3-headings-and-pullquotes {
     font-family: var(--font-serif), serif;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 25px;
+    line-height: 31.25px;
+    @media only screen and (min-width: $medium) {
+        font-size: 24px;
+        line-height: 30px;
+    }
 }
 
 .numbers-company-page {
@@ -1600,9 +1624,12 @@ body:has(div.projects-index) {
         .subsidiary-number {
             color: var(--still-grey);
             font-family: var(--font-numeric), serif;
-            font-size: 15px;
+            font-size: 16px;
             justify-self: end;
             order: 2;
+            @media only screen and (min-width: $medium) {
+                font-size: 15px;
+            }
         }
     }
 

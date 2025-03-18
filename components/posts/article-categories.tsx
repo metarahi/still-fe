@@ -4,6 +4,7 @@ import Plus from "@/public/plus.svg";
 import React, {ReactElement, useState} from "react";
 import Link from "next/link";
 import {Category} from "@/lib/wordpress.d";
+import {cn} from "@/lib/utils";
 
 interface Props {
     categories: Array<Category>
@@ -11,13 +12,21 @@ interface Props {
 
 const ArticleCategories: React.FC<Props> = ({categories}: Props): ReactElement<any, any> => {
     const [showArticleCategories, setShowArticleCategories] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
 
     function handleToggleCategories(): void {
         setShowArticleCategories(!showArticleCategories);
+        setClickCount(clickCount + 1);
     }
 
     return (
-        <div className={"article-categories flex flex-col" + (showArticleCategories ? " toggle-open" : " toggle-closed")} data-aos="fade-up">
+        <div
+            className={cn(
+                clickCount === 0 ? "aos-hidden " : "",
+                showArticleCategories ? "article-categories flex flex-col toggle-open aos-init aos-animate" : "article-categories flex flex-col toggle-closed aos-init aos-animate"
+            )}
+            data-aos="fade-up"
+        >
             <div className="small-caps-menu-button-lists w-full">
                 <span className="max-xl:hidden">Categories:</span>
                 <span className="xl:hidden flex justify-between w-full"
