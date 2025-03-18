@@ -61,7 +61,7 @@ export default async function Page(): Promise<ReactElement<any, any>> {
   return (
       <Section>
         <Container>
-          <div className="mx-90px page-header">
+          <div className="mx-90px page-header aos-hidden" data-aos="fade-up">
             <h1 className="small-caps-heading">News & Articles</h1>
           </div>
           <div className="article-grid">

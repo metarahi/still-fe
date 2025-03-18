@@ -91,7 +91,8 @@ export default async function Page({
         <Section>
             <Container>
                 <div
-                    className="mx-90px page-header team-member-page-header"
+                    className="mx-90px page-header team-member-page-header aos-hidden"
+                    data-aos="fade-up"
                 >
                     <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">
                         {post.title.rendered}
@@ -100,7 +101,7 @@ export default async function Page({
                 </div>
 
                 <div className="page-html team-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px">
-                    <div className="rendered-content" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                    <div className="rendered-content aos-hidden" data-aos="fade-up" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
 
                     {featuredMedia &&
                         <Image

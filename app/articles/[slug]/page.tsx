@@ -108,9 +108,11 @@ export default async function Page({
         <Container>
           <div className="mx-90px md:grid md:grid-cols-16 md:gap-x-6 article">
             <h1 dangerouslySetInnerHTML={{__html: post.title.rendered}}
-                className="h3-headings-and-pullquotes md:h1-article-headings"></h1>
+                className="h3-headings-and-pullquotes md:h1-article-headings aos-hidden"
+                data-aos="fade-up"
+            ></h1>
 
-            <p className="article-meta">
+            <p className="article-meta aos-hidden" data-aos="fade-up">
               {words && (
                   <span>Words: {words}</span>
               )}
@@ -120,7 +122,7 @@ export default async function Page({
               )}
             </p>
 
-            <div className="article-categories flex flex-wrap justify-center items-center gap-3 md:gap-4">
+            <div className="article-categories flex flex-wrap justify-center items-center gap-3 md:gap-4 aos-hidden" data-aos="fade-up">
               {categories && categories.map((category: Category): ReactElement<any, any> => (
                   <Link
                       key={category.id}
@@ -137,14 +139,17 @@ export default async function Page({
             {intro && (
                 <div
                     dangerouslySetInnerHTML={{__html: intro.replace(/(<([^>]+)>)/gi, "")}}
-                    className="article-intro h4-article-feature-text md:h2-headings-and-intros"
+                    className="article-intro h4-article-feature-text md:h2-headings-and-intros aos-hidden"
+                    data-aos="fade-up"
                 >
                 </div>
             )}
 
             {featuredMedia?.source_url && (
                 <div
-                    className="article-featured-image overflow-hidden flex flex-col items-center justify-center">
+                    className="article-featured-image overflow-hidden flex flex-col items-center justify-center"
+                    data-aos="fade-up"
+                >
                   <Image
                       className="w-full h-full object-cover"
                       src={featuredMedia.source_url}
@@ -155,6 +160,7 @@ export default async function Page({
                   {featuredMedia.caption && (
                       <div className="article-featured-image-caption"
                            dangerouslySetInnerHTML={{ __html: featuredMedia.caption.rendered }}
+                           data-aos="fade-up"
                       ></div>
                   )}
                 </div>

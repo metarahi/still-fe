@@ -108,11 +108,15 @@ export default async function Page({
                 <div
                     className="mx-90px page-header"
                 >
-                    <h1 className="small-caps-heading">{post.title.rendered}<sup className="numbers-company-page">{companyNumber}</sup>
+                    <h1
+                        className="small-caps-heading aos-hidden"
+                        data-aos="fade-up"
+                    >
+                        {post.title.rendered}<sup className="numbers-company-page">{companyNumber}</sup>
                     </h1>
                 </div>
 
-                <div className="page-html project-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px">
+                <div className="page-html project-page-html md:grid md:grid-cols-16 md:gap-6 mx-90px aos-hidden" data-aos="fade-up">
                     <ProjectPageContent post={post} featuredMedia={featuredMedia} />
                     {featuredMedia &&
                         <Image

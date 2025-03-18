@@ -39,7 +39,7 @@ const ProjectGallery: React.FC<Props> = ({content, className}: Props): ReactElem
     }, [api])
 
     return (
-        <div className={cn("project-gallery", className)}>
+        <div className={cn("project-gallery", className)} data-aos="fade-up">
             {gallery}
             <div className="text-right">
                 {current}/{count}

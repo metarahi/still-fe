@@ -24,11 +24,12 @@ export default async function Page(): Promise<ReactElement<any, any>> {
         <Section className="contact-page">
             <Container>
                 <div
-                    className="mx-90px page-header"
+                    className="mx-90px page-header aos-hidden"
+                    data-aos="fade-up"
                 >
                     <h1 className="h3-headings-and-pullquotes md:h2-headings-and-intros">{page.title.rendered}</h1>
                 </div>
-                <div className="mx-90px md:grid grid-cols-16 gap-6">
+                <div className="mx-90px md:grid grid-cols-16 gap-6 aos-hidden" data-aos="fade-up">
                     <div className="page-html" dangerouslySetInnerHTML={{'__html': page.content.rendered}}/>
                     <ContactForm/>
                 </div>
