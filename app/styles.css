@@ -5,7 +5,7 @@ $large: 64rem;
 $xlarge: 80rem;
 $xxlarge: 96rem;
 
-$ipadPortrait: 85rem;
+$ipadPortrait: 1560px;
 
 /* Styles */
 html {
@@ -718,8 +718,6 @@ footer {
     margin-bottom: 2px;
 
     @media only screen and (min-width: $medium) {
-        /*display: flex;*/
-        /*@extend .h2-headings-and-intros;*/
         font-size: 30px;
         line-height: 38px;
         margin-bottom: 0;
@@ -1005,13 +1003,15 @@ body:has(.latest-articles-home img:hover) {
         column-gap: 24px;
         display: grid;
         grid-template-columns: 66px repeat(16, 1fr) 66px;
-        grid-template-rows: 354px 215px min-content min-content;
+        /*grid-template-rows: 354px 215px min-content min-content;*/
+        grid-template-rows: 354px auto min-content min-content;
         margin: 208px 0 0;
         padding: 0;
     }
 
     @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-        grid-template-rows: 354px 72px min-content min-content;
+        /*grid-template-rows: 354px 72px min-content min-content;*/
+        grid-template-rows: 354px auto min-content min-content;
     }
 
     @media only screen and (min-width: $xxlarge) {
@@ -1061,7 +1061,7 @@ body:has(.latest-articles-home img:hover) {
         margin-top: 39px;
         @media only screen and (min-width: $medium) {
             margin-top: 0;
-            grid-row: 2;
+            grid-row: 3;
         }
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
             grid-row: 3;
