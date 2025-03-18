@@ -24,7 +24,7 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
                 nav && nav.classList.add('show');
             }
 
-            if (prevScrollPos < currentScrollPos) {
+            if (prevScrollPos < currentScrollPos && currentScrollPos !== 0) {
                 nav && nav.classList.add('hidden-scroll');
             } else {
                 nav && nav.classList.remove('hidden-scroll');
