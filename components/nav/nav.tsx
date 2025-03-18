@@ -30,6 +30,7 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
                 nav && nav.classList.remove('hidden-scroll');
             }
 
+            // Tablet
             if (currentScrollPos === 0) {
                 nav && nav.classList.remove('show');
                 nav && nav.classList.remove('hidden-scroll');
