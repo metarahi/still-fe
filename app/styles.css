@@ -1963,10 +1963,12 @@ h1 .job-title {
             grid-row: 2;
         }
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
+            align-self: start;
             grid-column: 2 / span 4;
-            grid-row: 1;
+            grid-row: 2;
         }
         @media only screen and (min-width: $xxlarge) {
+            align-self: end;
             grid-column: 2 / span 3;
             grid-row: 2;
             position: relative;
