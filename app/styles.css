@@ -1989,8 +1989,10 @@ img.w-half {
         right: 0;
         top: 0;
     }
-    @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-        height: 50vh;
+    @media only screen and (min-width: $medium)) {
+        @media only screen and (min-height: $ipadPortrait) {
+            height: 50vh;
+        }
     }
     @media only screen and (min-width: $xxlarge) {
         height: 100vh;
