@@ -18,21 +18,17 @@ export default function Nav({ className, children, id }: NavProps): ReactElement
             const currentScrollPos: number = window.pageYOffset;
             const nav: HTMLElement | null = document.querySelector('nav');
 
-            if (prevScrollPos < currentScrollPos) {
+            if (prevScrollPos < currentScrollPos && currentScrollPos > 0) {
                 nav && nav.classList.remove('show');
-            } else {
-                nav && nav.classList.add('show');
-            }
-
-            if (prevScrollPos < currentScrollPos && currentScrollPos !== 0) {
                 nav && nav.classList.add('hidden-scroll');
             } else {
+                nav && nav.classList.add('show');
                 nav && nav.classList.remove('hidden-scroll');
             }
 
             // Tablet
             if (currentScrollPos === 0) {
-                nav && nav.classList.remove('hidden-scroll');
+                // nav && nav.classList.remove('hidden-scroll');
                 setTimeout(function(){
                     nav && nav.classList.remove('show');
                 }, 50);
