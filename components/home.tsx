@@ -119,6 +119,10 @@ function htmlFrom(htmlString: any) {
                 return <div className="details-summary">{domToReact(domNode.children, options)}</div>
             }
 
+            else if (domNode.attribs && domNode.attribs.href && domNode.attribs.class && domNode.attribs.class.includes('aos-fade-up')) {
+                return <domNode.name href={domNode.attribs.href} className={domNode.attribs.class} data-aos="fade-up">{domToReact(domNode.children, options)}</domNode.name>
+            }
+
             else if (domNode.attribs && domNode.attribs.class && domNode.attribs.class.includes('aos-fade-up')) {
                 return <domNode.name className={domNode.attribs.class} data-aos="fade-up">{domToReact(domNode.children, options)}</domNode.name>
             }
