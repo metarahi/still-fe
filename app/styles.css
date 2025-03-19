@@ -239,6 +239,12 @@ textarea.has-error {
     }
 }
 
+@media only screen and (min-width: $large) and (max-width: 1323px) {
+    html {
+        font-size: 82.5%;
+    }
+}
+
 /* Layout */
 .is-layout-flex {
     display: grid;
