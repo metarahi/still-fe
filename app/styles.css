@@ -230,6 +230,14 @@ textarea.has-error {
     visibility: hidden;
 }
 
+/* Shrink entire website when larger than mobile but smaller than or 1324px */
+body {
+    @media only screen and (min-width: $small) and (max-width: 1324px) {
+        /*transform: scale(0.8);*/
+        /*transform-origin: 0 0;*/
+    }
+}
+
 /* Layout */
 .is-layout-flex {
     display: grid;
