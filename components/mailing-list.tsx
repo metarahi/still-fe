@@ -70,7 +70,7 @@ export default function MailingList(): ReactElement {
             .catch(error => handleError(error));
     }
 
-    const handleSuccess = (result) => {
+    const handleSuccess = (result: any) => {
         if (!result) {
             return null;
         }
@@ -92,7 +92,7 @@ export default function MailingList(): ReactElement {
 
     const formHasErrors: boolean = errors && Object.keys(errors).length > 0;
 
-    const resetForm = (e) => {
+    const resetForm = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
         e.preventDefault();
         setFailure(false);
         setSuccess(false);

@@ -1,11 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import {headers} from "next/headers";
 import {ReadonlyHeaders} from "next/dist/server/web/spec-extension/adapters/headers";
 import {revalidatePath} from "next/cache";
+import { NextRequest } from 'next/server';
 
 export const runtime = "edge";
 
-export async function POST(request: NextApiRequest, response: NextApiResponse) {
+export async function POST(request: NextRequest) {
     // Check for secret to confirm this is a valid request
     const headersList: ReadonlyHeaders = await headers();
     const requestHeaderSecret: string | null = headersList.get("x-webhook-secret");
@@ -17,9 +17,10 @@ export async function POST(request: NextApiRequest, response: NextApiResponse) {
     }
 
     // Create the path
-    const type = request.body.type;
-    const id = request.body.id;
-    const slug = request.body.slug;
+    const body = await request.json();
+    const type = body.type;
+    const id = body.id;
+    const slug = body.slug;
     let path: string = "";
     let indexPath: string = "";
 
