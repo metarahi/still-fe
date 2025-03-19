@@ -10,6 +10,8 @@ $ipadPortrait: 64rem;
 /* Styles */
 html {
     font-family: var(--font-sans), sans-serif;
+    /* Setting a base font size for REM calculations */
+    font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,91 +21,91 @@ h1, h2, h3, h4, h5, h6 {
 .small-caps-menu-button-lists {
     font-family: var(--font-serif), serif;
     font-feature-settings: 'c2sc';
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px */
     font-variant: small-caps;
-    line-height: 20.12px;
-    letter-spacing: 1.7px;
+    line-height: 1.258rem; /* 20.12px */
+    letter-spacing: 0.106rem; /* 1.7px */
     text-transform: lowercase;
     @media only screen and (min-width: $medium) {
-        font-size: 17px;
-        line-height: 19px;
+        font-size: 1.063rem; /* 17px */
+        line-height: 1.188rem; /* 19px */
     }
 }
 
 .h2-headings-and-intros {
     font-family: var(--font-serif), serif;
-    font-size: 30px;
-    line-height: 38px;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.375rem; /* 38px */
 }
 
 .md\:h2-headings-and-intros {
     @media only screen and (min-width: $medium) {
-        font-size: 30px !important;
-        line-height: 38px !important;
+        font-size: 1.875rem !important; /* 30px */
+        line-height: 2.375rem !important; /* 38px */
     }
 }
 
 .h4-article-feature-text {
     font-family: var(--font-serif), serif;
     font-feature-settings: normal;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.625rem; /* 26px */
 }
 
 .p1-body-copy {
     font-family: var(--font-sans), sans-serif;
-    font-size: 16px;
-    line-height: 21.3px;
+    font-size: 1rem; /* 16px */
+    line-height: 1.331rem; /* 21.3px */
     @media only screen and (min-width: $medium) {
-        font-size: 15px;
-        line-height: 20px;
+        font-size: 0.938rem; /* 15px */
+        line-height: 1.25rem; /* 20px */
     }
 }
 
 .small-caps-heading {
     font-family: var(--font-serif), serif;
     font-feature-settings: 'c2sc';
-    font-size: 26px;
+    font-size: 1.625rem; /* 26px */
     font-variant: small-caps;
-    line-height: 31.2px;
+    line-height: 1.95rem; /* 31.2px */
     text-transform: lowercase;
     @media only screen and (min-width: $medium) {
-        font-size: 30px;
-        line-height: 33px;
+        font-size: 1.875rem; /* 30px */
+        line-height: 2.063rem; /* 33px */
     }
 }
 
 .caption-small {
     font-family: var(--font-serif), serif;
-    font-size: 16px;
-    letter-spacing: 0.75px;
-    line-height: 21.33px;
-    margin-top: 12px;
+    font-size: 1rem; /* 16px */
+    letter-spacing: 0.047rem; /* 0.75px */
+    line-height: 1.333rem; /* 21.33px */
+    margin-top: 0.75rem; /* 12px */
     @media only screen and (min-width: $medium) {
-        font-size: 15px;
-        line-height: 20px;
+        font-size: 0.938rem; /* 15px */
+        line-height: 1.25rem; /* 20px */
     }
 }
 
 .caption-large {
     font-family: var(--font-serif), serif;
-    font-size: 17px;
-    letter-spacing: 0.8px;
-    line-height: 19.13px;
-    margin-top: 12px;
+    font-size: 1.063rem; /* 17px */
+    letter-spacing: 0.05rem; /* 0.8px */
+    line-height: 1.196rem; /* 19.13px */
+    margin-top: 0.75rem; /* 12px */
     @media only screen and (min-width: $medium) {
-        font-size: 16px;
-        line-height: 18px;
+        font-size: 1rem; /* 16px */
+        line-height: 1.125rem; /* 18px */
     }
 }
 
 .arrow-caption-large {
     font-family: var(--font-sans), sans-serif;
-    font-size: 17px;
-    line-height: 19.13px;
+    font-size: 1.063rem; /* 17px */
+    line-height: 1.196rem; /* 19.13px */
     @media only screen and (min-width: $medium) {
-        font-size: 16px;
-        line-height: 18px;
+        font-size: 1rem; /* 16px */
+        line-height: 1.125rem; /* 18px */
     }
 }
 
@@ -111,49 +113,49 @@ h1, h2, h3, h4, h5, h6 {
     @extend .small-caps-menu-button-lists;
     align-items: center;
     display: inline-flex;
-    height: 70px;
+    height: 4.375rem; /* 70px */
     justify-content: center;
     text-transform: lowercase;
     transition: all .35s ease-in-out;
     &:hover {
         background: var(--still-sand-light);
-        border: 1px solid var(--still-sand-light);
+        border: 0.063rem solid var(--still-sand-light); /* 1px */
     }
 }
 
 .h3-headings-and-pullquotes {
     font-family: var(--font-serif), serif;
-    font-size: 25px;
-    line-height: 31.25px;
+    font-size: 1.563rem; /* 25px */
+    line-height: 1.953rem; /* 31.25px */
     @media only screen and (min-width: $medium) {
-        font-size: 24px;
-        line-height: 30px;
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.875rem; /* 30px */
     }
 }
 
 .numbers-company-page {
     color: var(--still-grey);
     font-family: var(--font-numeric), serif;
-    font-size: 15px;
-    line-height: 33px;
-    margin-left: 4px;
+    font-size: 0.938rem; /* 15px */
+    line-height: 2.063rem; /* 33px */
+    margin-left: 0.25rem; /* 4px */
 }
 
 .h1-article-headings {
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 2.813rem; /* 45px */
+    line-height: 3.438rem; /* 55px */
 }
 
 .md\:h1-article-headings {
     @media only screen and (min-width: $medium) {
-        font-size: 45px;
-        line-height: 55px;
+        font-size: 2.813rem; /* 45px */
+        line-height: 3.438rem; /* 55px */
     }
 }
 
 .underline,
 .hover\:underline:hover {
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 0.063rem; /* 1px */
 }
 
 p {
@@ -161,7 +163,7 @@ p {
 }
 
 section p {
-    margin-bottom: 13px;
+    margin-bottom: 0.813rem; /* 13px */
     @media only screen and (min-width: $medium) {
         margin-bottom: 0;
     }
@@ -180,14 +182,14 @@ h3 {
 }
 
 .small-caps-heading sup {
-    top: -.35em;
+    top: -0.35em;
     @media only screen and (min-width: $medium) {
-        top: -.5em;
+        top: -0.5em;
     }
 }
 
 html:not(.no-js) [data-aos="fade-up"] {
-    transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 1.875rem, 0); /* 30px */
 }
 
 ::placeholder,
@@ -200,28 +202,28 @@ body .text-destructive {
 }
 
 body .text-sm {
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 0.813rem; /* 13px */
+    line-height: 1.25rem; /* 20px */
 }
 
 form .text-destructive.text-sm {
-    margin-top: 4px !important;
+    margin-top: 0.25rem !important; /* 4px */
 }
 
 input.has-error {
-    border-bottom-width: 2px;
+    border-bottom-width: 0.125rem; /* 2px */
     border-color: var(--still-error);
 }
 
 textarea.has-error {
     border-color: var(--still-error);
-    border-width: 2px;
+    border-width: 0.125rem; /* 2px */
 }
 
 .failure-message {
     align-items: center;
     border-color: var(--still-error);
-    border-width: 1px;
+    border-width: 0.063rem; /* 1px */
     display: flex;
     justify-content: center;
 }
@@ -230,11 +232,10 @@ textarea.has-error {
     visibility: hidden;
 }
 
-/* Shrink entire website when larger than mobile but smaller than or 1324px */
-body {
-    @media only screen and (min-width: $small) and (max-width: 1324px) {
-        /*transform: scale(0.8);*/
-        /*transform-origin: 0 0;*/
+/* Shrink entire website when larger than mobile but smaller than 1324px */
+@media only screen and (min-width: $small) and (max-width: 1323px) {
+    html {
+        font-size: 62.5%;
     }
 }
 
@@ -249,11 +250,11 @@ body {
 
 .wp-container-core-columns-is-layout-3 {
     grid-template-columns: 1fr;
-    margin: 74px 20px 0;
+    margin: 4.625rem 1.25rem 0; /* 74px 20px 0 */
     @media only screen and (min-width: $medium) {
-        gap: 24px;
+        gap: 1.5rem; /* 24px */
         grid-template-columns: repeat(16, 1fr);
-        margin: 119px 90px 0;
+        margin: 7.438rem 5.625rem 0; /* 119px 90px 0 */
         > div:nth-child(1) {
             grid-column: 1 / span 4;
         }
@@ -269,27 +270,27 @@ body {
 }
 
 .ml-90px {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.25rem; /* 20px */
+    margin-right: 1.25rem; /* 20px */
     @media only screen and (min-width: $medium) {
-        margin-left: 90px;
+        margin-left: 5.625rem; /* 90px */
         margin-right: 0;
     }
 }
 
 .mx-90px {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.25rem; /* 20px */
+    margin-right: 1.25rem; /* 20px */
     @media only screen and (min-width: $medium) {
-        margin-left: 90px;
-        margin-right: 90px;
+        margin-left: 5.625rem; /* 90px */
+        margin-right: 5.625rem; /* 90px */
     }
 }
 
 .md\:mx-90px {
     @media only screen and (min-width: $medium) {
-        margin-left: 90px;
-        margin-right: 90px;
+        margin-left: 5.625rem; /* 90px */
+        margin-right: 5.625rem; /* 90px */
     }
 }
 
@@ -325,10 +326,10 @@ body {
 
 .sheet-header.px-7 {
     @media only screen and (width < $medium) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 1.25rem; /* 20px */
+    padding-right: 1.25rem; /* 20px */
     .left-8 {
-        left: 20px;
+        left: 1.25rem; /* 20px */
     }
 }
 }
@@ -337,14 +338,14 @@ nav {
     transition: all .35s ease-in-out;
 
     @media only screen and (width < $medium) {
-        .px-7 {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        .left-8 {
-            left: 20px;
-        }
+    .px-7 {
+        padding-left: 1.25rem; /* 20px */
+        padding-right: 1.25rem; /* 20px */
     }
+    .left-8 {
+        left: 1.25rem; /* 20px */
+    }
+}
 }
 
 nav.hidden-scroll {
@@ -360,7 +361,7 @@ nav.hidden-scroll {
 nav:hover,
 nav.show {
     background: #fff;
-    border-bottom: 1px solid;
+    border-bottom: 0.063rem solid; /* 1px */
     position: fixed;
     @media only screen and (min-width: $medium) {
         background: rgba(255, 255, 255, .85);
@@ -373,27 +374,27 @@ nav.show {
 .page-html h2.wp-block-heading {
     @extend .h3-headings-and-pullquotes;
     @media only screen and (min-width: $medium) {
-        font-size: 30px;
-        line-height: 38px;
+        font-size: 1.875rem; /* 30px */
+        line-height: 2.375rem; /* 38px */
     }
 }
 
 footer {
-    margin: 150px 20px 28px;
+    margin: 9.375rem 1.25rem 1.75rem; /* 150px 20px 28px */
     @media only screen and (min-width: $medium) {
-        margin: 269px 90px 0;
+        margin: 16.813rem 5.625rem 0; /* 269px 90px 0 */
     }
 
     section {
         padding-bottom: 0 !important;
         @media only screen and (min-width: $medium) {
-            padding-bottom: 85px !important;
+            padding-bottom: 5.313rem !important; /* 85px */
         }
     }
 
     .footer-menu {
         grid-column: 1 / span 4;
-        margin-top: 41px;
+        margin-top: 2.563rem; /* 41px */
         order: 2;
         @media only screen and (min-width: $medium) {
             margin-top: 0;
@@ -401,11 +402,11 @@ footer {
     }
 
     .footer-menu a {
-        margin-bottom: 4px;
+        margin-bottom: 0.25rem; /* 4px */
         @extend .small-caps-menu-button-lists;
 
         @media only screen and (min-width: $medium) {
-            margin-bottom: 4px;
+            margin-bottom: 0.25rem; /* 4px */
         }
 
         &:last-child {
@@ -415,7 +416,7 @@ footer {
 
     .footer-copyright {
         grid-column: 5 / span 4;
-        margin-top: 22px;
+        margin-top: 1.375rem; /* 22px */
         order: 3;
         @media only screen and (min-width: $medium) {
             margin-top: 0;
@@ -423,11 +424,11 @@ footer {
 
         p {
             align-self: end;
-            margin-bottom: -1px;
+            margin-bottom: -0.063rem; /* -1px */
         }
 
         span {
-            margin-left: 2px;
+            margin-left: 0.125rem; /* 2px */
         }
     }
 
@@ -442,14 +443,14 @@ footer {
 
         .inner {
             align-self: start;
-            margin-bottom: 3px;
+            margin-bottom: 0.188rem; /* 3px */
             width: 100%;
         }
 
         form {
             align-items: end;
             display: grid;
-            gap: 24px;
+            gap: 1.5rem; /* 24px */
             grid-template-columns: repeat(8, 1fr);
             width: 100%;
             @media only screen and (min-width: $medium) {
@@ -478,7 +479,7 @@ footer {
         input {
             border-radius: 0;
             grid-column: 1 / span 8;
-            padding-top: 22px;
+            padding-top: 1.375rem; /* 22px */
             -webkit-appearance: none;
             @media only screen and (min-width: $medium) {
                 grid-column: 1 / span 6;
@@ -510,7 +511,7 @@ footer {
 
         form.has-errors {
             grid-template-rows: repeat(2, min-content);
-            margin-bottom: -23px;
+            margin-bottom: -1.438rem; /* -23px */
 
             > div {
                 grid-row: 1 / span 2;
@@ -518,7 +519,7 @@ footer {
         }
 
         .error-message {
-            margin-bottom: 22px;
+            margin-bottom: 1.375rem; /* 22px */
         }
 
         .text-destructive.text-sm {
@@ -527,7 +528,7 @@ footer {
         }
 
         .failure-message {
-            height: 109px;
+            height: 6.813rem; /* 109px */
         }
 
         .success-message {
@@ -538,11 +539,11 @@ footer {
             div {
                 grid-column: 1 / span 5;
                 grid-row: 1;
-                margin-top: 12px;
+                margin-top: 0.75rem; /* 12px */
             }
 
             p {
-                bottom: -7px;
+                bottom: -0.438rem; /* -7px */
                 grid-column: 1 / span 5;
                 grid-row: 2;
                 position: relative;
@@ -557,7 +558,7 @@ footer {
 }
 
 .mobile-menu-link {
-    margin: 15px 0;
+    margin: 0.938rem 0; /* 15px 0 */
 }
 
 [data-state=open]:not(.closing) {
@@ -581,23 +582,23 @@ footer {
     background: var(--still-error);
     color: #fff;
     display: flex;
-    height: 31px;
-    padding: 0 10px;
+    height: 1.938rem; /* 31px */
+    padding: 0 0.625rem; /* 0 10px */
 }
 
 /* Homepage */
 .homepage-hero {
-    margin-top: 118px;
+    margin-top: 7.375rem; /* 118px */
     @media only screen and (min-width: $medium) {
         margin-top: 0;
     }
     &.wp-container-core-columns-is-layout-2 {
-        gap: 20px;
+        gap: 1.25rem; /* 20px */
         grid-template-columns: repeat(4, 1fr);
         > div:first-child {
             grid-column: 1 / span 4;
             grid-row: 2;
-            margin-top: 85px;
+            margin-top: 5.313rem; /* 85px */
         }
 
         > div:last-child {
@@ -606,20 +607,20 @@ footer {
         }
 
         h2 {
-            margin-bottom: 38px;
+            margin-bottom: 2.375rem; /* 38px */
             @media only screen and (min-width: $medium) {
-                margin-bottom: 35px;
+                margin-bottom: 2.188rem; /* 35px */
             }
         }
 
         @media only screen and (min-width: $medium) {
-            gap: 24px;
+            gap: 1.5rem; /* 24px */
             grid-template-columns: repeat(8, 1fr);
 
             > div:first-child {
                 grid-column: 1 / span 4;
                 grid-row: 1;
-                margin-top: calc(40vh - 108px);
+                margin-top: calc(40vh - 6.75rem); /* 108px */
             }
 
             > div:last-child {
@@ -633,18 +634,23 @@ footer {
 
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
             > div:first-child {
-                margin-top: 118px;
+                margin-top: 7.375rem; /* 118px */
             }
         }
 
         @media only screen and (min-width: $xlarge) {
             > div:first-child {
-                margin-top: calc(40vh - 108px);
+                margin-top: calc(40vh - 6.75rem); /* 108px */
             }
         }
     }
 
     .carousel-wrapper {
+        @media only screen and (min-width: $medium) {
+            height: 100vh;
+            min-height: 100%;
+        }
+
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
             height: 50vh;
             min-height: 50%;
@@ -674,7 +680,9 @@ footer {
             width: 100%;
             @media only screen and (min-width: $medium) {
                 aspect-ratio: auto;
+                height: 100vh;
                 max-width: none;
+                min-height: 100%;
                 width: 50vw;
             }
             @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
@@ -691,7 +699,7 @@ footer {
     @media only screen and (min-width: $medium) {
         > div:first-child {
             display: grid;
-            gap: 24px;
+            gap: 1.5rem; /* 24px */
             grid-template-columns: repeat(8, 1fr);
             grid-template-rows: repeat(2, min-content);
 
@@ -701,11 +709,11 @@ footer {
 
             .wp-block-columns {
                 display: grid;
-                gap: 24px;
+                gap: 1.5rem; /* 24px */
                 grid-column: 2 / span 6;
                 grid-row: 2;
                 grid-template-columns: repeat(2, 1fr);
-                margin-top: 48px;
+                margin-top: 3rem; /* 48px */
             }
         }
     }
@@ -713,21 +721,21 @@ footer {
 
 #still100 {
     h2 {
-        margin-bottom: 18px;
+        margin-bottom: 1.125rem; /* 18px */
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
-            margin-top: -5px;
+            margin-top: -0.313rem; /* -5px */
         }
     }
 }
 
 .details-wrapper {
     @extend .h3-headings-and-pullquotes;
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem; /* 2px */
 
     @media only screen and (min-width: $medium) {
-        font-size: 30px;
-        line-height: 38px;
+        font-size: 1.875rem; /* 30px */
+        line-height: 2.375rem; /* 38px */
         margin-bottom: 0;
     }
 
@@ -743,12 +751,12 @@ footer {
             content: '\2014';
         }
         font-family: var(--font-serif), serif;
-        font-size: 24px;
-        line-height: 30px;
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.875rem; /* 30px */
         @media only screen and (min-width: $xlarge) {
             display: none;
-            font-size: 30px;
-            line-height: 38px;
+            font-size: 1.875rem; /* 30px */
+            line-height: 2.375rem; /* 38px */
             opacity: 0;
             transition: opacity .35s ease-in-out;
         }
@@ -769,11 +777,11 @@ footer {
 
 .home-still-100-1 {
     > div:nth-child(2) {
-        margin-top: 1px;
+        margin-top: 0.063rem; /* 1px */
         p {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem; /* 20px */
             @media only screen and (min-width: $medium) {
-                margin-bottom: 16px;
+                margin-bottom: 1rem; /* 16px */
             }
         }
 
@@ -785,22 +793,22 @@ footer {
     }
 
     > div:nth-child(3) {
-        margin-top: 18px;
+        margin-top: 1.125rem; /* 18px */
         @media only screen and (min-width: $medium) {
-            margin-top: -3px;
+            margin-top: -0.188rem; /* -3px */
         }
     }
 }
 
 .project-gallery-preview {
-    margin: 42px 20px 0;
+    margin: 2.625rem 1.25rem 0; /* 42px 20px 0 */
     @media only screen and (min-width: $medium) {
-        margin: -5px 90px 0;
+        margin: -0.313rem 5.625rem 0; /* -5px 90px 0 */
     }
 
     .project-previews {
         display: grid;
-        column-gap: 24px;
+        column-gap: 1.5rem; /* 24px */
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(5, min-content);
         @media only screen and (min-width: $medium) {
@@ -808,24 +816,24 @@ footer {
             grid-template-rows: repeat(5, min-content);
         }
         @media only screen and (min-width: $xxlarge) {
-            grid-template-rows: 203px 216px 275px 290px;
+            grid-template-rows: 12.688rem 13.5rem 17.188rem 18.125rem; /* 203px 216px 275px 290px */
         }
 
         .caption {
             @extend .caption-large;
             @media only screen and (min-width: $medium) {
-                margin-top: 16px;
+                margin-top: 1rem; /* 16px */
             }
         }
 
         .caption span {
-            margin-left: 6px;
+            margin-left: 0.375rem; /* 6px */
             @extend .arrow-caption-large;
         }
     }
 
     .inner {
-        margin-bottom: 39px;
+        margin-bottom: 2.438rem; /* 39px */
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
         }
@@ -836,14 +844,14 @@ footer {
         @media only screen and (min-width: $medium) {
             grid-column: 2 / span 4;
             grid-row: 2 / span 2;
-            margin-top: -29px;
+            margin-top: -1.813rem; /* -29px */
         }
         @media only screen and (min-width: $xxlarge) {
             margin-top: 0;
         }
 
         .inner {
-            padding-bottom: calc(133% + 30px);
+            padding-bottom: calc(133% + 1.875rem); /* 30px */
         }
 
         .slide > a {
@@ -857,14 +865,14 @@ footer {
         @media only screen and (min-width: $medium) {
             grid-column: 7 / span 2;
             grid-row: 2 / span 2;
-            margin-top: -29px;
+            margin-top: -1.813rem; /* -29px */
         }
         @media only screen and (min-width: $xxlarge) {
             margin-top: 0;
         }
 
         .inner {
-            padding-bottom: calc(125% + 30px);
+            padding-bottom: calc(125% + 1.875rem); /* 30px */
         }
 
         .slide > a {
@@ -884,7 +892,7 @@ footer {
         }
 
         .inner {
-            padding-bottom: calc(75% + 30px);
+            padding-bottom: calc(75% + 1.875rem); /* 30px */
         }
 
         .slide > a {
@@ -898,14 +906,14 @@ footer {
         @media only screen and (min-width: $medium) {
             grid-column: 11 / span 6;
             grid-row: 3 / span 2;
-            margin-top: -54px;
+            margin-top: -3.375rem; /* -54px */
         }
         @media only screen and (min-width: $xxlarge) {
             margin-top: 0;
         }
 
         .inner {
-            padding-bottom: calc(100% + 30px);
+            padding-bottom: calc(100% + 1.875rem); /* 30px */
         }
 
         .slide > a {
@@ -920,14 +928,17 @@ footer {
         grid-column: 1 / span 4;
         grid-row: 5;
         justify-content: center;
-        margin-top: 7px;
+        margin-top: 0.438rem; /* 7px */
         @media only screen and (min-width: $medium) {
             grid-column: 2 / span 4;
             grid-row: 4;
             margin-top: 0;
         }
-        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-            grid-column: 2 / span 5;
+        @media only screen and (min-width: $large) {
+            grid-column: 2 / span 3;
+        }
+        @media only screen and (min-width: $xlarge) {
+            grid-column: 2 / span 4;
         }
         @media only screen and (min-width: $xxlarge) {
             grid-column: 2 / span 3;
@@ -1005,25 +1016,25 @@ body:has(.latest-articles-home img:hover) {
 .home-our-people {
     display: flex;
     flex-direction: column;
-    margin-top: 90px;
-    padding: 0 20px;
+    margin-top: 5.625rem; /* 90px */
+    padding: 0 1.25rem; /* 0 20px */
     @media only screen and (min-width: $medium) {
-        column-gap: 24px;
+        column-gap: 1.5rem; /* 24px */
         display: grid;
-        grid-template-columns: 66px repeat(16, 1fr) 66px;
+        grid-template-columns: 4.125rem repeat(16, 1fr) 4.125rem; /* 66px ... 66px */
         /*grid-template-rows: 354px 215px min-content min-content;*/
-        grid-template-rows: 354px auto min-content min-content;
-        margin: 208px 0 0;
+        grid-template-rows: 22.125rem auto min-content min-content; /* 354px auto min-content min-content */
+        margin: 13rem 0 0; /* 208px 0 0 */
         padding: 0;
     }
 
     @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
         /*grid-template-rows: 354px 72px min-content min-content;*/
-        grid-template-rows: 354px auto min-content min-content;
+        grid-template-rows: 22.125rem auto min-content min-content; /* 354px auto min-content min-content */
     }
 
     @media only screen and (min-width: $xxlarge) {
-        grid-template-rows: 354px 388px min-content min-content;
+        grid-template-rows: 22.125rem 24.25rem min-content min-content; /* 354px 388px min-content min-content */
     }
 
     > :nth-child(1) {
@@ -1031,23 +1042,23 @@ body:has(.latest-articles-home img:hover) {
         grid-row: 1;
         order: 1;
         @media only screen and (min-width: $medium) {
-            margin-top: -10px;
+            margin-top: -0.625rem; /* -10px */
         }
     }
 
     > :nth-child(2) {
         grid-column: 10 / span 9;
         grid-row: 1 / span 2;
-        margin: 47px -20px 0;
+        margin: 2.938rem -1.25rem 0; /* 47px -20px 0 */
         order: 4;
         @media only screen and (min-width: $medium) {
             margin: 0;
         }
 
         figcaption {
-            margin: 10px 20px 0;
+            margin: 0.625rem 1.25rem 0; /* 10px 20px 0 */
             @media only screen and (min-width: $medium) {
-                margin: 15px 0 0 0;
+                margin: 0.938rem 0 0 0; /* 15px 0 0 0 */
             }
         }
     }
@@ -1055,10 +1066,10 @@ body:has(.latest-articles-home img:hover) {
     > :nth-child(3) {
         grid-column: 6 / span 3;
         grid-row: 1;
-        margin-top: 18px;
+        margin-top: 1.125rem; /* 18px */
         order: 2;
         @media only screen and (min-width: $medium) {
-            margin-top: -4px;
+            margin-top: -0.25rem; /* -4px */
         }
     }
 
@@ -1066,7 +1077,7 @@ body:has(.latest-articles-home img:hover) {
         grid-column: 10 / span 6;
         grid-row: 3;
         order: 5;
-        margin-top: 39px;
+        margin-top: 2.438rem; /* 39px */
         @media only screen and (min-width: $medium) {
             margin-top: 0;
             grid-row: 3;
@@ -1082,16 +1093,16 @@ body:has(.latest-articles-home img:hover) {
     > :nth-child(5) {
         grid-column: 1 / span 7;
         grid-row: 2 / span 3;
-        margin: 34px -20px 0;
+        margin: 2.125rem -1.25rem 0; /* 34px -20px 0 */
         order: 3;
         @media only screen and (min-width: $medium) {
             margin: 0;
         }
 
         figcaption {
-            margin: 10px 20px 0;
+            margin: 0.625rem 1.25rem 0; /* 10px 20px 0 */
             @media only screen and (min-width: $medium) {
-                margin: 15px 0 0 90px;
+                margin: 0.938rem 0 0 5.625rem; /* 15px 0 0 90px */
             }
         }
     }
@@ -1103,8 +1114,8 @@ body:has(.latest-articles-home img:hover) {
         grid-column: 10 / span 3;
         grid-row: 4;
         justify-content: center;
-        margin-bottom: 30px;
-        margin-top: 43px;
+        margin-bottom: 1.875rem; /* 30px */
+        margin-top: 2.688rem; /* 43px */
         order: 6;
         width: 100%;
         @media only screen and (min-width: $medium) {
@@ -1129,23 +1140,23 @@ body:has(.latest-articles-home img:hover) {
 }
 
 .latest-articles {
-    margin: 60px 20px 0;
+    margin: 3.75rem 1.25rem 0; /* 60px 20px 0 */
     @media only screen and (min-width: $medium) {
-        margin: 181px 90px 0;
+        margin: 11.313rem 5.625rem 0; /* 181px 90px 0 */
     }
 
     .wrapper {
-        margin-top: 23px;
+        margin-top: 1.438rem; /* 23px */
         @media only screen and (min-width: $medium) {
             display: grid;
-            gap: 24px;
+            gap: 1.5rem; /* 24px */
             grid-template-columns: repeat(16, 1fr);
-            margin-top: 78px;
+            margin-top: 4.875rem; /* 78px */
         }
     }
 
     article {
-        margin-bottom: 43px;
+        margin-bottom: 2.688rem; /* 43px */
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
         }
@@ -1161,7 +1172,7 @@ body:has(.latest-articles-home img:hover) {
         h3,
         p {
             @media only screen and (min-width: $medium) {
-                max-width: calc(50% - 12px);
+                max-width: calc(50% - 0.75rem); /* 12px */
             }
         }
     }
@@ -1175,19 +1186,19 @@ body:has(.latest-articles-home img:hover) {
     }
 
     h3 {
-        margin: 13px 0;
+        margin: 0.813rem 0; /* 13px 0 */
         @media only screen and (min-width: $medium) {
-            margin: 18px 0 11px;
+            margin: 1.125rem 0 0.688rem; /* 18px 0 11px */
         }
     }
 
     .read-more {
         @media only screen and (min-width: $medium) {
-            margin-top: 14px;
+            margin-top: 0.875rem; /* 14px */
         }
 
         a {
-            border-bottom: 1px solid;
+            border-bottom: 0.063rem solid; /* 1px */
         }
     }
 
@@ -1196,9 +1207,9 @@ body:has(.latest-articles-home img:hover) {
         display: flex;
         grid-column: span 3;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 0.625rem; /* 10px */
         @media only screen and (min-width: $medium) {
-            margin-top: 70px;
+            margin-top: 4.375rem; /* 70px */
         }
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
             grid-column: span 4;
@@ -1214,25 +1225,25 @@ body:has(.latest-articles-home img:hover) {
 }
 
 .latest-articles-home p {
-    margin-bottom: 17px;
+    margin-bottom: 1.063rem; /* 17px */
 }
 
 /* Still 100 page */
 .page-header {
-    margin-top: 199px;
+    margin-top: 12.438rem; /* 199px */
     @media only screen and (min-width: $medium) {
         display: grid;
-        gap: 24px;
+        gap: 1.5rem; /* 24px */
         grid-template-columns: repeat(16, 1fr);
-        margin-top: 257px;
+        margin-top: 16.063rem; /* 257px */
     }
 
     h1 {
-        margin-bottom: 17px;
+        margin-bottom: 1.063rem; /* 17px */
         @media only screen and (min-width: $medium) {
             grid-column: 1 / span 5;
             margin-bottom: 0;
-            margin-top: -2px;
+            margin-top: -0.125rem; /* -2px */
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 1 / span 6;
@@ -1254,7 +1265,7 @@ body:has(.latest-articles-home img:hover) {
     h2 {
         grid-column: 1 / span 6;
         grid-row: 1 / span 2;
-        margin-bottom: 14px;
+        margin-bottom: 0.875rem; /* 14px */
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
         }
@@ -1265,8 +1276,8 @@ body:has(.latest-articles-home img:hover) {
 
     p {
         grid-column: 7 / span 4;
-        margin-bottom: 17px;
-        margin-top: 4px;
+        margin-bottom: 1.063rem; /* 17px */
+        margin-top: 0.25rem; /* 4px */
         @media only screen and (min-width: $xlarge) {
             grid-column: 6 / span 3;
         }
@@ -1274,11 +1285,11 @@ body:has(.latest-articles-home img:hover) {
 
     .project-view-toggle {
         grid-column: 12 / span 4;
-        margin: 53px 0 59px;
+        margin: 3.313rem 0 3.688rem; /* 53px 0 59px */
         @extend .small-caps-menu-button-lists;
         @media only screen and (min-width: $medium) {
             grid-column: 12 / span 5;
-            margin: 27px 0 96px 0;
+            margin: 1.688rem 0 6rem 0; /* 27px 0 96px 0 */
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 12 / span 4;
@@ -1292,7 +1303,7 @@ body:has(.latest-articles-home img:hover) {
         a:active,
         a:focus,
         a:hover {
-            border-bottom: 1px solid var(--still-black);
+            border-bottom: 0.063rem solid var(--still-black); /* 1px */
         }
     }
 }
@@ -1303,7 +1314,7 @@ body:has(.project-page-html) .page-header h1 {
 
 .projects-grid {
     > div {
-        margin-bottom: 5px;
+        margin-bottom: 0.313rem; /* 5px */
     }
 
     > div > a {
@@ -1316,17 +1327,17 @@ body:has(.project-page-html) .page-header h1 {
     }
 
     h2 {
-        margin-bottom: -5px;
+        margin-bottom: -0.313rem; /* -5px */
         margin-top: 0;
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
-            margin-top: 13px;
+            margin-top: 0.813rem; /* 13px */
         }
 
         a {
-            margin-top: 8px;
+            margin-top: 0.5rem; /* 8px */
             @media only screen and (min-width: $medium) {
-                margin-top: 12px;
+                margin-top: 0.75rem; /* 12px */
             }
         }
     }
@@ -1343,10 +1354,10 @@ body:has(.project-page-html) .page-header h1 {
     display: block;
     @extend .caption-small;
     @media only screen and (min-width: $medium) {
-        font-size: 16px;
-        letter-spacing: .8px;
-        line-height: 18px;
-        margin-top: 12px;
+        font-size: 1rem; /* 16px */
+        letter-spacing: 0.05rem; /* 0.8px */
+        line-height: 1.125rem; /* 18px */
+        margin-top: 0.75rem; /* 12px */
     }
 }
 
@@ -1356,7 +1367,7 @@ body:has(.project-page-html) .page-header h1 {
 
 .projects-grid > div:nth-child(odd) {
     h2 {
-        margin-left: 20px;
+        margin-left: 1.25rem; /* 20px */
         @media only screen and (min-width: $medium) {
             margin-left: 0;
         }
@@ -1365,7 +1376,7 @@ body:has(.project-page-html) .page-header h1 {
 
 .projects-grid > div:nth-child(even) {
     h2 {
-        margin-right: 20px;
+        margin-right: 1.25rem; /* 20px */
         @media only screen and (min-width: $medium) {
             margin-left: 0;
         }
@@ -1382,13 +1393,13 @@ body:has(div.projects-index) {
     }
 
     .project-view-toggle {
-        margin-bottom: 68px;
+        margin-bottom: 4.25rem; /* 68px */
     }
 }
 
 .projects-index {
-    border-top: 0.7px solid var(--still-grey);
-    margin-top: -13px;
+    border-top: 0.044rem solid var(--still-grey); /* 0.7px */
+    margin-top: -0.813rem; /* -13px */
 
     @media only screen and (min-width: $medium) {
         border-top: 0;
@@ -1398,9 +1409,9 @@ body:has(div.projects-index) {
     .project-index-header {
         display: none;
         @media only screen and (min-width: $medium) {
-            border-bottom: 0.7px solid var(--still-grey);
+            border-bottom: 0.044rem solid var(--still-grey); /* 0.7px */
             display: grid;
-            padding-bottom: 14px;
+            padding-bottom: 0.875rem; /* 14px */
             grid-column: 6 / span 10;
             grid-template-columns: subgrid;
 
@@ -1426,14 +1437,14 @@ body:has(div.projects-index) {
     }
 
     .project-row {
-        border-bottom: 0.7px solid var(--still-grey);
-        padding: 12px 0;
+        border-bottom: 0.044rem solid var(--still-grey); /* 0.7px */
+        padding: 0.75rem 0; /* 12px 0 */
         @extend .small-caps-menu-button-lists;
         @media only screen and (min-width: $medium) {
             display: grid;
             grid-template-columns: subgrid;
             grid-column: 6 / span 10;
-            padding: 12px 0;
+            padding: 0.75rem 0; /* 12px 0 */
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 7 / span 10;
@@ -1451,8 +1462,8 @@ body:has(div.projects-index) {
         div {
             @media only screen and (min-width: $medium) {
                 grid-column: 7 / span 4;
-                margin-bottom: 1px;
-                padding-top: 2px;
+                margin-bottom: 0.063rem; /* 1px */
+                padding-top: 0.125rem; /* 2px */
                 /*&:last-child {*/
                 /*    margin-bottom: 0;*/
                 /*}*/
@@ -1463,7 +1474,7 @@ body:has(div.projects-index) {
         }
 
         span + div {
-            margin-top: 10px;
+            margin-top: 0.625rem; /* 10px */
             @media only screen and (min-width: $medium) {
                 margin-top: 0;
             }
@@ -1474,7 +1485,7 @@ body:has(div.projects-index) {
         @extend .caption-large;
         font-feature-settings: normal;
         font-variant: none;
-        margin-top: 4px;
+        margin-top: 0.25rem; /* 4px */
         text-transform: none;
         @media only screen and (min-width: $medium) {
             margin-top: 0;
@@ -1487,11 +1498,11 @@ body:has(div.projects-index) {
         display: inline-block;
         font-feature-settings: 'c2sc';
         font-variant: small-caps;
-        margin-right: 45px;
+        margin-right: 2.813rem; /* 45px */
         margin-top: 0;
-        width: 23px;
+        width: 1.438rem; /* 23px */
         @media only screen and (min-width: $medium) {
-            margin-right: 15px;
+            margin-right: 0.938rem; /* 15px */
         }
     }
 
@@ -1510,15 +1521,15 @@ body:has(div.projects-index) {
     .project-row .index-subsidiary-name {
         @media only screen and (min-width: $medium) {
             display: inline-block;
-            margin-left: 38px;
+            margin-left: 2.375rem; /* 38px */
         }
     }
 }
 
 .project-page-html {
-    margin-top: -7px;
+    margin-top: -0.438rem; /* -7px */
     @media only screen and (min-width: $medium) {
-        margin-top: 137px;
+        margin-top: 8.563rem; /* 137px */
     }
 
     .project-number {
@@ -1553,7 +1564,7 @@ body:has(div.projects-index) {
 
         > div:first-child {
             grid-column: 2 / span 5;
-            margin-bottom: 76px;
+            margin-bottom: 4.75rem; /* 76px */
             @media only screen and (min-width: $medium) {
                 margin-bottom: 0;
             }
@@ -1570,7 +1581,7 @@ body:has(div.projects-index) {
         grid-template-columns: subgrid;
 
         @media only screen and (min-width: $medium) {
-            margin-top: 95px;
+            margin-top: 5.938rem; /* 95px */
         }
 
         > div:first-child {
@@ -1581,7 +1592,7 @@ body:has(div.projects-index) {
             grid-column: 12 / span 5;
             grid-row: 1;
             @media only screen and (min-width: $medium) {
-                margin-top: -4px;
+                margin-top: -0.25rem; /* -4px */
             }
         }
     }
@@ -1589,9 +1600,9 @@ body:has(div.projects-index) {
     img.w-full {
         grid-column: 12 / span 5;
         grid-row: 1;
-        margin-bottom: 46px;
+        margin-bottom: 2.875rem; /* 46px */
         @media only screen and (min-width: $medium) {
-            margin-bottom: 168px;
+            margin-bottom: 10.5rem; /* 168px */
         }
     }
 
@@ -1599,27 +1610,27 @@ body:has(div.projects-index) {
         @extend .h3-headings-and-pullquotes;
         @media only screen and (min-width: $medium) {
             /*@extend .h2-headings-and-intros;*/
-            font-size: 30px;
-            line-height: 38px;
-            margin-top: -7px;
+            font-size: 1.875rem; /* 30px */
+            line-height: 2.375rem; /* 38px */
+            margin-top: -0.438rem; /* -7px */
         }
     }
 
     .project-subsidiaries {
         @media only screen and (min-width: $medium) {
-            margin-top: -5px;
+            margin-top: -0.313rem; /* -5px */
         }
 
         .wrapper {
-            margin-top: 17px;
+            margin-top: 1.063rem; /* 17px */
         }
 
         .wrapper div {
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            border-bottom: 0.063rem solid rgba(0, 0, 0, 0.25); /* 1px */
             display: grid;
             grid-template-columns: auto 1fr;
-            height: 40px;
+            height: 2.5rem; /* 40px */
         }
 
         .subsidiary-name {
@@ -1629,11 +1640,11 @@ body:has(div.projects-index) {
         .subsidiary-number {
             color: var(--still-grey);
             font-family: var(--font-numeric), serif;
-            font-size: 16px;
+            font-size: 1rem; /* 16px */
             justify-self: end;
             order: 2;
             @media only screen and (min-width: $medium) {
-                font-size: 15px;
+                font-size: 0.938rem; /* 15px */
             }
         }
     }
@@ -1643,9 +1654,9 @@ body:has(div.projects-index) {
     }
 
     .project-body {
-        margin-top: 50px;
+        margin-top: 3.125rem; /* 50px */
         @media only screen and (min-width: $medium) {
-            margin-top: 46px;
+            margin-top: 2.875rem; /* 46px */
         }
     }
 
@@ -1659,12 +1670,12 @@ body:has(div.projects-index) {
 
     .project-endorsements:not(:empty),
     .project-collaboration:not(:empty) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        margin-bottom: 21px;
-        padding-bottom: 21px;
+        border-bottom: 0.063rem solid rgba(0, 0, 0, 0.25); /* 1px */
+        margin-bottom: 1.313rem; /* 21px */
+        padding-bottom: 1.313rem; /* 21px */
         @media only screen and (min-width: $medium) {
             display: grid;
-            gap: 24px;
+            gap: 1.5rem; /* 24px */
             grid-template-columns: 2fr 3fr;
         }
     }
@@ -1672,22 +1683,22 @@ body:has(div.projects-index) {
     .project-endorsements:not(:empty):before,
     .project-collaboration:not(:empty):before {
         display: block;
-        margin-bottom: 16px;
+        margin-bottom: 1rem; /* 16px */
     }
     @media only screen and (min-width: $medium) {
         .project-endorsements:not(:empty):before,
         .project-collaboration:not(:empty):before {
             grid-column: 1;
             margin-bottom: 0;
-            padding-right: 24px;
+            padding-right: 1.5rem; /* 24px */
         }
     }
 
     .project-link {
         list-style-type: none;
         @media only screen and (min-width: $medium) {
-            margin-left: calc(40% + 15px);
-            margin-top: -2px;
+            margin-left: calc(40% + 0.938rem); /* 15px */
+            margin-top: -0.125rem; /* -2px */
         }
     }
 
@@ -1698,14 +1709,14 @@ body:has(div.projects-index) {
     .project-gallery {
         grid-column: 1 / span 10;
         grid-row: 2 / span 2;
-        margin: 32px 0 42px;
+        margin: 2rem 0 2.625rem; /* 32px 0 42px */
 
         @media only screen and (min-width: $medium) {
-            margin: 95px 0 0 0;
+            margin: 5.938rem 0 0 0; /* 95px 0 0 0 */
         }
 
         .text-right {
-            margin-top: -25px;
+            margin-top: -1.563rem; /* -25px */
         }
 
         .button:active,
@@ -1723,10 +1734,10 @@ body:has(div.projects-index) {
         grid-column: 12 / span 3;
         grid-row: 3;
         justify-content: center;
-        margin-bottom: 40px;
-        margin-top: 44px;
+        margin-bottom: 2.5rem; /* 40px */
+        margin-top: 2.75rem; /* 44px */
         @media only screen and (min-width: $medium) {
-            margin-bottom: 31px;
+            margin-bottom: 1.938rem; /* 31px */
             margin-top: 0;
         }
         @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
@@ -1738,12 +1749,12 @@ body:has(div.projects-index) {
     }
 
     .carousel-indicators {
-        padding-top: 10px;
+        padding-top: 0.625rem; /* 10px */
         position: relative;
         width: 50%;
 
         button {
-            margin-right: 4px;
+            margin-right: 0.25rem; /* 4px */
         }
     }
 }
@@ -1755,18 +1766,18 @@ body:has(div.projects-index) {
 /* Team Members */
 .our-team-page-header {
     h2 {
-        margin-bottom: 25px;
+        margin-bottom: 1.563rem; /* 25px */
     }
 }
 
 .featured-team-members {
-    margin: 78px 20px 0;
+    margin: 4.875rem 1.25rem 0; /* 78px 20px 0 */
     @media only screen and (min-width: $medium) {
-        margin: 260px 90px 0;
+        margin: 16.25rem 5.625rem 0; /* 260px 90px 0 */
     }
 
     .featured-team-member {
-        margin-bottom: 47px;
+        margin-bottom: 2.938rem; /* 47px */
         @media only screen and (min-width: $medium) {
             margin-bottom: 0;
         }
@@ -1788,7 +1799,7 @@ body:has(div.projects-index) {
     }
 
     .team-member-image {
-        margin: 0 -20px;
+        margin: 0 -1.25rem; /* 0 -20px */
         @media only screen and (min-width: $medium) {
             margin: 0;
         }
@@ -1804,9 +1815,9 @@ body:has(div.projects-index) {
     }
 
     h2 {
-        margin: 11px 0 3px;
+        margin: 0.688rem 0 0.188rem; /* 11px 0 3px */
         @media only screen and (min-width: $medium) {
-            margin: 26px 0 7px 0;
+            margin: 1.625rem 0 0.438rem 0; /* 26px 0 7px 0 */
         }
     }
 
@@ -1814,8 +1825,8 @@ body:has(div.projects-index) {
         display: none;
         @media only screen and (min-width: $medium) {
             display: block;
-            margin-top: 27px;
-            max-width: calc(25vw - 60px);
+            margin-top: 1.688rem; /* 27px */
+            max-width: calc(25vw - 3.75rem); /* 60px */
         }
     }
 
@@ -1829,9 +1840,9 @@ body:has(div.projects-index) {
 
 .team-members {
     h2 {
-        margin: 11px 0 3px;
+        margin: 0.688rem 0 0.188rem; /* 11px 0 3px */
         @media only screen and (min-width: $medium) {
-            margin: 26px 0 7px 0;
+            margin: 1.625rem 0 0.438rem 0; /* 26px 0 7px 0 */
         }
     }
 
@@ -1839,8 +1850,8 @@ body:has(div.projects-index) {
         display: none;
         @media only screen and (min-width: $medium) {
             display: block;
-            margin-top: 27px;
-            max-width: calc(25vw - 60px);
+            margin-top: 1.688rem; /* 27px */
+            max-width: calc(25vw - 3.75rem); /* 60px */
         }
     }
 
@@ -1848,9 +1859,9 @@ body:has(div.projects-index) {
     }
 
     > div {
-        margin-bottom: 47px;
+        margin-bottom: 2.938rem; /* 47px */
         @media only screen and (min-width: $medium) {
-            margin-bottom: 31px;
+            margin-bottom: 1.938rem; /* 31px */
         }
     }
 
@@ -1861,14 +1872,14 @@ body:has(div.projects-index) {
 
 .team-members > div:nth-child(odd) {
     @media only screen and (width < $medium) {
-        grid-column: 1 / span 3;
-    }
+    grid-column: 1 / span 3;
+}
 }
 
 .team-members > div:nth-child(even) {
     @media only screen and (width < $medium) {
-        grid-column: 2 / span 3;
-    }
+    grid-column: 2 / span 3;
+}
 }
 
 .team-members .arrow {
@@ -1908,22 +1919,22 @@ body:has(div.projects-index) {
 
 h1 .job-title {
     display: block;
-    margin: 18px 0 0 0;
+    margin: 1.125rem 0 0 0; /* 18px 0 0 0 */
     @media only screen and (min-width: $medium) {
         display: inline;
-        margin: 0 0 0 24px;
+        margin: 0 0 0 1.5rem; /* 0 0 0 24px */
     }
 }
 
 .team-member-page-header h1 {
-    margin-bottom: 22px;
+    margin-bottom: 1.375rem; /* 22px */
 }
 
 .team-page-html {
-    margin-top: 5px;
+    margin-top: 0.313rem; /* 5px */
     @media only screen and (min-width: $medium) {
-        margin-top: 133px;
-        min-height: calc(100vh - 448px);
+        margin-top: 8.313rem; /* 133px */
+        min-height: calc(100vh - 28rem); /* 448px */
     }
 
     .rendered-content {
@@ -1938,7 +1949,7 @@ h1 .job-title {
 
     .wp-container-core-columns-is-layout-1 {
         > div:first-child {
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem; /* 10px */
         }
 
         @media only screen and (min-width: $medium) {
@@ -1985,7 +1996,7 @@ h1 .job-title {
 }
 
 img.w-half {
-    margin: 32px 0 60px 0;
+    margin: 2rem 0 3.75rem 0; /* 32px 0 60px 0 */
     @media only screen and (min-width: $medium) {
         grid-column: 9 / span 8;
         grid-row: 1 / span 2;
@@ -2009,20 +2020,20 @@ img.w-half {
 
 /* Latest news block */
 .latest-news-block {
-    border-top: .7px solid var(--still-grey);
-    margin-top: 100px;
+    border-top: 0.04375rem solid var(--still-grey);
+    margin-top: 6.25rem;
     @media only screen and (min-width: $medium) {
-        margin-top: 195px;
+        margin-top: 12.1875rem;
     }
 
     h2 {
-        margin-top: 27px;
+        margin-top: 1.6875rem;
     }
 
     .inner {
-        margin-top: 27px;
+        margin-top: 1.6875rem;
         @media only screen and (min-width: $medium) {
-            margin-top: 96px;
+            margin-top: 6rem;
         }
 
         img {
@@ -2042,19 +2053,19 @@ img.w-half {
         }
 
         article {
-            margin-bottom: 48px;
+            margin-bottom: 3rem;
             @media only screen and (min-width: $medium) {
                 margin-bottom: 0;
             }
         }
 
         h3 {
-            margin-bottom: 14px;
-            margin-top: 18px;
+            margin-bottom: 0.875rem;
+            margin-top: 1.125rem;
         }
 
         .excerpt {
-            margin-bottom: 17px;
+            margin-bottom: 1.0625rem;
         }
 
         .button {
@@ -2062,7 +2073,7 @@ img.w-half {
             grid-row: 2;
             width: 100%;
             @media only screen and (min-width: $medium) {
-                margin-top: 69px;
+                margin-top: 4.3125rem;
             }
             @media only screen and (min-width: $large) {
                 grid-column: 2 / span 6;
@@ -2080,7 +2091,7 @@ img.w-half {
         display: grid;
         grid-column: 4 / span 12;
         grid-template-columns: subgrid;
-        margin-bottom: 41px;
+        margin-bottom: 2.5625rem;
     }
     @media only screen and (min-width: $large) {
         grid-column: 2 / span 14;
@@ -2106,14 +2117,14 @@ img.w-half {
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 9 / span 4;
-            margin-top: -6px;
+            margin-top: -0.375rem;
         }
 
         h3 {
-            margin-bottom: 10px;
-            margin-top: 13px;
+            margin-bottom: 0.625rem;
+            margin-top: 0.8125rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 19px;
+                margin-bottom: 1.1875rem;
                 margin-top: 0;
             }
         }
@@ -2126,7 +2137,7 @@ img.w-half {
         .article-images {
             margin-bottom: 0;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 20px;
+                margin-bottom: 1.25rem;
             }
             @media only screen and (min-width: $xlarge) {
                 margin-bottom: 0;
@@ -2134,41 +2145,41 @@ img.w-half {
         }
 
         .paragraph {
-            margin-top: 11px;
+            margin-top: 0.6875rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 18px;
-                margin-top: 20px;
+                margin-bottom: 1.125rem;
+                margin-top: 1.25rem;
             }
         }
     }
 }
 
 .article-grid {
-    margin-top: 22px;
+    margin-top: 1.375rem;
     @media only screen and (min-width: $medium) {
-        margin-top: 143px;
+        margin-top: 8.9375rem;
     }
 
     h3,
     .paragraph,
     p {
         @media only screen and (min-width: $medium) {
-            max-width: calc(25vw - 63px);
+            max-width: calc(25vw - 3.9375rem);
         }
         @media only screen and (min-width: $large) {
             max-width: none;
         }
         @media only screen and (min-width: $xlarge) {
-            max-width: calc(25vw - 63px);
+            max-width: calc(25vw - 3.9375rem);
         }
     }
 }
 
 .read-more-wrapper {
-    margin-bottom: 50px;
-    margin-top: 17px;
+    margin-bottom: 3.125rem;
+    margin-top: 1.0625rem;
     @media only screen and (min-width: $medium) {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
         margin-top: 0;
     }
 }
@@ -2182,40 +2193,40 @@ img.w-half {
     }
     @media only screen and (min-width: $xlarge) {
         grid-column: 1 / span 3;
-        margin-top: -6px;
+        margin-top: -0.375rem;
     }
 
     > div {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        margin-bottom: 50px;
-        padding-bottom: 21px;
+        border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.25);
+        margin-bottom: 3.125rem;
+        padding-bottom: 1.3125rem;
         @media only screen and (min-width: $xlarge) {
             border-bottom: 0;
-            margin-bottom: 47px;
+            margin-bottom: 2.9375rem;
             padding-bottom: 0;
         }
     }
 }
 
 .article-categories.toggle-open > div {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
 }
 
 .article-categories a {
     background-color: var(--still-sand-light);
-    border-radius: 50px;
+    border-radius: 3.125rem;
     flex-basis: fit-content;
-    height: 31px;
-    line-height: 17px;
-    margin-bottom: 15px;
-    padding: 7px 18px;
+    height: 1.9375rem;
+    line-height: 1.0625rem;
+    margin-bottom: 0.9375rem;
+    padding: 0.4375rem 1.125rem;
     text-align: center;
     white-space: nowrap;
     @extend .p1-body-copy;
 }
 
 .article-categories a:last-child {
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
     @media only screen and (min-width: $medium) {
         margin-bottom: 0;
     }
@@ -2224,7 +2235,7 @@ img.w-half {
 .article .article-categories a {
     margin-bottom: 0;
     @media only screen and (min-width: $medium) {
-        margin-bottom: 15px;
+        margin-bottom: 0.9375rem;
     }
     @media only screen and (min-width: $xlarge) {
         margin-bottom: 0;
@@ -2250,7 +2261,7 @@ img.w-half {
 
     .grid-start-1 {
         grid-column: 1 / span 6;
-        margin-bottom: 38px;
+        margin-bottom: 2.375rem;
         @media only screen and (min-width: $large) {
             grid-column: 1 / span 7;
         }
@@ -2261,7 +2272,7 @@ img.w-half {
 
     .grid-start-7 {
         grid-column: 7 / span 6;
-        margin-bottom: 38px;
+        margin-bottom: 2.375rem;
         @media only screen and (min-width: $large) {
             grid-column: 8 / span 7;
         }
@@ -2274,7 +2285,7 @@ img.w-half {
         width: 100%;
         @media only screen and (min-width: $medium) {
             grid-column: 1 / span 3;
-            margin-top: 35px;
+            margin-top: 2.1875rem;
         }
         @media only screen and (min-width: $large) {
             grid-column: 1 / span 7;
@@ -2285,26 +2296,26 @@ img.w-half {
     }
 
     h3 {
-        margin-bottom: 15px;
-        margin-top: 13px;
+        margin-bottom: 0.9375rem;
+        margin-top: 0.8125rem;
         @media only screen and (min-width: $medium) {
-            margin-bottom: 13px;
-            margin-top: 18px;
+            margin-bottom: 0.8125rem;
+            margin-top: 1.125rem;
         }
     }
 
     .paragraph {
-        margin-bottom: 19px;
+        margin-bottom: 1.1875rem;
     }
 
     .post-card {
-        margin-bottom: 39px;
+        margin-bottom: 2.4375rem;
     }
 }
 
 .article {
-    margin-bottom: -23px;
-    margin-top: 253px;
+    margin-bottom: -1.4375rem;
+    margin-top: 15.8125rem;
 
     h1,
     .article-meta,
@@ -2323,9 +2334,9 @@ img.w-half {
     }
 
     .article-meta {
-        margin: 11px 0 20px;
+        margin: 0.6875rem 0 1.25rem;
         @media only screen and (min-width: $medium) {
-            margin: 63px 0 31px 0;
+            margin: 3.9375rem 0 1.9375rem 0;
         }
 
         span {
@@ -2346,16 +2357,16 @@ img.w-half {
 
     .article-categories {
         grid-row: 3;
-        margin-bottom: 35px;
+        margin-bottom: 2.1875rem;
         @media only screen and (min-width: $medium) {
-            margin-bottom: 91px;
+            margin-bottom: 5.6875rem;
         }
     }
 
     .article-featured-image {
-        margin: 44px -20px;
+        margin: 2.75rem -1.25rem;
         @media only screen and (min-width: $medium) {
-            margin: 76px 0 70px 0;
+            margin: 4.75rem 0 4.375rem 0;
         }
     }
 
@@ -2377,13 +2388,13 @@ img.w-half {
         }
 
         > p {
-            margin-bottom: 23px;
+            margin-bottom: 1.4375rem;
         }
 
         blockquote {
-            margin: 37px 0 47px;
+            margin: 2.3125rem 0 2.9375rem;
             @media only screen and (min-width: $medium) {
-                margin: 40px 0 68px;
+                margin: 2.5rem 0 4.25rem;
             }
         }
 
@@ -2391,15 +2402,15 @@ img.w-half {
             @extend .h4-article-feature-text;
             @media only screen and (min-width: $medium) {
                 /*@extend .h3-headings-and-pullquotes;*/
-                font-size: 24px;
-                line-height: 30px;
+                font-size: 1.5rem;
+                line-height: 1.875rem;
             }
         }
 
         .wp-block-image {
-            margin: 0 -20px 44px;
+            margin: 0 -1.25rem 2.75rem;
             @media only screen and (min-width: $medium) {
-                margin: 0 0 70px;
+                margin: 0 0 4.375rem;
             }
         }
     }
@@ -2419,13 +2430,13 @@ body:has(section.contact-page) {
 .contact-page {
     .page-header {
         @media only screen and (min-width: $medium) {
-            margin-bottom: 115px;
+            margin-bottom: 7.1875rem;
         }
 
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 18px;
+                margin-bottom: 1.125rem;
             }
         }
     }
@@ -2434,61 +2445,61 @@ body:has(section.contact-page) {
         grid-column: 2 / span 3;
 
         a {
-            border-bottom: 1px solid var(--still-black)
+            border-bottom: 0.0625rem solid var(--still-black)
         }
 
         p:nth-child(1) {
-            margin-bottom: 21px;
+            margin-bottom: 1.3125rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 27px;
+                margin-bottom: 1.6875rem;
             }
         }
 
         p:nth-child(2) {
-            margin-bottom: 66px;
+            margin-bottom: 4.125rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 78px;
+                margin-bottom: 4.875rem;
             }
         }
 
         h3 {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             @media only screen and (min-width: $medium) {
-                margin-bottom: 20px;
+                margin-bottom: 1.25rem;
             }
         }
 
         p:last-child {
-            margin-bottom: 63px;
-            margin-top: 13px;
+            margin-bottom: 3.9375rem;
+            margin-top: 0.8125rem;
             @media only screen and (min-width: $medium) {
-                margin-top: 26px;
+                margin-top: 1.625rem;
             }
         }
     }
 
     .contact-form {
         grid-column: 9 / span 7;
-        margin-top: -2px;
+        margin-top: -0.125rem;
 
         form {
-            margin-top: 5px;
+            margin-top: 0.3125rem;
             @media only screen and (min-width: $medium) {
-                margin-top: 49px;
+                margin-top: 3.0625rem;
             }
         }
 
         input {
             border-radius: 0;
-            padding-top: 23px;
+            padding-top: 1.4375rem;
             -webkit-appearance: none;
         }
 
         textarea {
             border-radius: 0;
-            height: 239px;
-            margin-top: 30px;
-            padding: 20px;
+            height: 14.9375rem;
+            margin-top: 1.875rem;
+            padding: 1.25rem;
             -webkit-appearance: none;
         }
 
@@ -2498,35 +2509,35 @@ body:has(section.contact-page) {
         }
 
         .space-y-8 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: 10px;
+            margin-top: 0.625rem;
         }
 
         button {
-            height: 70px;
-            margin-top: 30px !important;
+            height: 4.375rem;
+            margin-top: 1.875rem !important;
             width: 100%;
         }
     }
 
     .error-message {
-        margin-bottom: -48px;
-        margin-top: 18px;
+        margin-bottom: -3rem;
+        margin-top: 1.125rem;
     }
 
     .failure-message {
-        height: 499px;
-        margin-top: 68px;
+        height: 31.1875rem;
+        margin-top: 4.25rem;
     }
 
     .success-message {
-        margin-top: 66px;
+        margin-top: 4.125rem;
 
         p {
-            margin-top: 13px;
+            margin-top: 0.8125rem;
         }
 
         button {
-            margin-top: 24px !important;
+            margin-top: 1.5rem !important;
         }
     }
 }
@@ -2555,21 +2566,21 @@ body:has(section.page-page) {
 
 .page-page {
     .page-header {
-        margin-bottom: 25px;
+        margin-bottom: 1.5625rem;
         @media only screen and (min-width: $medium) {
-            margin-bottom: 129px;
+            margin-bottom: 8.0625rem;
         }
     }
 
     .featured-image {
         grid-column: 1 / span 3;
-        margin-bottom: 45px;
-        margin-left: -20px;
+        margin-bottom: 2.8125rem;
+        margin-left: -1.25rem;
         @media only screen and (min-width: $medium) {
             grid-column: 1 / span 5;
             margin-bottom: 0;
             margin-left: 0;
-            margin-top: 180px;
+            margin-top: 11.25rem;
         }
 
         img {
@@ -2579,8 +2590,8 @@ body:has(section.page-page) {
 
     > div > .grid {
         @media only screen and (width < $medium) {
-            column-gap: 20px;
-        }
+        column-gap: 1.25rem;
+    }
     }
 
     .page-html {
@@ -2592,20 +2603,20 @@ body:has(section.page-page) {
         }
 
         p {
-            margin-bottom: 27px;
+            margin-bottom: 1.6875rem;
         }
 
         @media only screen and (min-width: $medium) {
             p:first-child {
-                margin-top: -4px;
+                margin-top: -0.25rem;
             }
         }
 
         h2, h3 {
-            margin-bottom: 21px;
-            margin-top: 9px;
+            margin-bottom: 1.3125rem;
+            margin-top: 0.5625rem;
             @media only screen and (min-width: $medium) {
-                margin-top: 35px;
+                margin-top: 2.1875rem;
             }
         }
     }
@@ -2627,11 +2638,11 @@ body:has(section.page-page) {
         grid-column: 6 / span 6;
 
         p {
-            margin: 30px 0 25px;
+            margin: 1.875rem 0 1.5625rem;
         }
 
         a {
-            width: 271px;
+            width: 16.9375rem;
         }
     }
 }
