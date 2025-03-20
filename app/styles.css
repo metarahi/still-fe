@@ -945,7 +945,7 @@ footer {
             margin-top: 0;
         }
         @media only screen and (min-width: $large) {
-            grid-column: 2 / span 3;
+            grid-column: 2 / span 4;
         }
         @media only screen and (min-width: $xlarge) {
             grid-column: 2 / span 4;
@@ -1396,6 +1396,7 @@ body:has(.project-page-html) .page-header h1 {
 body:has(div.projects-index) {
     background: var(--still-sand-dark);
 
+    nav.hidden-scroll,
     nav:hover,
     nav.show,
     .sheet-bg {
@@ -2083,10 +2084,8 @@ img.w-half {
             grid-row: 2;
             width: 100%;
             @media only screen and (min-width: $medium) {
+                grid-column: 2 / span 4;
                 margin-top: 4.3125rem;
-            }
-            @media only screen and (min-width: $large) {
-                grid-column: 2 / span 6;
             }
             @media only screen and (min-width: $xlarge) {
                 grid-column: 1 / span 3;
@@ -2430,6 +2429,7 @@ img.w-half {
 body:has(section.contact-page) {
     background: var(--still-sand-dark);
 
+    nav.hidden-scroll,
     nav:hover,
     nav.show,
     .sheet-bg {
@@ -2567,6 +2567,7 @@ body:has(section.contact-page) {
 body:has(section.page-page) {
     background: var(--still-sand-dark);
 
+    nav.hidden-scroll,
     nav:hover,
     nav.show,
     .sheet-bg {
