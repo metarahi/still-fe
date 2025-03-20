@@ -759,10 +759,12 @@ footer {
         font-family: var(--font-serif), serif;
         font-size: 1.5rem; /* 24px */
         line-height: 1.875rem; /* 30px */
-        @media only screen and (min-width: $xlarge) {
-            display: none;
+        @media only screen and (min-width: $medium) {
             font-size: 1.875rem; /* 30px */
             line-height: 2.375rem; /* 38px */
+        }
+        @media only screen and (min-width: $xlarge) {
+            display: none;
             opacity: 0;
             transition: opacity .35s ease-in-out;
         }
