@@ -1032,19 +1032,19 @@ body:has(.latest-articles-home img:hover) {
         column-gap: 1.5rem; /* 24px */
         display: grid;
         grid-template-columns: 4.125rem repeat(16, 1fr) 4.125rem; /* 66px ... 66px */
-        /*grid-template-rows: 354px 215px min-content min-content;*/
-        grid-template-rows: 22.125rem auto min-content min-content; /* 354px auto min-content min-content */
+        /*grid-template-rows: 22.125rem auto min-content min-content; !* 354px auto min-content min-content *!*/
+        grid-template-rows: 20fr 18fr 33px 15fr 70px 33px;
         margin: 13rem 0 0; /* 208px 0 0 */
         padding: 0;
     }
 
     @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-        /*grid-template-rows: 354px 72px min-content min-content;*/
-        grid-template-rows: 22.125rem auto min-content min-content; /* 354px auto min-content min-content */
+        /*grid-template-rows: 22.125rem auto min-content min-content; !* 354px auto min-content min-content *!*/
     }
 
     @media only screen and (min-width: $xxlarge) {
-        grid-template-rows: 22.125rem 24.25rem min-content min-content; /* 354px 388px min-content min-content */
+        /*grid-template-rows: 22.125rem 24.25rem min-content min-content; !* 354px 388px min-content min-content *!*/
+        /*grid-template-rows: 5fr 4.6fr 3.7fr 70px;*/
     }
 
     > :nth-child(1) {
@@ -1058,7 +1058,7 @@ body:has(.latest-articles-home img:hover) {
 
     > :nth-child(2) {
         grid-column: 10 / span 9;
-        grid-row: 1 / span 2;
+        grid-row: 1 / span 3;
         margin: 2.938rem -1.25rem 0; /* 47px -20px 0 */
         order: 4;
         @media only screen and (min-width: $medium) {
@@ -1089,20 +1089,24 @@ body:has(.latest-articles-home img:hover) {
         order: 5;
         margin-top: 2.438rem; /* 39px */
         @media only screen and (min-width: $medium) {
+            align-items: center;
+            display: flex;
             margin-top: 0;
-            grid-row: 3;
+            grid-row: 4;
+            /*position: relative;*/
+            /*top: -20px;*/
         }
-        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-            grid-row: 3;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-row: 3;
-        }
+        /*@media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {*/
+        /*    grid-row: 3;*/
+        /*}*/
+        /*@media only screen and (min-width: $xlarge) {*/
+        /*    grid-row: 3;*/
+        /*}*/
     }
 
     > :nth-child(5) {
         grid-column: 1 / span 7;
-        grid-row: 2 / span 3;
+        grid-row: 2 / span 5;
         margin: 2.125rem -1.25rem 0; /* 34px -20px 0 */
         order: 3;
         @media only screen and (min-width: $medium) {
@@ -1122,9 +1126,9 @@ body:has(.latest-articles-home img:hover) {
         align-self: end;
         display: flex;
         grid-column: 10 / span 3;
-        grid-row: 4;
+        grid-row: 5;
         justify-content: center;
-        margin-bottom: 1.875rem; /* 30px */
+        /*margin-bottom: 1.875rem; !* 30px *!*/
         margin-top: 2.688rem; /* 43px */
         order: 6;
         width: 100%;
