@@ -764,7 +764,7 @@ footer {
             line-height: 2.375rem; /* 38px */
         }
         @media only screen and (min-width: $xlarge) {
-            display: none;
+            display: inline;
             opacity: 0;
             transition: opacity .35s ease-in-out;
         }
