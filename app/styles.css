@@ -947,9 +947,6 @@ footer {
         @media only screen and (min-width: $large) {
             grid-column: 2 / span 4;
         }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 2 / span 4;
-        }
         @media only screen and (min-width: $xxlarge) {
             grid-column: 2 / span 3;
         }
