@@ -1223,10 +1223,11 @@ body:has(.latest-articles-home img:hover) {
         justify-content: center;
         margin-top: 0.625rem; /* 10px */
         @media only screen and (min-width: $medium) {
+            grid-column: span 4;
             margin-top: 4.375rem; /* 70px */
         }
-        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-            grid-column: span 4;
+        @media only screen and (min-width: $large) {
+            grid-column: span 3;
         }
         @media only screen and (min-width: $xxlarge) {
             grid-column: span 3;
@@ -1752,13 +1753,11 @@ body:has(div.projects-index) {
         margin-bottom: 2.5rem; /* 40px */
         margin-top: 2.75rem; /* 44px */
         @media only screen and (min-width: $medium) {
+            grid-column: 12 / span 4;
             margin-bottom: 1.938rem; /* 31px */
             margin-top: 0;
         }
-        @media only screen and (min-width: $medium) and (min-height: $ipadPortrait) {
-            grid-column: 12 / span 5;
-        }
-        @media only screen and (min-width: $xxlarge) {
+        @media only screen and (min-width: $xlarge) {
             grid-column: 12 / span 3;
         }
     }
