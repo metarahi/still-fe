@@ -8,6 +8,7 @@ import axios from "axios";
 
 import type {Author, Category, FeaturedMedia, Page, Post, Project, Tag,} from "./wordpress.d";
 import {cookies} from "next/headers";
+import {notFound} from "next/navigation";
 
 // WordPress Config
 const baseUrl = process.env.WORDPRESS_URL;
@@ -79,19 +80,21 @@ async function wordpressFetch<T>(
   }).then(response => {
     return response.data;
   }).catch(error => {
-    throw new WordPressAPIError(
-        `WordPress API request failed: ${error}`,
-        0,
-        url
-    );
+    notFound();
+    // throw new WordPressAPIError(
+    //     `WordPress API request failed: ${error}`,
+    //     0,
+    //     url
+    // );
   })
 
   if (!response) {
-    throw new WordPressAPIError(
-        `WordPress API request failed: ${response.status}`,
-        response.status,
-        url
-    );
+    notFound();
+    // throw new WordPressAPIError(
+    //     `WordPress API request failed: ${response.status}`,
+    //     response.status,
+    //     url
+    // );
   }
 
   return response;
