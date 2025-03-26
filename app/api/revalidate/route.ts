@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
             status: 200,
         });
     } catch (err) {
-        return new Response(JSON.stringify({ message: "Error revalidating" }), {
+        return new Response(JSON.stringify({ revalidated: false, path: path, message: "Error revalidating" }), {
             status: 500,
         });
     }
