@@ -80,21 +80,21 @@ async function wordpressFetch<T>(
   }).then(response => {
     return response.data;
   }).catch(error => {
-    notFound();
-    // throw new WordPressAPIError(
-    //     `WordPress API request failed: ${error}`,
-    //     0,
-    //     url
-    // );
+    // notFound();
+    throw new WordPressAPIError(
+        `WordPress API request failed: ${error}`,
+        0,
+        url
+    );
   })
 
   if (!response) {
-    notFound();
-    // throw new WordPressAPIError(
-    //     `WordPress API request failed: ${response.status}`,
-    //     response.status,
-    //     url
-    // );
+    // notFound();
+    throw new WordPressAPIError(
+        `WordPress API request failed: ${response.status}`,
+        response.status,
+        url
+    );
   }
 
   return response;
