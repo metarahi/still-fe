@@ -10,19 +10,21 @@ interface Props {
     key: number
 }
 const Project: React.FC<Props> = ({page, gridClass}: Props): ReactElement<any, any> => {
-    const thumbnail: any | undefined = page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium;
+    const thumbnail: any | undefined = page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium ?? page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.full;
 
     return (
         <div className={gridClass} key=""
              data-aos="fade-up"
         >
             <Link href={'/still-100/' + page.slug}>
+                {thumbnail?.source_url &&
                 <Image
                     src={thumbnail.source_url}
                     alt={page.title.rendered}
                     height={thumbnail.height}
                     width={thumbnail.width}
                 />
+                }
             </Link>
             <h2><Link href={'/still-100/' + page.slug}>{page.title.rendered} <span className="arrow">→</span></Link></h2>
         </div>
