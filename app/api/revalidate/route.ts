@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
         }
         revalidatePath("/");
 
-        return new Response(JSON.stringify({ revalidated: true }), {
+        return new Response(JSON.stringify({ revalidated: true, path: path }), {
             status: 200,
         });
     } catch (err) {
