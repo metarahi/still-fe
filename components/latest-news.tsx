@@ -5,6 +5,9 @@ import Image from "next/image";
 import {FeaturedMedia, Page, Post} from "@/lib/wordpress.d";
 
 function createExcerpt(string: string, maxLength = 600): string {
+    if (!string) {
+        return '';
+    }
     // Replace multiple whitespace with single space and trim
     string = string.replace(/\s+/g, ' ').trim().replace(/(<([^>]+)>)/gi, "");
 
@@ -56,15 +59,20 @@ export default async function LatestNews(): Promise<ReactElement<any, any>> {
     const latestArticleIds: number[] = extractLatestArticleIds(blocks);
 
     // Fetch articles and their featured media
-    const latestArticles = await Promise.all(
-        latestArticleIds.map(async (id: number) => {
-            const article: Post = await getPostById(id);
-            const featuredMedia: FeaturedMedia | null = article.featured_media
-                ? await getFeaturedMediaById(article.featured_media)
-                : null;
-            return { article, featuredMedia };
-        })
-    );
+    const latestArticles = (
+        await Promise.all(
+            latestArticleIds.map(async (id: number) => {
+                const article: Post | null = await getPostById(id);
+                if (article?.status === "publish") {
+                    const featuredMedia: FeaturedMedia | null = article.featured_media
+                        ? await getFeaturedMediaById(article.featured_media)
+                        : null;
+                    return { article, featuredMedia };
+                }
+                return null;
+            })
+        )
+    ).filter(Boolean);
 
     // Extract intro block from article data
     const extractIntro = (block_data: Record<string, any> | undefined) => {
@@ -79,7 +87,7 @@ export default async function LatestNews(): Promise<ReactElement<any, any>> {
         <div className="latest-news-block mx-90px">
             <h2 className="small-caps-menu-button-lists">News & Articles</h2>
             <div className="inner md:grid grid-cols-16 gap-6 mb-24">
-                {latestArticles.map(({ article, featuredMedia }, index: number): ReactElement<any, any> => {
+                {latestArticles.length > 0 && latestArticles.map(({ article, featuredMedia }, index: number): ReactElement<any, any> => {
                     const intro = extractIntro(article.block_data);
                     return (
                         <article key={index} className={`article-${index + 1}`}>
@@ -93,14 +101,14 @@ export default async function LatestNews(): Promise<ReactElement<any, any>> {
                             </Link>
                             <h3 className="h3-headings-and-pullquotes">
                                 <Link href={`/articles/${article.slug}`}>
-                                    {article.title.rendered} &nbsp; &nbsp; <span className="arrow">→</span>
+                                    {article.title?.rendered} &nbsp; &nbsp; <span className="arrow">→</span>
                                 </Link>
                             </h3>
                             <p
                                 className="excerpt"
                                 dangerouslySetInnerHTML={{
                                     __html: createExcerpt(
-                                        intro?.rendered || article.excerpt.rendered,
+                                        intro?.rendered || article.excerpt?.rendered,
                                         220
                                     ),
                                 }}
