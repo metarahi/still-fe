@@ -1,4 +1,3 @@
-// "use client";
 import { Post } from "@/lib/wordpress.d";
 import Image from "next/image";
 import React, {ReactElement} from "react";
