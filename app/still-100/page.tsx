@@ -1,5 +1,5 @@
 import {Container, Section} from "@/components/craft";
-import {getAllProjects, getPageById, getPostRevisionsById} from "@/lib/wordpress";
+import {getAllProjects, getFeaturedMediaById, getPageById, getPostRevisionsById} from "@/lib/wordpress";
 import type {Metadata} from "next";
 import React, {ReactElement} from "react";
 import ProjectsWrapper from "@/components/projects/projects-wrapper";
@@ -18,6 +18,11 @@ export default async function Page(): Promise<ReactElement<any, any>> {
         page = await getPostRevisionsById(page.id);
     }
     const projects: Project[] = await getAllProjects();
+    for (const project of projects) {
+        if (project._embedded) {
+            project._embedded.still_100_page_image = await getFeaturedMediaById(Number(project.acf?.still_100_page_image));
+        }
+    }
 
     return (
         <Section>

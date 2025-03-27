@@ -9,7 +9,7 @@ interface Props {
     key: number
 }
 const Project: React.FC<Props> = ({page, gridClass}: Props): ReactElement<any, any> => {
-    const thumbnail: any | undefined = page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium ?? page._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.full;
+    const thumbnail: any | undefined = page._embedded?.still_100_page_image?.media_details.sizes.full;
 
     return (
         <div className={gridClass} key=""

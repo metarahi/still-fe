@@ -5,6 +5,7 @@ import ViewToggle from "@/components/projects/view-toggle";
 import Project from "@/components/projects/project";
 import {Project as WordpressProject} from "@/lib/wordpress.d";
 import Link from "next/link";
+import {getFeaturedMediaById} from "@/lib/wordpress";
 
 function transformSubsidiaryData(data: Record<string, any>): Record<string, any> {
     const groupedSubsidiaries: Record<string, any> = {};
