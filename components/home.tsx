@@ -68,7 +68,7 @@ export default function HomePage(page: Page): ReactElement<any, any> {
                 clearInterval(timer);
             });
             element.addEventListener("mouseout", (event): void => {
-                setInterval(handleTimer, 4000);
+                timer = setInterval(handleTimer, 4000);
             });
         })
     }, []);
