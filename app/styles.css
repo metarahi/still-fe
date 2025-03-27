@@ -1629,8 +1629,15 @@ body:has(div.projects-index) {
         }
     }
 
+    .project-subsidiaries:has(h2:empty) {
+        display: none;
+    }
+
     .project-subsidiaries {
+        margin-bottom: 3.125rem; /* 50px */
+
         @media only screen and (min-width: $medium) {
+            margin-bottom: 2.875rem; /* 46px */
             margin-top: -0.313rem; /* -5px */
         }
 
@@ -1664,13 +1671,6 @@ body:has(div.projects-index) {
 
     .project-subsidiaries .wrapper {
         @extend .p1-body-copy;
-    }
-
-    .project-body {
-        margin-top: 3.125rem; /* 50px */
-        @media only screen and (min-width: $medium) {
-            margin-top: 2.875rem; /* 46px */
-        }
     }
 
     .project-endorsements:not(:empty):before {
