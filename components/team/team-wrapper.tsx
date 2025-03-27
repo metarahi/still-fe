@@ -2,8 +2,7 @@
 
 import React, {ReactElement} from "react";
 import { Post } from "@/lib/wordpress.d";
-import Image from "next/image";
-import Link from "next/link";
+import TeamMemberCard from "./team-member-card";
 
 const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, any> => {
     const _page: any = page.page;
@@ -24,79 +23,30 @@ const TeamWrapper: (page: any) => ReactElement = (page: any): ReactElement<any, 
             </div>
 
             <div className="featured-team-members md:grid md:grid-cols-16 md:gap-6">
-                {_featuredTeamMembers && _featuredTeamMembers.map(
-                    function (teamMember: Post, index: number): ReactElement<any, any> {
-                        return (
-                            <div key={index} className={"featured-team-member featured-team-member-" + (index + 1)} data-aos="fade-up">
-                                <div className="team-member-image">
-                                    <Link href={'/our-team/' + teamMember.slug}>
-                                        <Image
-                                            src={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-                                            alt={teamMember.title.rendered}
-                                            className="primary"
-                                            height={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.height}
-                                            width={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.width}
-                                        />
-                                        <Image
-                                            src={teamMember._embedded?.secondary_image.media_details.sizes.full.source_url}
-                                            alt={teamMember.title.rendered}
-                                            className="secondary"
-                                            height={teamMember._embedded?.secondary_image.media_details.sizes.full.height}
-                                            width={teamMember._embedded?.secondary_image.media_details.sizes.full.width}
-                                        />
-                                    </Link>
-
-                                </div>
-                                <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
-                                </h2>
-                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}&nbsp;
-                                    <span
-                                        className="arrow">→</span></Link></div>
-                                <div className="paragraph"
-                                     dangerouslySetInnerHTML={{__html: teamMember.block_data?.[0].innerHTML}}/>
-                            </div>
-                        )
-                    }
-                )}
+                {_featuredTeamMembers && _featuredTeamMembers.map((teamMember: Post, index: number) => (
+                    <TeamMemberCard
+                        teamMember={teamMember}
+                        index={index}
+                        featured={true}
+                        key={index}
+                    />
+                ))}
             </div>
 
             <div className="team-members grid max-md:grid-cols-4 gap-x-7 md:grid-cols-16 md:gap-x-6 md:gap-y-16 mx-90px">
-                {_teamMembers && _teamMembers.map(
-                    function (teamMember: Post, index: number): ReactElement<any, any> {
-                        const columnPositions: string[] = ["grid-start-2", "grid-start-7", "grid-start-12"];
-                        const gridClass: string = columnPositions[index % 3];
+                {_teamMembers && _teamMembers.map((teamMember: Post, index: number) => {
+                    const columnPositions: string[] = ["grid-start-2", "grid-start-7", "grid-start-12"];
+                    const gridClass: string = columnPositions[index % 3];
 
-                        return (
-                            <div key={index} className={gridClass} data-aos="fade-up">
-                                <div className="team-member-image">
-                                    <Link href={'/our-team/' + teamMember.slug}>
-                                        <Image
-                                            src={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-                                            alt={teamMember.title.rendered}
-                                            className="primary"
-                                            height={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.height}
-                                            width={teamMember._embedded?.['wp:featuredmedia'][0].media_details.sizes.full.width}
-                                        />
-                                        <Image
-                                            src={teamMember._embedded?.secondary_image.media_details.sizes.full.source_url}
-                                            alt={teamMember.title.rendered}
-                                            className="secondary"
-                                            height={teamMember._embedded?.secondary_image.media_details.sizes.full.height}
-                                            width={teamMember._embedded?.secondary_image.media_details.sizes.full.width}
-                                        />
-                                    </Link>
-                                </div>
-                                <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros"><Link href={'/our-team/' + teamMember.slug}>{teamMember.title.rendered}</Link>
-                                </h2>
-                                <div className="small-caps-menu-button-lists"><Link href={'/our-team/' + teamMember.slug}>{teamMember.acf?.job_title}&nbsp;
-                                    <span
-                                        className="arrow">→</span></Link></div>
-                                <div className="paragraph"
-                                     dangerouslySetInnerHTML={{__html: teamMember.block_data?.[0].innerHTML}}/>
-                            </div>
-                        )
-                    }
-                )}
+                    return (
+                        <div key={index} className={gridClass}>
+                            <TeamMemberCard
+                                teamMember={teamMember}
+                                index={index}
+                            />
+                        </div>
+                    );
+                })}
             </div>
         </div>)
 }

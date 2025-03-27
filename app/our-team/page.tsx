@@ -42,6 +42,7 @@ export default async function Page(): Promise<ReactElement<any, any>> {
 
     for (const member of teamMembers) {
         if (member._embedded) {
+            member._embedded.primary_image = await getFeaturedMediaById(Number(member.acf?.primary_image));
             member._embedded.secondary_image = await getFeaturedMediaById(Number(member.acf?.secondary_image));
         }
     }
