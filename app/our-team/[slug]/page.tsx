@@ -83,9 +83,7 @@ export default async function Page({
         notFound();
     }
 
-    const featuredMedia: FeaturedMedia = post.acf?.secondary_image
-        ? await getFeaturedMediaById(Number(post.acf?.secondary_image))
-        : await getFeaturedMediaById(post.featured_media);
+    const featuredMedia: FeaturedMedia = await getFeaturedMediaById(post.featured_media);
 
     return (
         <Section>
