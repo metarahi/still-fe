@@ -67,15 +67,14 @@ export async function generateMetadata({
 }
 
 export default async function Page({
-                                       params,
-                                   }: {
+   params,
+}: {
     params: Promise<{ slug: string }>;
 }): Promise<ReactElement<any, any>> {
     const { slug } = await params;
     let post: Post = await getTeamMemberBySlug(slug);
     const { isEnabled } = await draftMode();
     if (isEnabled) {
-        // @ts-ignore
         post = await getPostRevisionsById(post.id);
     }
 
