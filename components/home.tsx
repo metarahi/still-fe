@@ -15,62 +15,91 @@ export default function HomePage(page: Page): ReactElement<any, any> {
     const homePageDom = htmlFrom(page.data.content.rendered);
 
     function init_crossFade(element: Element) {
-        const setBackground = {
-            crossFadeImages: [].slice.call(
-                element.querySelectorAll('.slide')
-            ),
-
-            randomize: function(arrayLength: number): number {
-                return Math.floor(arrayLength * Math.random());
-            },
-            setImageOnLoad: function(path: number) {
-                // @ts-ignore
-                setBackground.crossFadeImages[path].classList.add(
-                    'active'
-                );
-                return element.querySelector('.active');
-            },
-
-            setNextImage: function(activeImage: Element | null) {
-                if (activeImage !== null) {
-                    activeImage.classList.remove('active');
-                    let nextImage: Element | null = element.querySelector('.slide');
-                    if (activeImage.nextElementSibling !== null) {
-                        nextImage = activeImage.nextElementSibling;
-                    }
-                    if (nextImage !== null) {
-                        nextImage.classList.add('active');
-                        // setBackground.setNextImage(nextImage);
-                    }
+        // Get all slides in this element
+        const slides = element.querySelectorAll('.slide');
+        if (!slides || slides.length === 0) return;
+        
+        // First ensure all slides have active class removed
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Find current active slide (if any)
+        const currentActive = element.querySelector('.slide.active');
+        
+        // Determine next slide
+        let nextIndex = 0;
+        
+        if (currentActive) {
+            // Find the index of the current active slide
+            for (let i = 0; i < slides.length; i++) {
+                if (slides[i] === currentActive) {
+                    // Use the next slide, or wrap around to the first
+                    nextIndex = (i + 1) % slides.length;
+                    break;
                 }
             }
-        };
-
-        let randomNumber: number = setBackground.randomize(
-            setBackground.crossFadeImages.length
-        );
-        const activeImage: Element | null = setBackground.setImageOnLoad(randomNumber);
-        setBackground.setNextImage(activeImage);
+        } else {
+            // If no active slide, pick a random one
+            nextIndex = Math.floor(Math.random() * slides.length);
+        }
+        
+        // Add active class to the next slide
+        slides[nextIndex].classList.add('active');
     }
 
     useEffect((): void => {
         const projectPreviews: NodeListOf<Element> = document.querySelectorAll('.project-previews .inner');
-
+        if (!projectPreviews || projectPreviews.length === 0) return;
+        
+        // Initial setup - set initial slide for each preview
+        projectPreviews.forEach(element => {
+            init_crossFade(element);
+        });
+        
+        // Function to handle timer-based transitions
         function handleTimer(): void {
-            const random: number = Math.floor(Math.random() * projectPreviews.length);
-            init_crossFade(projectPreviews[random]);
+            if (projectPreviews.length > 0) {
+                // Choose a random slider to update
+                const randomIndex = Math.floor(Math.random() * projectPreviews.length);
+                const targetElement = projectPreviews[randomIndex];
+                
+                // Transition to the next slide
+                init_crossFade(targetElement);
+            }
         }
-
+        
+        // Start the timer
         let timer = setInterval(handleTimer, 4000);
-
-        projectPreviews.forEach(function(element: Element): void {
-            element.addEventListener("mouseover", (event): void => {
+        
+        // Set up event listeners for pause/resume on hover
+        const cleanupListeners: (() => void)[] = [];
+        
+        projectPreviews.forEach(element => {
+            const mouseoverHandler = (): void => {
                 clearInterval(timer);
-            });
-            element.addEventListener("mouseout", (event): void => {
+                timer = 0;
+            };
+            
+            const mouseoutHandler = (): void => {
+                if (timer) clearInterval(timer);
                 timer = setInterval(handleTimer, 4000);
+            };
+            
+            element.addEventListener("mouseover", mouseoverHandler);
+            element.addEventListener("mouseout", mouseoutHandler);
+            
+            cleanupListeners.push(() => {
+                element.removeEventListener("mouseover", mouseoverHandler);
+                element.removeEventListener("mouseout", mouseoutHandler);
             });
-        })
+        });
+        
+        // Cleanup function to prevent memory leaks
+        return () => {
+            if (timer) clearInterval(timer);
+            cleanupListeners.forEach(cleanup => cleanup());
+        };
     }, []);
 
     return (
