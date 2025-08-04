@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
         search: "",
       },
     ],
+    unoptimized: true,
   },
   async redirects() {
     return [
