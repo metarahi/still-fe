@@ -22,8 +22,8 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 export const submitHubspotForm = async (firstname: string, lastname: string, email: string, phone: string | undefined, message: string) => {
-    const portalId: string = "47738603!";
-    const formGuid: string = "0a95d186-f20f-4d44-bacd-5251d9f6b993!";
+    const portalId: string = "47738603";
+    const formGuid: string = "0a95d186-f20f-4d44-bacd-5251d9f6b993";
     const config = {
         headers: {
             "Content-Type": "application/json",
