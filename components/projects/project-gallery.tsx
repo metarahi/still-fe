@@ -24,13 +24,6 @@ const ProjectGallery: React.FC<Props> = ({content, className}: Props): ReactElem
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
 
-    const galleryBlock = content?.block_data?.[2]?.innerBlocks?.[0]?.innerBlocks?.[0];
-    if (!galleryBlock?.rendered) {
-        return <div className={cn("project-gallery", className)}>No gallery found</div>;
-    }
-
-    const gallery: string | ReactElement | ReactElement[] = htmlFrom(galleryBlock.rendered, setApi);
-
     React.useEffect((): void => {
         if (!api) {
             return
@@ -43,6 +36,13 @@ const ProjectGallery: React.FC<Props> = ({content, className}: Props): ReactElem
             setCurrent(api.selectedScrollSnap() + 1)
         })
     }, [api])
+
+    const galleryBlock = content?.block_data?.[2]?.innerBlocks?.[0]?.innerBlocks?.[0];
+    if (!galleryBlock?.rendered) {
+        return <div className={cn("project-gallery", className)}>No gallery found</div>;
+    }
+
+    const gallery: string | ReactElement | ReactElement[] = htmlFrom(galleryBlock.rendered, setApi);
 
     return (
         <div className={cn("project-gallery", className)} data-aos="fade-up">
