@@ -23,7 +23,13 @@ const ProjectGallery: React.FC<Props> = ({content, className}: Props): ReactElem
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
-    const gallery: string | ReactElement | ReactElement[] = htmlFrom(content.block_data[2].innerBlocks[0].innerBlocks[0].rendered, setApi);
+
+    const galleryBlock = content?.block_data?.[2]?.innerBlocks?.[0]?.innerBlocks?.[0];
+    if (!galleryBlock?.rendered) {
+        return <div className={cn("project-gallery", className)}>No gallery found</div>;
+    }
+
+    const gallery: string | ReactElement | ReactElement[] = htmlFrom(galleryBlock.rendered, setApi);
 
     React.useEffect((): void => {
         if (!api) {
@@ -61,9 +67,7 @@ function htmlFrom(htmlString: any, setApi: any): string | ReactElement | ReactEl
             if (domNode.name === 'carousel') {
                 return <Carousel
                     setApi={setApi}
-                    plugins={[
-                        Fade()
-                    ]}
+                    plugins={[Fade()]}
                     opts={{ align: "start", loop: true }}
                     className="carousel-wrapper"
                 >{domToReact(domNode.children, options)}

@@ -1460,7 +1460,8 @@ body:has(div.projects-index) {
         }
     }
 
-    .wp-block-columns.is-layout-flex:nth-of-type(1) {
+    /* Note: nth-of-type(2) because project-number div is nth-of-type(1) */
+    .wp-block-columns.is-layout-flex:nth-of-type(2) {
         display: block;
         @media only screen and (min-width: $medium) {
             display: grid;
@@ -1482,7 +1483,7 @@ body:has(div.projects-index) {
         }
     }
 
-    .wp-block-columns.is-layout-flex:nth-of-type(2) {
+    .wp-block-columns.is-layout-flex:nth-of-type(3) {
         grid-column: 1 / span 16;
         grid-row: 3;
         grid-template-columns: subgrid;

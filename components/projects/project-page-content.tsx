@@ -23,6 +23,12 @@ const ProjectPageContent: React.FC<Props> = ({post, featuredMedia}: Props): Reac
                     return domNode;
                 }
 
+                // Exclude gallery images - they're rendered separately by ProjectGallery component
+                // Gallery images are <img> tags that are direct children of wp-block-column
+                if (domNode.name === 'img' && domNode.parent?.attribs?.class?.includes('wp-block-column')) {
+                    return <></>;
+                }
+
                 if (featuredMedia && domNode.attribs && domNode.attribs.class && domNode.attribs.class.includes("project-body")) {
                     return <div className="project-body">
                         <Image
