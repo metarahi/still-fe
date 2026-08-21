@@ -24,11 +24,7 @@ export async function POST(request: NextRequest) {
     let path: string = "";
     let indexPath: string = "";
 
-    if (type === "post") {
-        path = `/articles/${slug}`;
-        indexPath = "/articles";
-    }
-    else if (type === "project") {
+    if (type === "project") {
         path = `/still-100/${slug}`;
         indexPath = "/still-100";
     }

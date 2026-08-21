@@ -9,7 +9,6 @@ import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 import React, {ReactElement} from "react";
 import ProjectGallery from "@/components/projects/project-gallery";
-import LatestNews from "@/components/latest-news";
 import Image from "next/image";
 import Link from "next/link";
 import {FeaturedMedia, Post} from "@/lib/wordpress.d";
@@ -130,10 +129,8 @@ export default async function Page({
 
                     <ProjectGallery content={post} className="max-md:hidden" />
 
-                    <Link href="/still-100" className="button border p-3 border-black">Back to STILL 100</Link>
+                    <Link href="/still-100" className="button border p-3 border-black">Back to Portfolio</Link>
                 </div>
-
-                <LatestNews />
 
             </Container>
         </Section>

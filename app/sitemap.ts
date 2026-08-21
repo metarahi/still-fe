@@ -1,11 +1,10 @@
 import { MetadataRoute } from "next";
-import {getAllPages, getAllPosts, getAllProjects, getAllTeamMembers} from "@/lib/wordpress";
+import {getAllPages, getAllProjects, getAllTeamMembers} from "@/lib/wordpress";
 import { siteConfig } from "@/site.config";
 import { Page, Post } from "@/lib/wordpress.d";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages: Page[] = await getAllPages();
-  const posts: Post[] = await getAllPosts();
   const projects: Post[] = await getAllProjects();
   const teamMembers: Post[] = await getAllTeamMembers();
 
@@ -35,12 +34,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: `${siteConfig.site_domain}/articles`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${siteConfig.site_domain}/pages`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -51,13 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pageUrls: MetadataRoute.Sitemap = pages.map((page: Page) => ({
     url: `${siteConfig.site_domain}/pages/${page.slug}`,
     lastModified: new Date(page.modified),
-    changeFrequency: "weekly",
-    priority: 0.5,
-  }));
-
-  const postUrls: MetadataRoute.Sitemap = posts.map((post: Post) => ({
-    url: `${siteConfig.site_domain}/articles/${post.slug}`,
-    lastModified: new Date(post.modified),
     changeFrequency: "weekly",
     priority: 0.5,
   }));
@@ -76,5 +62,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1,
   }));
 
-  return [...staticUrls, ...pageUrls, ...postUrls, ...projectUrls, ...teamMemberUrls];
+  return [...staticUrls, ...pageUrls, ...projectUrls, ...teamMemberUrls];
 }

@@ -80,8 +80,13 @@ async function wordpressFetch<T>(
   }).then(response => {
     return response.data;
   }).catch(error => {
-    return error;
-  })
+    console.error('WordPress API error:', error.message || error);
+    throw new WordPressAPIError(
+        error.message || 'WordPress API request failed',
+        error.response?.status || 0,
+        url
+    );
+  });
 
   if (!response) {
     throw new WordPressAPIError(
@@ -419,16 +424,23 @@ export async function getPostsByTagSlug(tagSlug: string): Promise<Post[]> {
   return response;
 }
 
-export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
-  const url = getUrl(`/wp-json/wp/v2/media/${id}`);
-  const response = await wordpressFetch<FeaturedMedia>(url, {
-    next: {
-      ...defaultFetchOptions.next,
-      tags: ["wordpress", `media-${id}`],
-    },
-  });
+export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia | null> {
+  if (!id || isNaN(id) || id <= 0) return null;
 
-  return response;
+  try {
+    const url = getUrl(`/wp-json/wp/v2/media/${id}`);
+    const response = await wordpressFetch<FeaturedMedia>(url, {
+      next: {
+        ...defaultFetchOptions.next,
+        tags: ["wordpress", `media-${id}`],
+      },
+    });
+
+    return response;
+  } catch (error) {
+    // Silently handle missing media (404s are common for optional images)
+    return null;
+  }
 }
 
 // Helper function to search across categories

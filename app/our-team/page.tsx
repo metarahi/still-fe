@@ -41,14 +41,38 @@ export default async function Page(): Promise<ReactElement<any, any>> {
     });
 
     for (const member of teamMembers) {
-        if (member._embedded) {
-            member._embedded.primary_image = await getFeaturedMediaById(Number(member.acf?.primary_image));
-            member._embedded.secondary_image = await getFeaturedMediaById(Number(member.acf?.secondary_image));
+        if (!member._embedded) {
+            member._embedded = {};
+        }
+        // ACF may return image URL directly or an ID
+        const primaryUrl = member.acf?.primary_image;
+        const secondaryUrl = member.acf?.secondary_image;
+
+        if (primaryUrl && typeof primaryUrl === 'string' && primaryUrl.startsWith('http')) {
+            member._embedded.primary_image = {
+                source_url: primaryUrl,
+                media_details: { sizes: { full: { source_url: primaryUrl, width: 800, height: 800 } } }
+            };
+        } else if (primaryUrl) {
+            member._embedded.primary_image = await getFeaturedMediaById(Number(primaryUrl));
+        }
+
+        if (secondaryUrl && typeof secondaryUrl === 'string' && secondaryUrl.startsWith('http')) {
+            member._embedded.secondary_image = {
+                source_url: secondaryUrl,
+                media_details: { sizes: { full: { source_url: secondaryUrl, width: 800, height: 800 } } }
+            };
+        } else if (secondaryUrl) {
+            member._embedded.secondary_image = await getFeaturedMediaById(Number(secondaryUrl));
         }
     }
 
     let featuredTeamMembers: never[] = [];
     featured(teamMembers, featuredTeamMembers);
+
+    // Serialize data to remove any non-serializable properties (functions, circular refs)
+    const serializedTeamMembers = JSON.parse(JSON.stringify(teamMembers));
+    const serializedFeaturedTeamMembers = JSON.parse(JSON.stringify(featuredTeamMembers));
 
     return (
         <Section>
@@ -56,8 +80,8 @@ export default async function Page(): Promise<ReactElement<any, any>> {
                 <TeamWrapper
                     page={page}
                     pageHtml={{ '__html': page.content.rendered }}
-                    teamMembers={teamMembers}
-                    featuredTeamMembers={featuredTeamMembers}
+                    teamMembers={serializedTeamMembers}
+                    featuredTeamMembers={serializedFeaturedTeamMembers}
                 />
             </Container>
         </Section>

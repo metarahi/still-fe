@@ -17,24 +17,31 @@ const TeamMemberCard = ({ teamMember, index, featured = false }: TeamMemberCardP
     ? `featured-team-member featured-team-member-${index + 1}`
     : "";
 
+  const primaryImage = teamMember._embedded?.primary_image?.media_details?.sizes?.full;
+  const secondaryImage = teamMember._embedded?.secondary_image?.media_details?.sizes?.full;
+
   return (
     <div className={className} data-aos="fade-up">
       <div className="team-member-image">
         <Link href={'/our-team/' + teamMember.slug}>
-          <Image
-              src={teamMember._embedded?.primary_image.media_details.sizes.full.source_url}
+          {primaryImage && (
+            <Image
+                src={primaryImage.source_url}
+                alt={teamMember.title.rendered}
+                className="primary"
+                height={primaryImage.height}
+                width={primaryImage.width}
+            />
+          )}
+          {secondaryImage && (
+            <Image
+              src={secondaryImage.source_url}
               alt={teamMember.title.rendered}
-              className="primary"
-              height={teamMember._embedded?.primary_image.media_details.sizes.full.height}
-              width={teamMember._embedded?.primary_image.media_details.sizes.full.width}
-          />
-          <Image
-            src={teamMember._embedded?.secondary_image.media_details.sizes.full.source_url}
-            alt={teamMember.title.rendered}
-            className="secondary"
-            height={teamMember._embedded?.secondary_image.media_details.sizes.full.height}
-            width={teamMember._embedded?.secondary_image.media_details.sizes.full.width}
-          />
+              className="secondary"
+              height={secondaryImage.height}
+              width={secondaryImage.width}
+            />
+          )}
         </Link>
       </div>
       <h2 className="h3-headings-and-pullquotes md:h2-headings-and-intros">

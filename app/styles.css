@@ -255,7 +255,7 @@ textarea.has-error {
     position: absolute;
 }
 
-.wp-container-core-columns-is-layout-3 {
+.home-still-100-1.is-layout-flex {
     grid-template-columns: 1fr;
     margin: 4.625rem 1.25rem 0; /* 74px 20px 0 */
     @media only screen and (min-width: $medium) {
@@ -599,7 +599,7 @@ footer {
     @media only screen and (min-width: $medium) {
         margin-top: 0;
     }
-    &.wp-container-core-columns-is-layout-2 {
+    &.is-layout-flex {
         gap: 1.25rem; /* 20px */
         grid-template-columns: repeat(4, 1fr);
         > div:first-child {
@@ -985,8 +985,7 @@ footer {
     }
 }
 
-.project-previews img,
-.latest-articles-home img {
+.project-previews img {
     transition: all .35s ease-in-out;
 }
 
@@ -999,21 +998,6 @@ body:has(.project-previews img:hover) {
         }
 
         .project-previews img:not(:hover) {
-            filter: grayscale(1);
-            mix-blend-mode: multiply;
-        }
-    }
-}
-
-body:has(.latest-articles-home img:hover) {
-    @media only screen and (min-width: $medium) {
-        background: var(--still-sand-dark);
-
-        nav {
-            background: var(--still-sand-dark);
-        }
-
-        .latest-articles-home img:not(:hover) {
             filter: grayscale(1);
             mix-blend-mode: multiply;
         }
@@ -1148,96 +1132,6 @@ body:has(.latest-articles-home img:hover) {
     figcaption {
         @extend .caption-large;
     }
-}
-
-.latest-articles {
-    margin: 3.75rem 1.25rem 0; /* 60px 20px 0 */
-    @media only screen and (min-width: $medium) {
-        margin: 11.313rem 5.625rem 0; /* 181px 90px 0 */
-    }
-
-    .wrapper {
-        margin-top: 1.438rem; /* 23px */
-        @media only screen and (min-width: $medium) {
-            display: grid;
-            gap: 1.5rem; /* 24px */
-            grid-template-columns: repeat(16, 1fr);
-            margin-top: 4.875rem; /* 78px */
-        }
-    }
-
-    article {
-        margin-bottom: 2.688rem; /* 43px */
-        @media only screen and (min-width: $medium) {
-            margin-bottom: 0;
-        }
-    }
-
-    article > a {
-        background: var(--still-sand-dark);
-    }
-
-    .latest-article-1 {
-        grid-column: 1 / span 8;
-
-        h3,
-        p {
-            @media only screen and (min-width: $medium) {
-                max-width: calc(50% - 0.75rem); /* 12px */
-            }
-        }
-    }
-
-    .latest-article-2 {
-        grid-column: 9 / span 4;
-    }
-
-    .latest-article-3 {
-        grid-column: 13 / span 4;
-    }
-
-    h3 {
-        margin: 0.813rem 0; /* 13px 0 */
-        @media only screen and (min-width: $medium) {
-            margin: 1.125rem 0 0.688rem; /* 18px 0 11px */
-        }
-    }
-
-    .read-more {
-        @media only screen and (min-width: $medium) {
-            margin-top: 0.875rem; /* 14px */
-        }
-
-        a {
-            border-bottom: 0.063rem solid; /* 1px */
-        }
-    }
-
-    .button {
-        align-items: center;
-        display: flex;
-        grid-column: span 3;
-        justify-content: center;
-        margin-top: 0.625rem; /* 10px */
-        @media only screen and (min-width: $medium) {
-            grid-column: span 4;
-            margin-top: 4.375rem; /* 70px */
-        }
-        @media only screen and (min-width: $large) {
-            grid-column: span 3;
-        }
-        @media only screen and (min-width: $xxlarge) {
-            grid-column: span 3;
-        }
-    }
-}
-
-.latest-articles h3 a {
-    @extend .h3-headings-and-pullquotes;
-}
-
-.latest-articles-home p {
-    margin-bottom: 1.063rem; /* 17px */
 }
 
 /* Still 100 page */
@@ -1566,7 +1460,7 @@ body:has(div.projects-index) {
         }
     }
 
-    .wp-container-core-columns-is-layout-1 {
+    .wp-block-columns.is-layout-flex:nth-of-type(1) {
         display: block;
         @media only screen and (min-width: $medium) {
             display: grid;
@@ -1588,7 +1482,7 @@ body:has(div.projects-index) {
         }
     }
 
-    .wp-container-core-columns-is-layout-2 {
+    .wp-block-columns.is-layout-flex:nth-of-type(2) {
         grid-column: 1 / span 16;
         grid-row: 3;
         grid-template-columns: subgrid;
@@ -1958,7 +1852,7 @@ h1 .job-title {
         }
     }
 
-    .wp-container-core-columns-is-layout-1 {
+    .wp-block-columns.is-layout-flex:nth-of-type(1) {
         > div:first-child {
             margin-bottom: 0.625rem; /* 10px */
         }
@@ -2026,402 +1920,6 @@ img.w-half {
     }
     @media only screen and (min-width: $xxlarge) {
         height: 100vh;
-    }
-}
-
-/* Latest news block */
-.latest-news-block {
-    border-top: 0.04375rem solid var(--still-grey);
-    margin-top: 6.25rem;
-    @media only screen and (min-width: $medium) {
-        margin-top: 12.1875rem;
-    }
-
-    h2 {
-        margin-top: 1.6875rem;
-    }
-
-    .inner {
-        margin-top: 1.6875rem;
-        @media only screen and (min-width: $medium) {
-            margin-top: 6rem;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .article-1 {
-            grid-column: 2 / span 4;
-        }
-
-        .article-2 {
-            grid-column: 7 / span 4;
-        }
-
-        .article-3 {
-            grid-column: 12 / span 4;
-        }
-
-        article {
-            margin-bottom: 3rem;
-            @media only screen and (min-width: $medium) {
-                margin-bottom: 0;
-            }
-        }
-
-        h3 {
-            margin-bottom: 0.875rem;
-            margin-top: 1.125rem;
-        }
-
-        .excerpt {
-            margin-bottom: 1.0625rem;
-        }
-
-        .button {
-            grid-column: 2 / span 3;
-            grid-row: 2;
-            width: 100%;
-            @media only screen and (min-width: $medium) {
-                grid-column: 2 / span 4;
-                margin-top: 4.3125rem;
-            }
-            @media only screen and (min-width: $xlarge) {
-                grid-column: 1 / span 3;
-            }
-        }
-    }
-}
-
-/* Articles */
-.featured-article {
-    @media only screen and (min-width: $medium) {
-        display: grid;
-        grid-column: 4 / span 12;
-        grid-template-columns: subgrid;
-        margin-bottom: 2.5625rem;
-    }
-    @media only screen and (min-width: $large) {
-        grid-column: 2 / span 14;
-    }
-    @media only screen and (min-width: $xlarge) {
-        grid-column: 4 / span 12;
-    }
-
-    .w-full {
-        grid-column: 1 / span 8;
-        @media only screen and (min-width: $large) {
-            grid-column: 1 / span 9;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 1 / span 8;
-        }
-    }
-
-    > div:last-child {
-        grid-column: 9 / span 4;
-        @media only screen and (min-width: $large) {
-            grid-column: 10 / span 7;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 9 / span 4;
-            margin-top: -0.375rem;
-        }
-
-        h3 {
-            margin-bottom: 0.625rem;
-            margin-top: 0.8125rem;
-            @media only screen and (min-width: $medium) {
-                margin-bottom: 1.1875rem;
-                margin-top: 0;
-            }
-        }
-
-        h3 .arrow {
-            @extend .arrow-caption-large;
-        }
-
-        .article-words,
-        .article-images {
-            margin-bottom: 0;
-            @media only screen and (min-width: $medium) {
-                margin-bottom: 1.25rem;
-            }
-            @media only screen and (min-width: $xlarge) {
-                margin-bottom: 0;
-            }
-        }
-
-        .paragraph {
-            margin-top: 0.6875rem;
-            @media only screen and (min-width: $medium) {
-                margin-bottom: 1.125rem;
-                margin-top: 1.25rem;
-            }
-        }
-    }
-}
-
-.article-grid {
-    margin-top: 1.375rem;
-    @media only screen and (min-width: $medium) {
-        margin-top: 8.9375rem;
-    }
-
-    h3,
-    .paragraph,
-    p {
-        @media only screen and (min-width: $medium) {
-            max-width: calc(25vw - 3.9375rem);
-        }
-        @media only screen and (min-width: $large) {
-            max-width: none;
-        }
-        @media only screen and (min-width: $xlarge) {
-            max-width: calc(25vw - 3.9375rem);
-        }
-    }
-}
-
-.read-more-wrapper {
-    margin-bottom: 3.125rem;
-    margin-top: 1.0625rem;
-    @media only screen and (min-width: $medium) {
-        margin-bottom: 1.25rem;
-        margin-top: 0;
-    }
-}
-
-.article-categories {
-    align-items: flex-start;
-    grid-column: 1 / span 3;
-    grid-row: 1;
-    @media only screen and (min-width: $large) {
-        grid-column: 2 / span 14;
-    }
-    @media only screen and (min-width: $xlarge) {
-        grid-column: 1 / span 3;
-        margin-top: -0.375rem;
-    }
-
-    > div {
-        border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.25);
-        margin-bottom: 3.125rem;
-        padding-bottom: 1.3125rem;
-        @media only screen and (min-width: $xlarge) {
-            border-bottom: 0;
-            margin-bottom: 2.9375rem;
-            padding-bottom: 0;
-        }
-    }
-}
-
-.article-categories.toggle-open > div {
-    margin-bottom: 1.5rem;
-}
-
-.article-categories a {
-    background-color: var(--still-sand-light);
-    border-radius: 3.125rem;
-    flex-basis: fit-content;
-    height: 1.9375rem;
-    line-height: 1.0625rem;
-    margin-bottom: 0.9375rem;
-    padding: 0.4375rem 1.125rem;
-    text-align: center;
-    white-space: nowrap;
-    @extend .p1-body-copy;
-}
-
-.article-categories a:last-child {
-    margin-bottom: 3.125rem;
-    @media only screen and (min-width: $medium) {
-        margin-bottom: 0;
-    }
-}
-
-.article .article-categories a {
-    margin-bottom: 0;
-    @media only screen and (min-width: $medium) {
-        margin-bottom: 0.9375rem;
-    }
-    @media only screen and (min-width: $xlarge) {
-        margin-bottom: 0;
-    }
-}
-
-.article .article-categories a:last-child {
-    margin: 0;
-}
-
-.load-more-wrapper {
-    @media only screen and (min-width: $medium) {
-        display: grid;
-        grid-column: 4 / span 12;
-        grid-template-columns: subgrid;
-    }
-    @media only screen and (min-width: $large) {
-        grid-column: 2 / span 14;
-    }
-    @media only screen and (min-width: $xlarge) {
-        grid-column: 4 / span 12;
-    }
-
-    .grid-start-1 {
-        grid-column: 1 / span 6;
-        margin-bottom: 2.375rem;
-        @media only screen and (min-width: $large) {
-            grid-column: 1 / span 7;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 1 / span 6;
-        }
-    }
-
-    .grid-start-7 {
-        grid-column: 7 / span 6;
-        margin-bottom: 2.375rem;
-        @media only screen and (min-width: $large) {
-            grid-column: 8 / span 7;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 7 / span 6;
-        }
-    }
-
-    button {
-        width: 100%;
-        @media only screen and (min-width: $medium) {
-            grid-column: 1 / span 3;
-            margin-top: 2.1875rem;
-        }
-        @media only screen and (min-width: $large) {
-            grid-column: 1 / span 7;
-        }
-        @media only screen and (min-width: $xlarge) {
-            grid-column: 1 / span 3;
-        }
-    }
-
-    h3 {
-        margin-bottom: 0.9375rem;
-        margin-top: 0.8125rem;
-        @media only screen and (min-width: $medium) {
-            margin-bottom: 0.8125rem;
-            margin-top: 1.125rem;
-        }
-    }
-
-    .paragraph {
-        margin-bottom: 1.1875rem;
-    }
-
-    .post-card {
-        margin-bottom: 2.4375rem;
-    }
-}
-
-.article {
-    margin-bottom: -1.4375rem;
-    margin-top: 15.8125rem;
-
-    h1,
-    .article-meta,
-    .article-categories,
-    .article-featured-image {
-        grid-column: 4 / span 10;
-        text-align: center;
-    }
-
-    .article-intro {
-        grid-column: 5 / span 8;
-    }
-
-    .article-content {
-        grid-column: 6 / span 6;
-    }
-
-    .article-meta {
-        margin: 0.6875rem 0 1.25rem;
-        @media only screen and (min-width: $medium) {
-            margin: 3.9375rem 0 1.9375rem 0;
-        }
-
-        span {
-            display: block;
-
-            @media only screen and (min-width: $medium) {
-                display: inline;
-            }
-        }
-
-        .delimiter {
-            display: none;
-            @media only screen and (min-width: $medium) {
-                display: inline;
-            }
-        }
-    }
-
-    .article-categories {
-        grid-row: 3;
-        margin-bottom: 2.1875rem;
-        @media only screen and (min-width: $medium) {
-            margin-bottom: 5.6875rem;
-        }
-    }
-
-    .article-featured-image {
-        margin: 2.75rem -1.25rem;
-        @media only screen and (min-width: $medium) {
-            margin: 4.75rem 0 4.375rem 0;
-        }
-    }
-
-    .article-featured-image-caption {
-        align-self: start;
-    }
-
-    .article-featured-image-caption p {
-        @extend .caption-large;
-    }
-
-    .article-content {
-        .wp-block-heading {
-            display: none;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        > p {
-            margin-bottom: 1.4375rem;
-        }
-
-        blockquote {
-            margin: 2.3125rem 0 2.9375rem;
-            @media only screen and (min-width: $medium) {
-                margin: 2.5rem 0 4.25rem;
-            }
-        }
-
-        blockquote p {
-            @extend .h4-article-feature-text;
-            @media only screen and (min-width: $medium) {
-                /*@extend .h3-headings-and-pullquotes;*/
-                font-size: 1.5rem;
-                line-height: 1.875rem;
-            }
-        }
-
-        .wp-block-image {
-            margin: 0 -1.25rem 2.75rem;
-            @media only screen and (min-width: $medium) {
-                margin: 0 0 4.375rem;
-            }
-        }
     }
 }
 

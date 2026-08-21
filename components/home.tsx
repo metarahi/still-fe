@@ -119,6 +119,11 @@ function htmlFrom(htmlString: any) {
                 return domNode;
             }
 
+            // Hide the articles section until removed from backend
+            if (domNode.attribs?.class?.includes('latest-articles-home')) {
+                return <></>;
+            }
+
             if (domNode.name === 'carousel') {
                 return <Carousel
                     plugins={[

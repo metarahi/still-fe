@@ -1,14 +1,12 @@
 export const mainMenu = {
-  'still 100': '/still-100',
-  'our team': '/our-team',
-  'articles': '/articles',
+  'portfolio': '/still-100',
+  'people': '/our-team',
   'contact': '/contact',
 };
 
 export const footerMenu = {
-  'still 100': '/still-100',
-  'our team': '/our-team',
-  'articles': '/articles',
+  'portfolio': '/still-100',
+  'people': '/our-team',
   'contact': '/contact',
   'privacy policy': '/pages/privacy-policy',
 };
